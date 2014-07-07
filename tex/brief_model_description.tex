@@ -1,0 +1,26 @@
+
+\section*{Integrated modelling framework}
+
+The key idea of our approach is to constrain the parameters of a correlative meta-model using predictions made by one or several mechanistic sub-models.
+The role of the meta-model is to integrate data at the same ecological scale as predictions. 
+As an example, the meta-model could take the form of a simple correlative \ac{SDM}.
+The output of sub-models models should provide additional predictions at a comparable ecological scale at which the meta-model operates, although it is not necessary for the sub-models to actually operate at the same scale.
+Ideally, each submodel will incorporate different data and a different set of hypotheses that specify underlying ecological mechanisms contributing to the model output.
+For sub-models operating at a substantially different scale than the meta-model, scaling functions will be required; however, as we will show in the first example, these functions can be simple while still contributing useful information to the meta-model. 
+All predictions may therefore be integrated in a single Bayesian framework when evaluating the parameters of the meta-model (see Box 1, Fig. \ref{fig:diagram}).
+We present the complete framework in a hypothetical example in the following section.
+A more formal presentation of the framework appears in Box 1.
+
+
+\begin{figure}
+\input{diagram}
+\caption{The parameters of a correlative meta-model model (left column) are conditioned on the predictions of a mechanistic sub-model (right column).
+The meta-model ($\theta_M$) operates at a single ecological scale and uses occurrence data (\(X_M\)) and explanatory variables ($D_M$) to produce a naive (i.e., not conditioned on sub-models) prediction $\psi_N$.
+The mechanistic sub-model \(\theta_S\) includes data about the response (\(X_S\)) of lower-level behaviours of the system to explanatory variables ($D_S$). 
+The models are integrated by calibrating $\theta_M$ to data ($X_M, D_M$) as well as the output of the sub-model ($\psi_S$). 
+This is possible because predictions from the sub-model ($\psi_S$) emerge at the scale of the meta-model via a scaling function \(g(\theta_S, D_S)\).
+The final prediction can be obtained by applying the integrated model to the original explanatory variables (as shown) or, if projection is desired, on some new set of explanatory variables (e.g., future climate).
+This prediction incorporates multiple sources of information coming from several calibration datasets (i.e., $X_M, D_M, X_S, $ and $D_S$) as well as from multiple types of models (i.e., $\theta_M$ and $\theta_S$).
+}
+\label{fig:diagram}
+\end{figure}

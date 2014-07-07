@@ -1,0 +1,50 @@
+\section*{Introduction}
+
+Models of species range limits have wide applications and play a large role in conservation biology, where they are used as decision-making tools in biodiversity management \citep{Rosenzweig2008, Thuiller2008, Rodenhouse2009}.
+Due to large temporal and spatial scales and the complex and nonlinear nature of ecosystem dynamics, it is often impossible to construct experiments that can adequately explore the ecological processes generating range limits \citep{Wu1995, Levin1998}. 
+Thus, models are essential tools that have been applied to a large number of ecological subfields, including biogeography \citep{Schurr2012}, invasion biology \citep{Catterall2012, Gallien2012}, evolution and hybrid zone dynamics \citep{Engler2013}, and the impacts of climate change  \citep{Rosenzweig2008, Thuiller2008, Milad2011, Blois2013, Loyola2013}. 
+However, despite having recognized potential to support decision making, the contributions of models to conservation and applied ecology remain limited \citep{Dawson2011, Guisan2013}.
+
+An important constraint on the modelling process is the availability of data and appropriate ecological theory to  link data to modelling objectives.
+Poor data or poorly conceived models, will result in predictions with unacceptably high uncertainty, or, more dangerously, precise but biased predictions.
+As a result of data accumulation from various sources and scales and conceptual advances in ecology, modelling techniques have proliferated to take advantage of what is available.
+Model diversification also arises due to the diverse processes generating species ranges \cite{Soberon2007}.
+In the context of forecasting, which is the focus hereafter, mechanistic and correlative approaches represent quite different modes of inference, but both have strong limitations. 
+Fine-scale mechanistic models may capture important ecological processes quite well, but due to their specificity, may perform poorly when applied to species ranges.
+For instance, biotic interactions (including trophic interactions) are usually not modelled mechanistically at the scale of species distributions because they are not well-known, or have not been recorded, despite being considered a key determinant of range limits \citep{Soberon2007, Roux2012, Guo2013, Pigot2013}. 
+On the other hand, coarse-scale correlative models statically relating species distributions to associated distributions of other variables at the same scale have the advantage of indirectly accounting for underlying processes \citep{Guisan2000}.
+However, their predictions rely on the constancy of the relationships between occurrences and explanatory variables in time and space, which implies that the selected variables are related to the processes limiting species ranges and that their correlations are constant for calibration and projection ranges in space and time \citep{Dormann2007}. 
+Extrapolating beyond the scope of the original data (e.g., predicting ranges based on future climate) is therefore problematic, because nonlinearities in responses to novel combinations of the explanatory variables cannot be accommodated in models that do not simulate the underlying processes.
+Furthermore, correlative models often do not explicitly incorporate theory into their formulations, and when applied at coarse-scales, they may miss important fine-scale processes, making a multi-scale approach desirable when accurate forecasting is required \citep{Austin2007, Austin2011, Soranno2014}.
+
+\subsection*{Toward an integrated approach for modelling ranges}
+A key problem with the diversity of approaches is that multiple models often produce differing predictions for the same organism, with no simple way to reconcile these predictions.
+We present an application of hierarchical Bayesian methods for integrating the predictions of multiple models; our approach is an alternative to other approaches to drawing inference from multiple models (summarized below) that offers improved flexibility in incorporating data and theory from multiple scales and provides transparent estimation of uncertainty.
+For instance, correlative models are often criticized because they assume that the selected explanatory variables limit (directly of indirectly) the species range, and, as mentioned above, that the relationship between the selected variables and the species occurrences will not change in the prediction context \citep{Araujo2006, Berteaux2006, Braunisch2013}.
+However, additional information (in the form of both data and theory) is often available on the species of interest (e.g., growth rates in different climatic conditions, phenology, interactions with other species, sensitivity to disturbances) \citep{Holt2009, Thuiller2013}. 
+The challenge is to account for all this available knowledge while producing a single prediction.
+Integrating multiple models to provide a single prediction would allow more knowledge to be used, potentially mitigating the limitations inherent in each modelling approach and contributing to more robust predictions \citep{Pearson2003, Guisan2005, Araujo2006, Quillet2010}.
+
+One approach is to integrate multiple models in a single modelling framework \citep{Buckley2010}. 
+Some researchers have explicitely reproduced the hierarchical nature of ecological systems using hierarchical models \citep[e.g.][]{Royale2008, Catterall2012, Strigul2012, Stewart-Koster2013, Soranno2014}. 
+Recent literature has also focused on the development of hybrid models, which allow for flexible combinations between mechanistic and phenomenological sub-models \citep{Gallien2010, Franklin2010, Thuiller2013}. 
+For instance, correlative models are used to account for abiotic variables limiting species distributions \citep{Guisan2005}, while mechanistic approaches can include space and time dynamics and therefore account for dispersal processes \citep{Kearney2008}. 
+This complementarity has been used to merge the two types of models into hybrid integrated models \citep[e.g.][]{Keith2008, Anderson2009, Smolik2010, Boulangeat2014}. 
+However, the link between different sub-models is based on additional assumptions that are not easy to test \citep{Gallien2010}. 
+Moreover, this approach is not suitable for merging models that are based on the same processes but with different underlying hypotheses.
+A second approach is to directly combine predictions.
+If models operate at the same scales have compatible parameterizations, predictions can be combined using multi-model inference \citep[e.g., model averaging, ensemble forecasting][]{Araujo2007, Diniz-Filho2009}. 
+If models are not comparable because they are based on different data or hypotheses, the use of convergent predictions from multiple models is a way to provide more robust projections \citep{Morin2009, Marmion2009, Serra-Diaz2013}.
+However, this approach is limited; for example, it is not possible to evaluate the effects of convergent predictions on total uncertainty of outcomes.
+One of the greatest challenges inherent in both approaches above is estimating uncertainty, which is of utmost importance in a prediction context.
+A complete understanding of uncertainty can guide biodiversity management and prioritize future data collection by identifying parameters that make large contributions to the total uncertainty in the model predictions \citep{McMahon2011}. 
+In models that encompass multiple scales or levels of organization, it is particularly challenging to evaluate all sources of uncertainty, especially those related to model specification (\citealt{Calder2003} but see \citealt{Conlisk2013}).
+Clearly, an approach that integrates predictions and uncertainty from multiple model types is needed \citep{Beck2012, Thuiller2013}. 
+Such approach would incorporate multiple modes of inference and integrate data from multiple sources and scales \citep{Levin1992, Peters2004, Thuiller2013}.
+
+Here, we present a framework for modelling range dynamics that aims to account for all the information available on a given question, from a variety of sources and scales.
+Contrary to hybrid and hierarchical models, the aim is not to link differents sub-models into a single model, but to condition the predictions of a meta-model at the target scale (e.g., an entire species' range) with information from sub-models at a variety of scales, allowing as much flexibility as possible regarding the type of information included. 
+We use the power and generality of a hierarchical Bayesian framework, which allows us to include multiple data sources and modes of inference \citep{Clark2005, VanOijen2005, Clark2006, Hobbs2011, Hartig2012}. 
+Another advantage of Bayesian methods is that uncertainty in model outputs is intuitive to intertpret and reflects uncertainty at all levels of organization \citep{Clark2005, Cressie2009, Hobbs2011}. 
+We use simulated data to present a complete example of the application of the framework to multiple information sources that are relevant at very different scales.
+Finally, we apply the framework to combine predictions of a correlative model relating the range of sugar maple (\emph{Acer saccharum}) to climate with the predictions of a phenological model, Phenofit, with the goal of improving uncertainty estimation when projecting model predictions to future climate.

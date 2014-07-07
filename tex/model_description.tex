@@ -1,0 +1,71 @@
+\hrule
+\vspace{2em}
+
+\section*{Box 1: Model description}
+
+We begin with a simple correlative model (i.e. calibrated with data provided at the same ecological scale as predictions), characterized in a Bayesian framework to allow further integration. 
+We refer to this model (with associated parameters) as the meta-model, \(\theta_M\), and it is parameterized with information on the species' presence, \(X_M\), along with associated covariates (e.g., climate, presence/absence of interacting species, etc), collectively referred to as \(D_M\). 
+The naive (i.e., not integrated with information from sub-models) probability that a species is present, \(\psi_N\), is a deterministic function of the meta-model and its covariates::
+%-----
+\begin{equation}
+\label{eq:sdm1}
+	\psi_N = f(\theta_M, D_M)
+\end{equation}
+%-----
+The goal of model fitting is to estimate the posterior probability distribution for the parameters of \(\theta_M\), given the observations (\(X_M\)) and covariates (\(D_M\)):
+%-----
+\begin{equation}
+\label{eq:sdm2}
+	p( \theta_M \mid X_M, D_M)
+\end{equation}
+%-----
+
+Using Bayes' theorem, we find the posterior probability of \(\theta_M\) as follows:
+%-----
+\begin{equation}
+\label{eq:sdm3}
+	p( \theta_M \mid X_M, D_M ) = \frac{ p( X_M \mid \theta_M, D_M ) p( \theta_M ) } { p(X_M, D_M) }
+\end{equation}
+%-----
+where \(p( X_M \mid \theta_M, D_M )\) is referred to as the likelihood of the observations, \(p(\theta_M )\) is the prior probability of the model, and \(p(X_M, D_M)\) is the normalization constant.
+The normalization constant involves computing integrals that are often impossible to solve analytically. 
+In practice, simulation techniques such as \ac{MCMC} can be used to sample directly from the posterior distribution, making such computations unnecessary.
+Thus, we use the proportional form of Bayes' Theorem:
+%-----
+\begin{equation}
+\label{eq:sdm4}
+	p( \theta_M \mid X_M, D_M ) \propto p( X_M \mid \theta_M, D_M ) p( \theta_M ) 
+\end{equation}
+%-----
+
+The role of the meta-model model is to integrate data at the same ecological scale of predictions.
+Additional sub-models require outputs that should be comparable to this given ecological scale (e.g. constraining presence or absence on the landscape).
+Formally, we will add an additional model, \(\theta_S\), that is based on a different set of hypotheses and that makes predictions \((\psi_S)\) based on an additional dataset \((X_S, D_S)\):
+%-----
+\begin{equation}
+\label{eq:model2-1}
+	\psi_S = g(\theta_S, X_S, D_S)
+\end{equation}
+%-----
+
+For integration to be successful, it must be possible to compute the likelihood of this prediction given the meta-model, \(p \left( \psi_S \mid \theta_M ) = \theta_S \mid \theta_M, X_S, D_S \right)\), thus, we refer to $g$ as the \emph{scaling function}. 
+In many cases, computing this likelihood will be challenging.
+The simplest case is when the parameters of \(\theta_S\) are directly comparable to those in \(\theta_M\) (see Example 1), or when the scaling is performed directly within the sub-model (see Example 2), but other solutions are possible.
+This new likelihood, which integrates the information from the second model into the first, can be treated as new ``data'' to evaluate the parameters of \(\theta_M\).
+We simply use the posterior distribution of $\theta_M$ from the previous step (Eq. \ref{eq:sdm4}) as the new prior probability of $\theta_M$, and evaluate the likelihood of $\theta_M$ in light of the new data and the prior knowledge, as before:
+%-----
+\begin{equation}
+\label{eq:integrated2}
+	\overbrace{p( \theta_M \mid X_M, D_M, \theta_S, X_S, D_S )}^\text{integrated posterior}
+	\propto 
+	\overbrace{p( \theta_S \mid \theta_M, X_S, D_S )}^\text{likelihood}
+	\overbrace{p( X_M \mid D_M, \theta_M ) P( \theta_M )}^{\text{prior for } \theta_M}
+	\overbrace{p(\theta_S)}^{\text{prior for } \theta_S}
+\end{equation}
+%-----
+
+This procedure may be repeated for an arbitrary number of models (limited only by available data and computational power). 
+The models may be implemented simultaneously, when multiple data sets are available and can be evaluated under different underlying models, or they may be run sequentially, updating the posterior distribution of $\theta_M$ as new information becomes available. 
+Note that $\theta_S$ itself need not be implemented in a Bayesian framework and the output need not be identical in form to the output of \(\theta_M\); it is enough to produce an output that can be evaluated as a likelihood under the first model and to have some assessment of the confidence in the parameter estimates of $\theta_S$ to use as a prior.
+\vspace{2em}
+\hrule

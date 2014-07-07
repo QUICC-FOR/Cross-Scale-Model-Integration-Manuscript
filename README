@@ -1,0 +1,14 @@
+There are a couple of make scripts to facilitate building the documents. It is best to use
+them, as they will ensure references are added correctly etc. To use them, make sure you 
+are in the root directory of the project (the same directory as the file) and that
+pdflatex and bibtex are in your $PATH, then:
+
+	make manuscript	
+	
+Note that there is a .gitignore file for ignoring all the usual latex nuisance files. It
+also includes an exception for any file with .local anywhere in the name. If you have any
+files you want to keep in your working directory but don't want to include in the
+repository, just include .local anywhere in the file name.
+
+Finally, if you just want to build the PDF and don't care about references and figures,
+then you can just use pdflatex manuscript from the tex/ directory.

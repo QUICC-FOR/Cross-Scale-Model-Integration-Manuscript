@@ -1,0 +1,141 @@
+
+
+%\documentclass{article}
+%\usepackage{tikz}
+%\usepackage{tikz-cd}
+%\usepackage{amsmath}
+
+%\usetikzlibrary{calc, shapes}
+%\usetikzlibrary{shapes.geometric,shapes.arrows,decorations.pathmorphing}
+%\usetikzlibrary{matrix,chains,scopes,positioning,arrows,fit}
+%\begin{document}
+
+%% --------------------------------------------------------------------------------------
+%% ------part 1--------------------------------------------------------------------------
+%% --------------------------------------------------------------------------------------
+
+\begin{tikzpicture}
+	
+\matrix(m) [matrix of nodes, column sep=-0.5em,
+	row sep=2em,
+	minimum width=4em,
+	minimum height=2em,
+	column 1/.style={anchor=west, align=left, text width=10em},
+	multi/.style={rectangle split,rectangle split parts=2}]
+	{
+	% zeroth line
+	% blank space 
+	&
+	\textbf{Correlative Meta-model}
+	&
+	&
+	\textbf{Mechanistic sub-model}
+	\\
+	% first line
+	Data % m 1-1
+	&
+	$X_{M}, D_{M}$ % m 1-2
+	&
+	&
+	$X_{S}, D_{S}$ % m 1-4
+	\\
+%second line
+	|[multi]| Process % m 2-1 
+	\nodepart{second}
+	(prior and likelihood)
+	&
+	|[multi]|$p(\theta_{M})$ % m 2-2
+	\nodepart{second}
+	$p(X_{M} \mid \theta_{M}, D_{M})$
+	&
+	&
+	|[multi]|$p(\theta_{S})$
+	\nodepart{second}
+	$p(X_{S} \mid \theta_{S}, D_{S})$
+	\\
+
+%third line
+	
+	Posterior
+	&
+	$p(\theta_{M} \mid X_{M}, D_{M})$
+	&
+	&
+	$p(\theta_{S} \mid X_{S}, D_{S})$
+	\\
+
+%fourth line
+	Prediction
+	&
+	$\psi_N = f(\theta_M, D_M)$
+	&
+	&
+	$\psi_S = g(\theta_S, X_S, D_S)$
+	\\
+
+%fifth line
+	Data
+	&
+	&
+	&
+	$\psi_S$
+	\\
+%sixth line
+	|[multi]| Process
+	\nodepart{second}
+	(integrated likelihood)
+	&
+	$p(\theta_M \mid X_M, D_M)$
+	&
+	&
+	$p(\psi_S \mid \theta_M)$
+	\\
+
+
+%seventh line
+	Integrated posterior
+	&
+	&
+	$p(\theta_M \mid \psi_S, X_M, D_M)$
+	&
+	\\
+
+%eighth line
+	Integrated prediction
+	&
+	&
+	$\psi_I = f(\theta_M, D_M)$
+	&
+	\\
+}; %end matrix
+
+% The names of the nodes are automatically generated in the previous matrix. Since the
+% matrix was named ``m'', all nodes have the name m-row-column
+
+% meta-model
+\draw [->] (m-2-2.south) -- (m-3-2.north);
+\draw [->] (m-3-2.south) -- (m-4-2.north);
+\draw [->] (m-4-2.south) -- (m-5-2.north);
+
+%%mechanistic model
+\draw [->] (m-2-4.south) -- (m-3-4.north);
+\draw [->] (m-3-4.south) -- (m-4-4.north);
+\draw [->] (m-4-4.south) -- (m-5-4.north);
+
+%%separation line
+\draw [line cap=rect, transform canvas={yshift=-1em}] (m-5-1.south west) -- (m-5-4.south east);
+%(\linewidth-\pgflinewidth,0); 
+
+\tikzstyle{opt}=[gray,dashed,rounded corners];
+\draw [->,style=opt] (m-4-2.west) to[bend right=50] (m-7-2.west);
+\draw [->,style=opt] (m-5-4.south) to (m-6-4.north);
+
+%%integrated model
+\draw [->] (m-7-2.south) -- (m-8-3.north west);
+\draw [->] (m-6-4.south) -- (m-7-4.north);
+\draw [->] (m-7-4.south) -- (m-8-3.north east);
+\draw [->] (m-8-3.south) -- (m-9-3.north);
+
+
+\end{tikzpicture}
+

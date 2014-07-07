@@ -1,0 +1,14 @@
+.DS_Store
+*.aux
+*.pdf
+*.log
+*.loc
+*.gz
+*.history
+*.bbl
+*.blg
+*.local*
+*.cut
+*.docx
+!tex/*.pdf
+*.tdo
