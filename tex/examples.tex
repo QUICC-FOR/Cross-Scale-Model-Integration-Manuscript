@@ -1,12 +1,19 @@
 \section*{Examples}
+\aa{Example 1: nothing to add, I think it is great as is. Figures 3 and 4 are very informative now. Great job! 
+Example 2: it is nicely exposed, although the results don't seem too promising. You said you got new, better results, so that’s good news. ;-)}
+
 Our approach to model integration is best explained with concrete examples. 
 In this section we first present how experimental results could be introduced as prior knowledge of the fundamental niche in a species distribution model (\ac{SDM}), and in the following we apply our approach to integrating phenological information with occurrence data for a widespread North American tree.
+\ia{delete the above paragraph}
+\mt{I tend to agree}
 
 %---------------------------------------------
 \subsection*{Example 1: Adding experimental evidence for the fundamental niche to a species distribution model} 
 
-In this first hypothetical example, we build a meta-model relating the distribution (i.e. occurrence probability) of an annual plant to coarse-scale climate with complementary information originating from a fine-scale experiment manipulating the precipitation regime.
+In this hypothetical example, we build a meta-model relating the distribution (i.e. occurrence probability) of an annual plant to coarse-scale climate with complementary information originating from a fine-scale experiment manipulating the precipitation regime.
 The meta-model here captures the realized distribution of a species, thereby encapsulating in a single correlative model all physiological constraints and ecological processes constraining a species distribution. 
+\tf{Well, I understand that this is an objective of the method, but in this example, all physiological and ecological constraints are not taken into account.
+Plus, it is impossible to know all physiological and ecological constraints. The correct expression would be “all known physiological and ecological constraints”}
 However, for the purposes of forecasting, we would like to disentangle the fundamental response of a species to environmental variation from other processes in order to map the envelope of where a species could potentially be found. 
 Prior information of the physiological constraints affecting species distribution is sometimes available, but usually too incomplete to perform a reasonable comparison with the realized distribution.
 For instance, as in this example, a species distribution might be constrained by both temperature and precipitation, but experiments were conducted only over a precipitation gradient at one temperature. 
@@ -42,7 +49,7 @@ In this context, the goal of modelling is to estimate the probability distributi
 	p \left(\theta_M \right)
 \end{equation}
 %-----
-where \(p\left(X_M \mid \theta_M, T_M, P_M \right)\) is often referred to as the \emph{likelihood} of the data (\(X_M\)) given the model (\(\theta_M\)), \(p\left(\theta_M \right)\) is often referred to as the \emph{prior distribution} of \(\theta_M\), and the goal of modeling is to estimate \(p\left (\theta_M \mid X_M,T_M,P_M \right )\), the \emph{posterior distribution} of \(\theta_M\), which gives the probability that \(\theta_M\) takes particular values, given the observed data.
+where \(p\left(X_M \mid \theta_M, T_M, P_M \right)\) is often referred to as the \emph{likelihood} of the data (\(X_M\)) given the model (\(\theta_M\)), \(p\left(\theta_M \right)\) is often referred to as the \emph{prior distribution} of \(\theta_M\), and the goal of modelling is to estimate \(p\left (\theta_M \mid X_M,T_M,P_M \right )\), the \emph{posterior distribution} of \(\theta_M\), which gives the probability that \(\theta_M\) takes particular values, given the observed data.
 
 %==================
 % FIGURE
@@ -51,7 +58,7 @@ where \(p\left(X_M \mid \theta_M, T_M, P_M \right)\) is often referred to as the
 	\includegraphics{ex1_sampling.pdf}
 	\caption{Two simulated data sets used to illustrate the model integration framework.
 	(a) Presences (circles) or absences (x's) of the species in ecological space, where precipitation ranges from 0--1.
-	(b) Growth rate ($r$) as a function of manipulations to the precipitation regime (whiskers show $\pm$ 1 SE), with a larger range for precipitation.
+	(b) Growth rate ($r$) as a function of manipulations to the precipitation regime (whiskers show $\pm$ 1 SE), with a larger range for precipitation (i.e., \(-\)1--1).
 	The dashed line shows the threshold above which the species net growth rate is positive (implying presence).
 	Axis scales for temperature and precipitation are arbitrary, but note the different scales on the horizontal axes.}
 	\label{fig:ex1_sampling}
@@ -65,8 +72,8 @@ As a secondary source of information, we will consider an experiment relating th
 Furthermore, no information is available regarding the temperature regime for the experiment.
 Transplant experiments that evaluate performance beyond the range of a species are common, and represent a plausible scenario for model integration \citep{Hargreaves2014}.
 According to niche theory \citep{Holt2009}, the fundamental niche corresponds to the set of environmental conditions where the per capita intrinsic growth rate $r$ is positive.
-This concept gives us a reasonable model to fit the scaling function $g$ for our sub-mode (Fig. \ref{fig:diagram}).
-If we hypothesize that the errors from Figure \ref{fig:ex1_sampling}b \( \left(\sigma_{S} \right) \) are normally distributed, the for observation $i$, we can interpret the probability of presence \( \left(\psi_{S,i}\right)\) as the probability that the observed growth rate \(X_{S,i}\) is positive:
+This concept gives us a reasonable model to fit the scaling function $g$ for our sub-model (Fig. \ref{fig:diagram}).
+If we hypothesize that the errors from Figure \ref{fig:ex1_sampling}b \( \left(\sigma_{S} \right) \) are normally distributed, then for observation $i$, we can interpret the probability of presence \( \left(\psi_{S,i}\right)\) as the probability that the observed growth rate \(X_{S,i}\) is positive:
 \begin{equation}
 	\psi_{S,i} = \int_0^\infty N \left(X_{S,i}, \sigma_{S,i} \right)
 \end{equation}
@@ -81,7 +88,7 @@ We can then estimate the posterior distribution for the sub-model by fitting the
 \end{equation}
 %-----
 
-Although the two data sets were collected at considerably different scales, we now have sub-model predictions arising from a fine-scale experiment that are relevant at the scale of the meta-model second (i.e., the probability of presence at a given precipitation). 
+Although the two data sets were collected at considerably different scales, we now have sub-model predictions arising from a fine-scale experiment that are relevant at the scale of the meta-model (i.e., the probability of presence at a given precipitation). 
 This scaling is quite simplistic, and would never be used to predict a species' range using this mechanistic submodel in isolation.
 Despite the strong theoretical foundation (i.e., niche theory) linking the observations to presence-absence at large scales, the upscaled sub-model (i.e., the transformation of \(X_S\) and \(\sigma_S\) to \(\psi_S\)) is built on the strong hypothesis that the species will be present when $r>0$, neglecting other population dynamics constraints such as Allee effects and metapopulation dynamics. 
 The fundamental niche is also incomplete, as we lack environmental variables such as temperature, as well as all other ecological processes responsible for the realized distribution.
@@ -105,7 +112,7 @@ In other words, with this evaluation, the set of parameters $\theta_M$ is most l
 Note that in this particular example, because the sub-model is only contingent on precipitation, there is no integration on temperature. 
 Finally, we note the presence of marginal distributions for both models (i.e., \(p(\theta_M)\) and \(p(\theta_S)\)).
 These can be informative (e.g., incorporating further prior information or the predictions of additional sub-models), semi-informative (e.g., to provide greater weight to more informative models), or uninformative.
-For purposes of this example, we used these terms to reduce the precision of the second model to reflect the the uncertainty of the modelling process (due to the lack of additional mechanisms in the second model, as mentioned above).
+For purposes of this example, we used these terms to reduce the precision of the second model to reflect the uncertainty of the modelling process (due to the lack of additional mechanisms in the second model, as mentioned above).
 
 We performed this procedure with our hypothetical data sets.
 When comparing the three models (naive meta-model, mechanistic sub-model, and integrated meta-model), we observed extreme uncertainty in the first model when projecting beyond the range of the original data.
@@ -147,9 +154,9 @@ At the scale of the meta-model, considering both temperature and precipitation, 
 
 Once the technical challenges of evaluating the parameters are overcome, the integration has several advantages over the both the naive parameterization of the meta-model and the mechanistic sub-model. 
 In the situation where both models strongly agree on the relationship between water availability and occurrence probability, then we should expect significantly reduced uncertainty in that domain (Fig. \ref{fig:ex1_precip}, \ref{fig:ex1_map}).
-Because the meta-model includes both temperature and precipitation, any reduction in the uncertainly with respect to precipitation might also influence the evaluation of the relationship with temperature (reducing bias in the case where there is a correlation between T and P in the data). 
+Because the meta-model includes both temperature and precipitation, any reduction in the uncertainty with respect to precipitation might also influence the evaluation of the relationship with temperature (reducing bias in the case where there is a correlation between T and P in the data). 
 However, uncertainty could increase in the case of model disagreement.
-The relationship between precipitation in the naive meta-model could be caused by a spurious relationship (e.g. spatial autocorrelation caused by historical contingencies), leading to a false confidence in the species distribution over precipitation gradients. 
+For instance, the relationship between precipitation and presence in the naive meta-model could be caused by a spurious relationship (e.g. spatial autocorrelation caused by historical contingencies), leading to a false confidence in the species distribution over precipitation gradients. 
 The information from the sub-model will thus bring back the right amount of uncertainty in the relationship.
 
 \subsection*{Example 2: Constraining an SDM using phenological information}
@@ -163,8 +170,15 @@ Complete details, including all data and scripts to reproduce the analysis, are 
 
 \defcitealias{IPCC2001}{IPCC, 2001} %% this is needed to make the organizational citation in the following paragraph work correctly
 For the meta-model, we used a dataset of 1013 sugar maple presence records at 0.5 degree resolution, with 498 corresponding pseudo-absence records sampled from North America.
+\mt{update numbers with final versions, and indicate that they are true absences}
 We used a binomial GLM to relate the suitability for sugar maple to 5 climate variables, scaled to the same resolution (see SI for a description of the climate variables used).
-For projection, we used predictions for 2080 from the HadCM3 GCM \citep{Pope2000} with the A2 climate scenario \citepalias{IPCC2001}, and used the parameters of the GLM to forecast suitability into the future (i.e., \(\psi_N\)).
+\wt{We could also have used something more complex such as a GAM or boosted regression trees. }
+\mt{Perhaps note this; we selected this model for simplicity of explanation and implementation, but more flexible functions are possible}
+For projection, we used predictions for 2080 from the HadCM3 GCM \citep{Pope2000} driven by the A2 emission scenario (REF--Nakicenovic), and used the parameters of the GLM to forecast suitability into the future (i.e., \(\psi_N\)).
+\wt{citation:
+Nakicenovic, N. \& Swart, R. (ed.\^eds) (2000) Emissions Scenarios: A Special Report of Working Group III of the Intergovernmental Panel on Climate Change. Cambridge University Press, Cambridge.}
+\tf{Is it an optimistic or pessimistic or medium scenario? 
+Would it be interesting to compare two extreme scenarios? Would it change something to the demonstration of this manuscript?}
 Phenofit produces predictions at continental scales; thus the scaling function \(g\) was incorporated within Phenofit itself and we performed model integration directly on the outputs.
 To perform the integration, we used \ac{MCMC} to condition the parameters of the meta-model simultaneously on two likelihood functions.
 The first is the naive SDM, where the likelihood of a ``success'' in the presence/pseudo-absence dataset was a Bernoulli density with the (logit-transformed) probability expressed as a linear function of the climate predictors.
@@ -182,7 +196,7 @@ Thus, the posterior probability of the meta-model was:
 where \(\theta_M\) is the meta-model, 
 \(X_M\) is the vector of presences and pseudo-absences, 
 \(D_M\) is the matrix of climate predictors,
-\(X_S\) is the prediction from Phenofit (in this case a single deterministic value, because we did not incorporate errors from the Phenofit modeling),
+\(X_S\) is the prediction from Phenofit (in this case a single deterministic value, because we did not incorporate errors from the Phenofit modelling),
 and \(\theta_S\) is the model relating the Phenofit predictions to the meta-model.
 Note that here, the integration is performed on the \emph{predictions} of the sub-model directly, rather than on compatible parameters as in Example 1. Thus, the meta-model must appear in the sub-model likelihood.
 
@@ -209,8 +223,13 @@ Standard errors at range margins were significantly lower (as these are regions 
 %
 % ERUGIF
 %==================
+\tf{Fig 5: Is it realistic to make predictions as South as Mexico or In Cuba? 
+A question arises for me: to which spatial enveloppe should these models be used? Worldwide? Smaller enveloppe?
+This opens questions about species interactions. The predictions made are for sugar maple only without taking into account other speices. Sugr maple is present in EastAmrica. Is there another species which is only present in WesternAmerica ? Do we known how both species interact and who will “win” the competition game?
+I guess that the approach proposed is dedicated to answer these questions and that the figure are only here to present the distribution of sugar maple when only climate is changing.
+}
 
-For modeling the contemporary range of sugar maple, both Phenofit and the naive model perform very well relative to the integrated model, espeically when capturing the range margin (Fig \ref{fig:ex2}A, C, G).
+For modelling the contemporary range of sugar maple, both Phenofit and the naive model perform very well relative to the integrated model, espeically when capturing the range margin (Fig \ref{fig:ex2}A, C, G).
 Conventional SDMs are quite good at producing empirical models of species distributions under present climatic regimes, and the naive model here could be further improved with the addition of more parameters or the inclusion of ensemble forecasting (See SI for model-fitting details).
 However, Phenofit and the naive model differ substantially in their predictions of the future distribution of the species.
 The integrated model presents a reasonable compromise between the two predictions. 

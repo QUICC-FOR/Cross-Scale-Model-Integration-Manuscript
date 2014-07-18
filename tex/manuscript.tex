@@ -7,7 +7,7 @@
 %% ----------------------------------
 
 
-\usepackage[margin=1in]{geometry}
+%\usepackage[margin=1in]{geometry}
 
 % use proper unicode fonts
 \usepackage[T1]{fontenc}
@@ -51,26 +51,44 @@
 %     Remove from the final manuscript
 %
 %% ----------------------------------
-%\usepackage[top=1in, left=1in, bottom=1in, right=2.5in]{geometry}
+\usepackage[top=1in, left=1in, bottom=1in, right=2.5in]{geometry}
+
+\usepackage[textsize=tiny, backgroundcolor=white, textwidth=2.2in, colorinlistoftodos=true]{todonotes} % for margin notes using \todo{}
+
+% available colors:
+% red, green, blue, cyan, magenta, yellow, gray, drakfray, lightgray, brown, lime, olive, orange, pink, purple, teal, violet
 %
-%\usepackage[textsize=tiny, backgroundcolor=white, textwidth=2.2in, colorinlistoftodos=true]{todonotes} % for margin notes using \todo{}
-%
-%% available colors:
-%% red, green, blue, cyan, magenta, yellow, gray, drakfray, lightgray, brown, lime, olive, orange, pink, purple, teal, violet
-%
-%\newcommand{\mt}[1]{\todo[color=blue!40]{\textsuperscript{MT}#1}}
-%\newcommand{\ib}[1]{\todo[color=magenta!40]{\textsuperscript{IB}#1}}
-%\renewcommand{\aa}[1]{\todo[color=violet!40]{\textsuperscript{Aitor A}#1}}
-%\newcommand{\ia}[1]{\todo[color=blue!20]{\textsuperscript{Isabelle A}#1}}
-%\newcommand{\db}[1]{\todo[color=violet!20]{\textsuperscript{Dominique B}#1}}
+\newcommand{\mt}[1]{\todo[color=blue!40]{\textsuperscript{MT}#1}}
+\newcommand{\ib}[1]{\todo[color=magenta!40]{\textsuperscript{IB}#1}} 				
+\renewcommand{\aa}[1]{\todo[color=violet!40]{\textsuperscript{Aitor A}#1}}
+\newcommand{\ia}[1]{\todo[color=blue!20]{\textsuperscript{Isabelle A}#1}}
+\newcommand{\db}[1]{\todo[color=violet!20]{\textsuperscript{Dominique B}#1}}
+\newcommand{\ab}[1]{\todo[color=teal!40]{\textsuperscript{Alyssa B}#1}}
 %\newcommand{\rd}[1]{\todo[color=orange!40]{\textsuperscript{Ronnie D}#1}}
 %\newcommand{\mjf}[1]{\todo[color=green!60]{\textsuperscript{Marie-Josée F.}#1}}
-%\newcommand{\tf}[1]{\todo[color=yellow!60]{\textsuperscript{Tony F.}#1}}
+\newcommand{\tf}[1]{\todo[color=yellow!60]{\textsuperscript{Tony F.}#1}}
 %\newcommand{\dm}[1]{\todo[color=lime!50]{\textsuperscript{Dan M.}#1}}
 %\newcommand{\ks}[1]{\todo[color=green!40]{\textsuperscript{Kevin S}#1}}
-%\newcommand{\ns}[1]{\todo[backgroundcolor=red!100, linecolor=orange!100, bordercolor=cyan!100]{{\color{magenta!40}\textsuperscript{Strigul}#1}}}
-%\newcommand{\wt}[1]{\todo[color=violet!40]{\textsuperscript{Wilfried T}#1}}
-%\newcommand{\dg}[1]{\todo[color=pink!40]{\textsuperscript{DG}#1}}
+\newcommand{\ns}[1]{\todo[backgroundcolor=red!100, linecolor=orange!100, bordercolor=cyan!100]{{\color{magenta!40}\textsuperscript{Strigul}#1}}}
+\newcommand{\wt}[1]{\todo[color=orange!40]{\textsuperscript{Wilfried T}#1}}
+\newcommand{\dg}[1]{\todo[color=pink!40]{\textsuperscript{DG}#1}}
+
+%% most recent draft - nothing yet
+% IB
+% Dominique B
+% Ronnie D
+% MJF
+% Dan M
+% JL/NS
+% KS
+% Fred D
+
+% discussion - nothing yet
+% Ronnie D
+% MJF
+% Dan M?
+% Fred D
+% Kevin S
 
 % uncomment to disable individual authors
 % \renewcommand{\mt}[1]{\relax}%
@@ -78,6 +96,7 @@
 % \renewcommand{\aa}[1]{\relax}%
 % \renewcommand{\ia}[1]{\relax}%
 % \renewcommand{\db}[1]{\relax}%
+% \renewcommand{\ab}[1]{\relax}%
 % \renewcommand{\rd}[1]{\relax}%
 % \renewcommand{\mjf}[1]{\relax}%
 % \renewcommand{\tf}[1]{\relax}%
@@ -102,8 +121,7 @@
 \author[4]{Isabelle Aubin}
 \author[1,2,5]{Dominique Berteaux}
 \author[1,2]{Alyssa Butler}
-\author[10]{Dominique Cyr} %??
-\author[10]{Fred Doyon} %??
+%\author[10]{Fred Doyon} %??
 \author[6]{C. Ronnie Drever}
 \author[7]{Marie-Josée Fortin}
 \author[1]{Tony Franceschini}
@@ -111,7 +129,7 @@
 \author[4]{Dan McKenney}
 \author[2,3]{Kevin A. Solarik}
 \author[8]{Nick Strigul}
-\author[9]{Wilfried Thuiller}
+\author[9, 10]{Wilfried Thuiller}
 \author[1,2]{Dominique Gravel}
 \affil[1]{Département de biologie, Université du Québec à Rimouski, Rimouski, Quebec, Canada}
 \affil[2]{Quebec Centre for Biodiversity Science, Montreal, Quebec, Canada}
@@ -121,8 +139,8 @@
 \affil[6]{The Nature Conservancy Canada, Ottawa, Ontario, Canada}
 \affil[7]{Department of Ecology and Evolutionary Biology, University of Toronto, Toronto, Ontario, Canada}
 \affil[8]{Department of Mathematics, Washington State University Vancouver, Washington, USA}
-\affil[9]{Laboratorie d'Ecologie Alpine, Unité Mixte de Recherche, Université de Grenoble, Grenoble, France}
-\affil[10]{Affiliations to be filled in}
+\affil[9]{Université Grenoble Alpes, Laboratoire d’Ecologie Alpine (LECA), F-38000 Grenoble, France}
+\affil[10]{CNRS, Laboratoire d’Ecologie Alpine (LECA), F-38000 Grenoble, France}
 
 
 %% ----------------------------------
@@ -141,22 +159,28 @@
 
 %\listoftodos
 \maketitle
+\aa{although you eliminated the sentence in which you defined knowledge as data+theory - which contradicted the title - if I play the role of a reviewer I would still ask you why you differentiate between data and knowledge and how would you define knowledge. Nothing too critical, though.}
 
 \begin{flushleft}
-\textbf{Keywords:} Uncertainty, scaling, range dynamics, trees, disturbances, patterns and processes, predict or understand, climate change, biotic interactions, spatial ecology, decision making, metamodelling, species distribution modeling
+\textbf{Keywords:} Uncertainty, scaling, range dynamics, trees, disturbances, patterns and processes, predict or understand, climate change, biotic interactions, spatial ecology, decision making, metamodelling, species distribution modelling
 \end{flushleft}
 
 \begin{abstract}
-There is great interest in modeling species ranges, and such models are useful in guiding conservation and management decisions.
-There presently exists a great diversity of modeling approaches, and individual models often use only a small subset of the total available information about a species.
+There is great interest in modelling species ranges, and such models are useful in guiding conservation and management decisions.
+There presently exists a great diversity of modelling approaches, and individual models often use only a small subset of the total available information about a species.
+\ia{Revision for first 2 sentences:\\
+Modelling species ranges, is of great interest in guiding conservation and management decisions. A wide diversity of modeling approaches are currently used, with individual models using only a small subset of the total available information about a species according to the scale and the specification of the model. }
 For example, a broad-scale correlative model might use climate variables to predict presence or absence, but ignore what is known about smaller-scale processes such as the effect of local climate on growth, fecundity, and dispersal rates.
+\ia{I would not put an example in the abstract}
 A central problem with the diversity of approaches is that multiple models produce differing predictions for the same organism, with no simple way to reconcile these predictions.
+\ia{This may not be seen as a problem as each model are focussing on a different aspect/have different objective/work at different scale. Maybe reword here?}
 We present a flexible framework for integrating models at multiple scales using hierarchical Bayesian methods. 
 The resulting meta-model produces probabilistic estimates of species presence with uncertainty that reflects error from all sub-models and data sources. 
 These predictions reflect all of the information used as input for the original sub-models. 
 We illustrate the approach through two examples, and demonstrate that the framework can substantially reduce uncertainty when projecting beyond the range of some of the original data sources.
 Finally, we discuss the application of our method and its accessibility to conservation biologists and land managers.
-Although the method requires extensive statistical programming experience, we anticipate the results will be of wide application and interest, and we therefore encourage collaboration between modelers and practitioners in applying our framework.
+Although it requires extensive statistical programming experience, we anticipate the method will be of wide application and interest, and we therefore encourage collaboration between modelers and practitioners in applying our framework.
+\ia{need rewording here}
 \end{abstract}
 
 %% ----------------------------------
@@ -165,17 +189,14 @@ Although the method requires extensive statistical programming experience, we an
 %
 %% ----------------------------------
 
-
 \input{introduction}
 
 %---------------------------------------------
 %---------------------------------------------
 
 \input{brief_model_description}
-
 %---------------------------------------------
 %---------------------------------------------
-
 \input{examples}
 
 %---------------------------------------------
