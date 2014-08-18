@@ -4,8 +4,8 @@
 \section*{Box 1: Model description}
 
 We begin with a simple correlative model (i.e. calibrated with data provided at the same ecological scale as predictions), characterized in a Bayesian framework to allow further integration. 
-We refer to this model (with associated parameters) as the meta-model, \(\theta_M\), and it is parameterized with information on the species' presence, \(X_M\), along with associated covariates (e.g., climate, presence/absence of interacting species, etc), collectively referred to as \(D_M\). 
-The naive (i.e., not integrated with information from sub-models) probability that a species is present, \(\psi_N\), is a deterministic function of the meta-model and its covariates::
+We refer to this model (with associated parameters) as the metamodel, \(\theta_M\), and it is parameterized with information on the species' presence, \(X_M\), along with associated covariates (e.g., climate, presence/absence of interacting species, etc.), collectively referred to as \(D_M\). 
+The naive (i.e., not integrated with information from sub-models) probability that a species is present, \(\psi_N\), is a deterministic function of the metamodel and its covariates::
 %-----
 \begin{equation}
 \label{eq:sdm1}
@@ -38,7 +38,7 @@ Thus, we use the proportional form of Bayes' Theorem:
 \end{equation}
 %-----
 
-The role of the meta-model model is to integrate data at the same ecological scale of predictions.
+The role of the metamodel model is to integrate data at the same ecological scale of predictions.
 Additional sub-models require outputs that should be comparable to this given ecological scale (e.g. constraining presence or absence on the landscape).
 Formally, we will add an additional model, \(\theta_S\), that is based on a different set of hypotheses and that makes predictions \((\psi_S)\) based on an additional dataset \((X_S, D_S)\):
 %-----
@@ -48,7 +48,7 @@ Formally, we will add an additional model, \(\theta_S\), that is based on a diff
 \end{equation}
 %-----
 
-For integration to be successful, it must be possible to compute the likelihood of this prediction given the meta-model, \(p \left( \psi_S \mid \theta_M ) = \theta_S \mid \theta_M, X_S, D_S \right)\), thus, we refer to $g$ as the \emph{scaling function}. 
+For integration to be successful, it must be possible to compute the likelihood of this prediction given the metamodel, \(p \left( \psi_S \mid \theta_M ) = \theta_S \mid \theta_M, X_S, D_S \right)\), thus, we refer to $g$ as the \emph{scaling function}. 
 In many cases, computing this likelihood will be challenging.
 The simplest case is when the parameters of \(\theta_S\) are directly comparable to those in \(\theta_M\) (see Example 1), or when the scaling is performed directly within the sub-model (see Example 2), but other solutions are possible.
 This new likelihood, which integrates the information from the second model into the first, can be treated as new ``data'' to evaluate the parameters of \(\theta_M\).
