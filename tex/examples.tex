@@ -42,6 +42,7 @@ This naive model (i.e., the metamodel with no constraints from sub-models) predi
 where \(\mathbf{\Theta_M}\) is the parameter vector of the model \(\theta_M\), \(\mathbf{D_M} \) is the covariate matrix (i.e., \(T_M, P_M\), with the first column taken to be unity to allow an intercept to be fit), and \(\text{logit}^{-1}\) is the inverse of the logit function.
 We can fit this model in a Bayesian framework to allow for easy integration of models (as we will show later).
 In this context, the goal of modelling is to estimate the probability distribution of \(\theta_M\), the model parameters, given the observed data \((X_M, T_M, P_M)\), which is given by the proportional form of Bayes's Theorem \citep[for readers unfamiliar with general concepts in Bayesian inference, we recommend][for a concise introduction]{Link2010}:
+\fd{Bonne idée d'avoir introduit cette proposition ici.}
 \dm{add citation: McCarthy M.A. 2007 Bayesian methods for Ecology. Cambridge University Press 296p}
 \dm{Mick McCarthy might be a good suggestion for a reviewer (I know him – an Aussie)}
 %-----
@@ -115,7 +116,9 @@ In other words, with this evaluation, the set of parameters $\theta_M$ is most l
 Note that in this particular example, because the sub-model is only contingent on precipitation, there is no integration on temperature. 
 Finally, we note the presence of marginal distributions for both models (i.e., \(p(\theta_M)\) and \(p(\theta_S)\)).
 These can be informative (e.g., incorporating further prior information or the predictions of additional sub-models), semi-informative (e.g., to provide greater weight to more informative models), or uninformative.
+\fd{A word should be said about how the likelihood function balance the two sources of information for (Psi)M.  (How greater weight can be given to a more informative sub-model).}
 For purposes of this example, we used these terms to reduce the precision of the second model to reflect the uncertainty of the modelling process (due to the lack of additional mechanisms in the second model, as mentioned above).
+\fd{MAYBE NOT EXACTLY THERE:  "Moreover, convergent or divergent sub-models' response in ovelapping scale domains can  help in detecting crucial ecological processes."}
 
 We performed this procedure with our hypothetical data sets.
 When comparing the three models (naive metamodel, mechanistic sub-model, and integrated metamodel), we observed extreme uncertainty in the first model when projecting beyond the range of the original data.
@@ -176,6 +179,7 @@ Complete details, including all data and scripts to reproduce the analysis, are 
 For the metamodel, we used a dataset of 1013 sugar maple presence records at 0.5 degree resolution, with 498 corresponding pseudo-absence records sampled from North America.
 \mt{update numbers with final versions, and indicate that they are true absences}
 We used a binomial GLM to relate the suitability for sugar maple to 5 climate variables, scaled to the same resolution (see SI for a description of the climate variables used).
+fd{Present the abbreviation for SI= Supplemental Information earlier in the text (at the end of the previous paragraph, for example.)}
 \wt{We could also have used something more complex such as a GAM or boosted regression trees. }
 \mt{Perhaps note this; we selected this model for simplicity of explanation and implementation, but more flexible functions are possible}
 For projection, we used predictions for 2080 from the HadCM3 GCM \citep{Pope2000} driven by the A2 emission scenario (REF--Nakicenovic), and used the parameters of the GLM to forecast suitability into the future (i.e., \(\psi_N\)).
@@ -202,6 +206,7 @@ where \(\theta_M\) is the metamodel,
 \(D_M\) is the matrix of climate predictors,
 \(X_S\) is the prediction from Phenofit (in this case a single deterministic value, because we did not incorporate errors from the Phenofit modelling),
 and \(\theta_S\) is the model relating the Phenofit predictions to the metamodel.
+\fd{Shouldn't be Psi\_S here as we speak of prediction of the sub-model?}
 Note that here, the integration is performed on the \emph{predictions} of the sub-model directly, rather than on compatible parameters as in Example 1. Thus, the metamodel must appear in the sub-model likelihood.
 
 The naive model, despite being relatively simple (xx climate variables with xx total parameters), was highly fit to the data and consequently showed very high suitability scores near the core of the contemporary range with very little uncertainty (Fig \ref{fig:ex2}C, E).
@@ -236,7 +241,7 @@ I guess that the approach proposed is dedicated to answer these questions and th
 For modelling the contemporary range of sugar maple, both Phenofit and the naive model perform very well relative to the integrated model, espeicially when capturing the range margin (Fig \ref{fig:ex2}A, C, G).
 Conventional SDMs are quite good at producing empirical models of species distributions under present climatic regimes, and the naive model here could be further improved with the addition of more parameters or the inclusion of ensemble forecasting (See SI for model-fitting details).
 However, Phenofit and the naive model differ substantially in their predictions of the future distribution of the species.
-The integrated model presents a reasonable compromise between the two predictions. 
+The integrated model presents a compromise between the two predictions. 
 The core range of the species under the integrated model generally reflects the regions of highest overlap between Phenofit and the naive model.
 Regions surrounding the core range generally show low suitabilities, but higher than those under either sub-model, demonstrating reduced certainty about where the species will be absent in the future.
 

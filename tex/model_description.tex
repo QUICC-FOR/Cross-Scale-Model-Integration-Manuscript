@@ -38,7 +38,7 @@ Thus, we use the proportional form of Bayes' Theorem:
 \end{equation}
 %-----
 
-The role of the metamodel model is to integrate data at the same ecological scale of predictions.
+The role of the metamodel is to integrate data at the same ecological scale of predictions.
 Additional sub-models require outputs that should be comparable to this given ecological scale (e.g. constraining presence or absence on the landscape).
 Formally, we will add an additional model, \(\theta_S\), that is based on a different set of hypotheses and that makes predictions \((\psi_S)\) based on an additional dataset \((X_S, D_S)\):
 %-----
@@ -53,6 +53,9 @@ In many cases, computing this likelihood will be challenging.
 The simplest case is when the parameters of \(\theta_S\) are directly comparable to those in \(\theta_M\) (see Example 1), or when the scaling is performed directly within the sub-model (see Example 2), but other solutions are possible.
 This new likelihood, which integrates the information from the second model into the first, can be treated as new ``data'' to evaluate the parameters of \(\theta_M\).
 We simply use the posterior distribution of $\theta_M$ from the previous step (Eq. \ref{eq:sdm4}) as the new prior probability of $\theta_M$, and evaluate the likelihood of $\theta_M$ in light of the new data and the prior knowledge, as before:
+\fd{Shouldn't there be "Os" somewhere here?\\
+
+like:   "We simply use the posterior distibution of Om from the previous step (eq.11) as the new prior probability of Os, and evaluate the likelihood of Om in the ..."}
 %-----
 \begin{equation}
 \label{eq:integrated2}

@@ -16,9 +16,11 @@ Thuiller, W., Pironon, S., Psomas, A., Barbet-Massin, M., Jiguet, F., S., L., Pe
 However, despite having recognized potential to support decision making, the contributions of these models to conservation and applied ecology remain limited \citep{Dawson2011, Guisan2013}.
 \wt{remove Dawson}
 
-An important constraint on modelling ecological processes is having the appropriate ecological theory needed to link data to modelling objectives. 
+An important constraint on modelling ecological processes is having the appropriate ecological theory needed to link data to modelling objectives.
+\fd{is maintaining the coherence between the data availability, the underlying ecological theory, the spatio-temporal scales and the applicability domain (while using it for forecasting).}
 Another constraint is the lacking of data over a while range of conditions.
 Poor data or poorly conceived models will result in predictions with unacceptably high uncertainty, or, more dangerously, precise but biased predictions.
+\fd{Incoherent model}
 \tf{Why is it dangerous? 
 It depends also of the importance of the bias. Some regression technique exists in order to deal multicolinearities and their basis is to produce precise and biased estimates. In this case, it is a way to reduce uncertainty. See e.g. ridge regression. With this kind of regression, there is no “danger”, and the estimates are known to be biased (and therefore should be interpreted and used as biased estimates).
 Plus, I feel that the word dangerous is not the correct word. There is ho danger in this, no harm. 
@@ -89,3 +91,8 @@ Another advantage of Bayesian methods is that uncertainty in model outputs is in
 We illustrate our approach with two examples.
 First, we use simulated data to present a complete example of the application of the framework to multiple information sources that are relevant at very different scales.
 In a second example, we apply the framework to combine predictions of a correlative model relating the range of sugar maple (\emph{Acer saccharum}) to climate with the predictions of a phenological model, Phenofit, with the goal of improving uncertainty estimation when projecting model predictions to future climate.
+
+\fd{figure 1 \\
+Shouldn't be:\\
+
+ "g(0s,Ds)" ther than g(0s, Xs, Ds) here?}
