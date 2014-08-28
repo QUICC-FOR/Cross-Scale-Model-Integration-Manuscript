@@ -114,7 +114,7 @@
 %% ----------------------------------
 
 
-\title{Cross-scale integration of data and knowledge for predicting species ranges}
+\title{Cross-scale integration of knowledge for predicting species ranges: a metamodeling framework}
 \date{}
 \author[1,2]{Matthew V. Talluto}
 \author[1,2]{Isabelle Boulangeat}
@@ -160,36 +160,23 @@
 %
 %% ----------------------------------
 
-%\listoftodos
 \maketitle
-\mjf{Cross-scale integration of knowledge for predicting species ranges: a metamodeling framework}
-\dm{I like this suggestion for a title change}
-\aa{although you eliminated the sentence in which you defined knowledge as data+theory - which contradicted the title - if I play the role of a reviewer I would still ask you why you differentiate between data and knowledge and how would you define knowledge. Nothing too critical, though.}
 
 \begin{flushleft}
-\textbf{Keywords:} Uncertainty, scaling, range dynamics, trees, disturbances, patterns and processes, predict or understand, climate change, biotic interactions, spatial ecology, decision making, metamodelling, species distribution modelling
+\textbf{Keywords:} Uncertainty, scaling, range dynamics, trees, disturbances, patterns and processes, predict or understand, climate change, biotic interactions, spatial ecology, decision making, metamodeling, species distribution modeling
 \end{flushleft}
 
 \begin{abstract}
-There is great interest in modelling species ranges, and such models are useful in guiding conservation and management decisions.
-There presently exists a great diversity of modelling approaches, and individual models often use only a small subset of the total available information about a species.
-\ia{Revision for first 2 sentences:\\
-Modelling species ranges, is of great interest in guiding conservation and management decisions. A wide diversity of modeling approaches are currently used, with individual models using only a small subset of the total available information about a species according to the scale and the specification of the model. }
+There is great interest in modeling species ranges, resulting in a great diversity of modeling approaches.
+However, in general, individual approaches include only a small subset of the total available information about a species. 
 For example, a broad-scale correlative model might use climate variables to predict presence or absence, but ignore what is known about smaller-scale processes such as the effect of local climate on growth, fecundity, and dispersal rates.
-\ia{I would not put an example in the abstract}
-A central problem with the diversity of approaches is that multiple models produce differing predictions for the same organism, with no simple way to reconcile these predictions.
-\ia{This may not be seen as a problem as each model are focussing on a different aspect/have different objective/work at different scale. Maybe reword here?}
+Furthermore an inherent problem with the diversity of approaches is that different models often produce distinct predictions for the same species, with no simple way to reconcile these predictions.
 We present a flexible framework for integrating models at multiple scales using hierarchical Bayesian methods. 
-\mjf{Multiple resolutions (same extent but different resolutions) and/or multiple scales (same resolution but different study extents).}
-The resulting meta-model produces probabilistic estimates of species presence with uncertainty that reflects error from all sub-models and data sources. 
-These predictions reflect all of the information used as input for the original sub-models. 
-We illustrate the approach through two examples, and demonstrate that the framework can substantially reduce uncertainty when projecting beyond the range of some of the original data sources.
-Finally, we discuss the application of our method and its accessibility to conservation biologists and land managers.
-Although it requires extensive statistical programming experience, we anticipate the method will be of wide application and interest, and we therefore encourage collaboration between modelers and practitioners in applying our framework.
-\ia{need rewording here}
-
-\mjf{There is great interest in modeling species ranges resulting in a great diversity of modeling approaches. Yet each model uses only a small subset of the total available information about a species. For example, a broad-scale correlative model might use climate variables to predict presence or absence, but ignore what is known about smaller-scale processes such as the effect of local climate on growth, fecundity, and dispersal rates. Furthermore an inherent problem with the diversity of approaches is that different models often produce distinct predictions for the same species, with no simple way to reconcile these predictions. We present a flexible analytical framework for integrating models at multiple scales using hierarchical Bayesian methods. The resulting meta-model framework produces probabilistic estimates of species presence with uncertainty that reflects process-error from all sub-models as well as dataerror. These predictions reflect all of the information used as input for the original scale-specific sub-models. We illustrate the metamodeling approach using two forest modeling examples, and demonstrate that the framework can substantially reduce uncertainty when projecting beyond the range of some of the original data sources. We conclude by discussing the application of our metamodeling method and its accessibility to conservation biologists and land managers. Although this hierarchical Baysian method requires extensive statistical programming experience, we anticipate the results will be of wide application and interest, and we therefore encourage collaboration between modelers and practitioners in applying our framework.}
-\dm{Again I like these edits; I think it provides a good tone. In the manuscript the tone at times felt a little too self confident ! I have made somme suggestions with this in mind.}
+The resulting meta-model framework produces probabilistic estimates of species presence with uncertainty that reflects error from data sources as well process error from all sub-models.
+ These predictions reflect all of the information used as input for the original scale-specific sub-models.
+We illustrate the metamodeling approach using two examples, and demonstrate that the framework can substantially reduce uncertainty when projecting beyond the range of some of the original data sources.
+We conclude by discussing the application of our method and its accessibility to conservation biologists and land managers.
+Although this hierarchical Baysian method requires extensive statistical programming experience, we anticipate the results will be of wide application and interest, and we therefore encourage collaboration between modelers and practitioners in applying our framework.
 \end{abstract}
 
 %% ----------------------------------
@@ -197,18 +184,13 @@ Although it requires extensive statistical programming experience, we anticipate
 %     REST OF DOCUMENT
 %
 %% ----------------------------------
-\dm{Attached are some thoughts as well.  I think it is morphing into a nice paper and indeed a bit of review of sorts with the extent of literature cited. I did not have much to say (I liked Josee’s edits like the suggestion for the title change) but have made a few comments and editorial suggestions.  One of my main thoughts (which perhaps is just a style suggestion) is that I think it needs to have a humble tone.  Bayesian stuff is not as simple as I think you implying (for me anyway !!).  Adoption will be challenging not just for researchers but also for decision-makers who might use the results.  A bit more of a tip of the hat to its complexity is warranted (I acknowledge you do have a bit) is warranted in my opinion.  At the end of the day you are the lead author so decisions like this will be your call.}
-\mjf{The introduction could be shorten to get to the point of the paper more quickly.
-While I like figure 6, I am not sure about the "adaptive management" part: is this figure really shows the links to management.}
+
 \input{introduction}
 
 %---------------------------------------------
 %---------------------------------------------
 
-\input{brief_model_description}
-%---------------------------------------------
-%---------------------------------------------
-\input{examples}
+\input{modeling_framework}
 
 %---------------------------------------------
 %---------------------------------------------

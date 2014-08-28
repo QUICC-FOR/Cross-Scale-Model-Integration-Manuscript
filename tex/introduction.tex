@@ -1,81 +1,37 @@
 \section*{Introduction}
-\aa{I like it very much now, it's good and concise. The only thing is that the first and last sentences in the first paragraph seem contradictory. Do models of species range limits play a large role on conservation biology or do their contributions remain limited? Maybe in the first sentence you wanted to say they ‘can’ play a large role? }
-\aa{In addition, you may want to add this reference: Snell, R.S., Huth, A., Nabel, J.E.M.S., Bocedi, G., Travis, J.M.J., Gravel, D., Bugmann, H., Gutiérrez, A.G., Hickler, T., Higgins, S.I., Scherstjanoi, M., Reineking, B., Zurbriggen, N. \& Lischke, H. (2014) Using dynamic vegetation models to simulate plant range shifts. Ecography, In press.}
 
-Models of species range limits have wide applications and play a large role in conservation biology, where they can be used as decision-making tools in biodiversity management \citep{Rosenzweig2008, Thuiller2008, Rodenhouse2009}.
-\wt{I would just put Guisan et al. 2013 here. }
-\dm{Just a note to you that I still think people confuse or associate potential distribution (range?) modeling with actual distribution models. One could write a paper on the understanding, use and mis-use of these terms.  I also think people often associate a purpose to a piece of work that mis-interprets the intended purpose }
+Models of species range limits have wide applications and can play a large role in conservation biology, where they can be used as decision-making tools in biodiversity management \citep{Guisan2013}.
 Due to large temporal and spatial scales as well as the complex and nonlinear nature of ecosystem dynamics, it is often impossible to construct experiments that can adequately explore the ecological processes generating species range limits \citep{Wu1995, Levin1998}. 
-Hence, range models are essential tools that have been applied to a large number of ecological subfields, including biogeography \citep{Schurr2012}, invasion biology \citep{Catterall2012, Gallien2012}, evolution, hybrid zone dynamics \citep{Engler2013}, and the impacts of climate change on species distributions \citep{Rosenzweig2008, Thuiller2008, Milad2011, Blois2013, Loyola2013}. 
-\wt{after evolution above: Jay, F., Manel, S., Alvarez, N., Durand, E., Thuiller, W., Holderregger, R., Taberlet, P. \& François, O. (2012) Forecasting changes in population genetic structure of Alpine plants in response to global warming. Molecular Ecology, 21, 2354-2368.}
-\wt{The above mixes up subfields vs applications}
-\wt{for climate change citations:
-Thuiller, W., Lavergne, S., Roquet, C., Boulangeat, I. \& Araujo, M.B. (2011) Consequences of climate change on the Tree of Life in Europe. Nature, 470, 531-534. \\
-Thuiller, W., Pironon, S., Psomas, A., Barbet-Massin, M., Jiguet, F., S., L., Pearman, P.B., Renaud, J., Zupan, L. \& Zimmermann, N.E. (2014) The European functional tree of bird life in face of global change. Nature Communications, 5, 3118, DOI: 10.1038/ncomms4118.
-}
-However, despite having recognized potential to support decision making, the contributions of these models to conservation and applied ecology remain limited \citep{Dawson2011, Guisan2013}.
-\wt{remove Dawson}
+Hence, range models are essential tools that have been applied to a large number of ecological subfields, including biogeography \citep{Schurr2012}, invasion biology \citep{Catterall2012, Gallien2012}, evolution \citep{Jay2012}, hybrid zone dynamics \citep{Engler2013}, and the impacts of climate change on species distributions \citep{Thuiller2011, Blois2013, Thuiller2014}. 
+However, despite having recognized potential to support decision making, the contributions of these models to conservation and applied ecology remain limited \citep{Guisan2013}.
 
-An important constraint on modelling ecological processes is having the appropriate ecological theory needed to link data to modelling objectives.
-\fd{is maintaining the coherence between the data availability, the underlying ecological theory, the spatio-temporal scales and the applicability domain (while using it for forecasting).}
-Another constraint is the lacking of data over a while range of conditions.
-Poor data or poorly conceived models will result in predictions with unacceptably high uncertainty, or, more dangerously, precise but biased predictions.
-\fd{Incoherent model}
-\tf{Why is it dangerous? 
-It depends also of the importance of the bias. Some regression technique exists in order to deal multicolinearities and their basis is to produce precise and biased estimates. In this case, it is a way to reduce uncertainty. See e.g. ridge regression. With this kind of regression, there is no “danger”, and the estimates are known to be biased (and therefore should be interpreted and used as biased estimates).
-Plus, I feel that the word dangerous is not the correct word. There is ho danger in this, no harm. 
-}
-In recent decades, however, modelling techniques have proliferated to take advantage of what is available in terms of both data and modeling platforms.
-\dm{Again just a note that I think people often do not realize the nature/problems with data. Weather station data is a classic example…lots of issues remain hence spatial clikmate models have problems; species observation data may have many issues from mis-identifcation to inaccurate geocoding. Maybe some of this this should be noted more explicitly later in the manuscript but I am not married to this … I don’t want to dwell on it}
+An important constraint on modeling ecological processes is having the appropriate ecological theory needed to link data to modeling objectives, and further in maintaining coherence between the spatial and temporal scales of data and theory.
+Another constraint is a paucity of data over wide ranges of ecological conditions and scales.
+Poor data or incoherent models will result in predictions with unacceptably high uncertainty or precise but biased predictions.
+In recent decades, however, modeling techniques have proliferated to take advantage of what is available in terms of both data and modeling platforms.
 Model diversification also arises due to the diverse processes generating species ranges \citep{Soberon2007}.
 In the context of forecasting, which is the focus here, mechanistic and correlative approaches represent quite different modes of inference, but both have strong limitations. 
 Fine-scale mechanistic models may capture important ecological processes quite well, but due to their specificity, they may perform poorly when applied at the scale of species ranges.
-For instance, biotic interactions (including trophic interactions) are usually not modelled mechanistically at the scale of species distributions because they are not well-known, or have not been recorded, despite being considered a key determinant of range limits \citep{Soberon2007, Roux2012, Guo2013, Pigot2013}. 
-\mjf{add citation: Holt et al 2005}
-\mjf{Holt, R. D., T.H. Keitt, M.A. Lewis, B.A. Maurer and M.L. Taper. 2005. Theoretical models of species’ borders: single species approaches. Oikos 108: 18-27.}
+For instance, biotic interactions (including trophic interactions) are usually not modeled mechanistically at the scale of species distributions because they are not well-known, or have not been recorded, despite being considered a key determinant of range limits \citep{Holt2005, Soberon2007, Roux2012, Guo2013, Pigot2013}. 
 On the other hand, coarse-scale correlative models statistically relating species occurrences to associated distributions of other variables at the same scale have the advantage of indirectly accounting for underlying processes \citep{Guisan2000}.
 However, their predictions rely on the constancy of the relationships between occurrences and explanatory variables in time and space, implying that the selected variables are related to the processes limiting species ranges and that their correlations are constant for calibration and projection ranges in space and time \citep{Dormann2007}. 
 Extrapolating beyond the scope of the original data (e.g., predicting ranges based on future climate) is therefore problematic, because nonlinearities in responses to novel combinations of the explanatory variables cannot be accommodated in models that do not simulate the underlying processes.
-Furthermore, correlative models often do not explicitly incorporate ecological processes into their formulations, and when applied at coarse scales, they may miss important fine-scale processes, making a multi-scale approach desirable when accurate forecasting is required \citep{Austin2007, Austin2011, Soranno2014}.
-\wt{remove all 3 cites, add \\
-Thuiller et al. 2013 ELE}
-\dm{add to end: On the other hand process-based models often require assumptions, many of which are poorly understood across space and time. }
+Furthermore, correlative models often do not explicitly incorporate ecological processes into their formulations, and when applied at coarse scales, they may miss important fine-scale processes, making a multi-scale approach desirable when accurate forecasting is required \citep{Austin2011, Thuiller2013}.
+On the other hand process-based models often require a variety of assumptions which may be poorly understood across space and time.
 
-\subsection*{Toward an integrated approach for modelling ranges}
-A key problem with the diversity of approaches is that multiple models often produce differing predictions for the same organism, with no simple way to reconcile these predictions.
-\mjf{delete first sentence of this paragraph, it was already said above}
-\aa{Change to: \\
-In addition, an assortment of information (in the form of both data and theory)...}
-\aa{from here}
-\mjf{begin with: To integrate knowledge about species ranging from the stand to the landscape, we present an application...}
-We present an application of hierarchical Bayesian methods for integrating the predictions of multiple models.
+\subsection*{Toward an integrated approach for modeling ranges}
+To integrate knowledge about species ranging from the stand to the landscape, we present an application of hierarchical Bayesian methods for integrating the predictions of multiple models.
 Our approach is an alternative to other approaches to drawing inference from multiple models that offers improved flexibility in incorporating data and theory from multiple scales and provides transparent estimation of uncertainty.
-\ia{this is repetitive with the last paragraph of this section. \\
-delete everything up and and including "For instance..."}
-For instance, correlative models are often criticized because they assume that the selected explanatory variables limit (directly or indirectly) the species range, and, as mentioned above, that the relationship between the selected variables and the species occurrences will not change in the prediction context \citep{Araujo2006, Berteaux2006, Braunisch2013}.
-\aa{to here}
-However, additional information (in the form of both data and theory) is often available on the species of interest (e.g., growth rates in different climatic conditions, phenology, interactions with other species, sensitivity to disturbances) \citep{Holt2009, Thuiller2013}. 
-The challenge is to account for all this available knowledge while producing a single prediction.
-\dm{change to: while producing predictions---I do have as bit of difficulty with this notion. Multiple predictions would seem to me to be quite reasonable given the range of understanding and issues with data.  Reasonable people may differ if their understanding and beliefs hence multiple predictions that represent these may be desired. I am not sure my suggested wording in this sentence or the next is satisfactory.}
-Integrating multiple models to provide a single prediction would allow more knowledge to be used, potentially mitigating the limitations inherent in each modelling approach and contributing to more robust predictions \citep{Pearson2003, Guisan2005, Araujo2006, Quillet2010}.
-
-One approach is to integrate multiple models in a single modelling framework \citep{Buckley2010}. 
+The challenge is to account for all this available knowledge while producing a single prediction, potentially mitigating the limitations inherent in each modeling approach and contributing to more robust predictions \citep{Pearson2003, Guisan2005, Araujo2006, Quillet2010}.
 Some researchers have explicitly reproduced the hierarchical nature of ecological systems using hierarchical models \citep[e.g.][]{Royale2008, Catterall2012, Strigul2012, Stewart-Koster2013, Soranno2014}. 
 Recent literature has also focused on the development of hybrid models, which allow for flexible combinations between mechanistic and phenomenological sub-models \citep{Gallien2010, Franklin2010, Thuiller2013}. 
 For instance, correlative models are used to account for abiotic variables limiting species distributions \citep{Guisan2005}, while mechanistic approaches can include space and time dynamics and therefore account for dispersal processes \citep{Kearney2008}. 
-This complementarity has been used to merge the two types of models into hybrid integrated models \citep[e.g.][]{Keith2008, Anderson2009, Smolik2010, Boulangeat2014}. 
-\mjf{add citation: Naujokaitis-Lewis et al., 2013}
-\mjf{Naujokaitis-Lewis, I.R., J.M.R. Curtis, L. Tischendorf, D. Badzinski, K. Lyndsay, M.-J. Fortin. 2013. Uncertainties in coupled species distribution–metapopulation dynamics models for risk assessments under climate change. Diversity and Distributions, 19: 541-554.}
-However, the link between different sub-models is based on additional assumptions that are not easy to test \citep{Gallien2010}. 
-\aa{which assumptions? not clear}
-\ia{a bit vague here. Give an example?}
+This complementarity has been used to merge the two types of models into hybrid integrated models \citep[e.g.][]{Keith2008, Anderson2009, Smolik2010, Naujokaitis2013, Boulangeat2014}. 
+However, the link between different sub-models is based on assumptions about the scaling of ecological processes that are not easy to test \citep{Gallien2010}. 
 Moreover, hybrid approaches are not suitable for merging models that are based on the same processes but with different underlying hypotheses.
-\ia{an example?}
 
 A second approach is to directly combine predictions.
-If models operate at the same scales and have compatible parameterizations, predictions can be combined using multi-model inference \citep[e.g., model averaging, ensemble forecasting;][]{Araujo2007, Diniz-Filho2009}. 
-\wt{add: Thuiller, W. (2004) Patterns and uncertainties of species' range shifts under climate change. Global Change Biology, 10, 2020-2027.\\
-remove: Diniz-Filho2009}
+If models operate at the same scales and have compatible parameterizations, predictions can be combined using multi-model inference \citep[e.g., model averaging, ensemble forecasting;][]{Thuiller2004, Araujo2007}. 
 If models are not comparable because they are based on different data or hypotheses, the use of convergent predictions from multiple models is a way to provide more robust projections \citep{Morin2009, Marmion2009, Serra-Diaz2013}.
 However, the applicability of ensemble forecasts are limited; for example, it is not currently possible to evaluate the effects of convergent predictions on total uncertainty of outcomes.
 One of the greatest challenges inherent in both approaches above is estimating uncertainty, which is of utmost importance in a prediction context.
@@ -84,7 +40,7 @@ In models that encompass multiple scales or levels of organization, it is partic
 Clearly, an approach that integrates predictions and uncertainty from multiple model types is needed \citep{Beck2012, Thuiller2013}. 
 Such an approach would incorporate multiple modes of inference and integrate data from multiple sources and scales \citep{Levin1992, Peters2004, Thuiller2013}.
 
-Here, we present a framework for modelling species range dynamics that aims to account for all the information available on a focal species, from a variety of sources and scales.
+Here, we present a framework for modeling species range dynamics that aims to account for all the information available on a focal species, from a variety of sources and scales.
 Contrary to hybrid and hierarchical models, the aim is not to link different sub-models into a single model, but to condition the predictions of a meta-model at the target scale (e.g., an entire species' range) with information from sub-models at a variety of spatial scales, allowing as much flexibility as possible regarding the type of information included. 
 We use the power and generality of a hierarchical Bayesian framework, which allows us to include multiple data sources and modes of inference \citep{Clark2005, VanOijen2005, Clark2006, Hobbs2011, Hartig2012}. 
 Another advantage of Bayesian methods is that uncertainty in model outputs is intuitive to interpret and reflects uncertainty at all levels of organization \citep{Clark2005, Cressie2009, Hobbs2011}. 
