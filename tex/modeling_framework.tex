@@ -12,20 +12,6 @@ A more formal presentation of the modeling framework appears in Box 1.
 We follow with a second example where we apply our approach to integrate phenological information with occurrence data for a widespread North American tree.
 
 
-\begin{figure}
-\input{diagram}
-\caption{The parameters of a correlative metamodel model (left column) are conditioned on the predictions of a mechanistic sub-model (right column).
-The metamodel ($\theta_M$) operates at a single ecological scale and uses occurrence data (\(X_M\)) and explanatory variables ($D_M$) to produce a naive (i.e., not conditioned on sub-models) prediction $\psi_N$.
-The mechanistic sub-model \(\theta_S\) includes data about the response (\(X_S\)) of lower-level behaviours of the system to explanatory variables ($D_S$). 
-The models are integrated by calibrating $\theta_M$ to data ($X_M, D_M$) as well as the output of the sub-model ($\psi_S$). 
-This is possible because predictions from the sub-model ($\psi_S$) emerge at the scale of the metamodel via a scaling function \(g(\theta_S, D_S)\).
-The final prediction can be obtained by applying the integrated model to the original explanatory variables (as shown) or, if projection is desired, on some new set of explanatory variables (e.g., future climate).
-This prediction incorporates multiple sources of information coming from several calibration datasets (i.e., $X_M, D_M, X_S, $ and $D_S$) as well as from multiple types of models (i.e., $\theta_M$ and $\theta_S$).
-}
-\label{fig:diagram}
-\end{figure}
-
-
 %---------------------------------------------
 \subsection*{Example 1: Adding experimental evidence for the fundamental niche to a species distribution model} 
 
@@ -67,22 +53,6 @@ In this context, the goal of modeling is to estimate the probability distributio
 \end{equation}
 %-----
 where \(p\left(X_M \mid \theta_M, T_M, P_M \right)\) is often referred to as the \emph{likelihood} of the data (\(X_M\)) given the model (\(\theta_M\)), \(p\left(\theta_M \right)\) is often referred to as the \emph{prior distribution} of \(\theta_M\), and the goal of modeling is to estimate \(p\left (\theta_M \mid X_M,T_M,P_M \right )\), the \emph{posterior distribution} of \(\theta_M\), which gives the probability that \(\theta_M\) takes particular values, given the observed data.
-
-%==================
-% FIGURE
-
-\begin{figure}[tb]
-	\includegraphics{ex1_sampling.pdf}
-	\caption{Two simulated data sets used to illustrate the model integration framework.
-	(a) Presences (circles) or absences (x's) of the species in ecological space, where precipitation ranges from 0--1.
-	(b) Growth rate ($r$) as a function of manipulations to the precipitation regime (whiskers show $\pm$ 1 SE), with a larger range for precipitation (i.e., \(-\)1--1).
-	The dashed line shows the threshold above which the species net growth rate is positive (implying presence).
-	Axis scales for temperature and precipitation are arbitrary, but note the different scales on the horizontal axes.}
-	\label{fig:ex1_sampling}
-\end{figure}
-
-% ERUGIF
-%==================
 
 Thus far, we have considered only a single source of information to fit this model, and therefore the prior distribution \(p\left(\theta_M \right)\) from Eq. \ref{eq:ex1_bayes} is uninformative.
 As a secondary source of information, we will consider an experiment relating the population growth rate of the plant to manipulations to the precipitation regime, with results (but no raw data) available from the literature (Fig. \ref{fig:ex1_sampling}b). 
@@ -136,38 +106,6 @@ When comparing the three models (naive metamodel, mechanistic sub-model, and int
 Unsurprisingly given the quality of the data, the sub-model was highly precise, providing a fairly strong constraint when producing the integrated model.
 The result was an integrated prediction that reflected the shapes of both models and showed considerably reduced uncertainty (Fig. \ref{fig:ex1_precip}).
 At the scale of the metamodel, considering both temperature and precipitation, we observed similar results, with reduced uncertainty in the predictions over the domain not covered by the presence-absence data (Fig. \ref{fig:ex1_map}).
-
-
-%==================
-% FIGURE
-
-\begin{figure}[tb]
-	\includegraphics{ex1_precip.pdf}
-	\caption{Results of integration showing the probability of presence (\(\psi\)) when considering only precipitation.
-	(a) Naive model, using only presence-absence data. Uncertainty increases dramatically when attempting to project beyond the scope of the source data (represented by the horizontal line above the bottom axis).
-	(b) Mechanistic model, using observations of an experiment to infer probability of presence. Predictions are highly precise due to high quality source data, but are likely to be overly optimistic given the simplicity in assuming only precipitation determines probability of presence (see text).
-	(c) Integrated model, showing predictions that are intermediate between the two sub-models and uncertainty that is reduced compared to (a).
-	Uncertainty is represented as dashed lines, showing the limits of 90\% Bayesian credible intervals.}
-	\label{fig:ex1_precip}
-\end{figure}
-% ERUGIF
-%==================
-
-
-%==================
-% FIGURE
-
-\begin{figure}[tb]
-	\includegraphics[width=5.25in]{ex1_map.pdf}
-	\caption{Maps showing the predicted probability of presence (\(\psi\); (a) and (c)) and the standard deviation of \(\psi\) ((b) and (d)) for the naive and integrated models.
-	Historical (e.g., where presence-absence samples were available) and predicted future precipitation regimes are shown below the horizontal axes.
-	Uncertainty in the naive model was extreme when predicting beyond the historical precipitation regime.
-	Uncertainty in the integrated model was considerably reduced, reflecting the additional information provided by the mechanistic model.}
-	\label{fig:ex1_map}
-\end{figure}
-%
-% ERUGIF
-%==================
 
 Once the technical challenges of evaluating the parameters are overcome, the integration has several advantages over the both the naive parameterization of the metamodel and the mechanistic sub-model. 
 In the situation where both models strongly agree on the relationship between water availability and occurrence probability, then we should expect significantly reduced uncertainty in that domain (Figs. \ref{fig:ex1_precip}, \ref{fig:ex1_map}).
@@ -224,23 +162,6 @@ However, standard errors were extreme for the range margins where suitability sc
 In comparison, Phenofit suitability scores were more moderate, and Phenofit predicted less northward movement of sugar maple under the future scenario \citep[Fig. \ref{fig:ex2}A, B;][]{Morin2009}.
 The integrated model demonstrated generally lower suitability scores throughout both the present and projected ranges, and thus represents lower confidence in the presence of sugar maple at any given location in its future projected range (Fig \ref{fig:ex2}G, H).
 Standard errors at range margins were significantly lower (as these are regions where both the naive model and phenofit were in agreement about intermediate suitability scores), whereas standard errors were slightly higher at the core range (where Phenofit predicted lower suitability than the naive model) (Fig \ref{fig:ex2}I, J).
-
-%==================
-% FIGURE
-
-\begin{figure}[tb]
-	\includegraphics[width=6in]{ex2.pdf}
-	\caption{Results of model integration for sugar maple, \emph{Acer saccharum}.
-	The mechanistic sub-model Phenofit predicts present (A) and future (B) suitability using phenological information, but does not provide estimates of uncertainty.
-	Predictions from a naive metal-model for the present (C) were quite similar to the sub-model, but future predictions (D) were somewhat different, and uncertainty was extreme at the predicted range margins for both present (E) and future (F).
-	Applying the integration results in reduced suitability overall, possibly due to overfitting regions where the models disagree, but patterns in relative suitability largely reflected information from both models for both present (G) and future (H) climate.
-	Integrated model uncertainty for both present (I) and future (J) climates is reduced near range margins but slightly increased in areas where uncertainty was low in the naive model.
-	}
-	\label{fig:ex2}
-\end{figure}
-%
-% ERUGIF
-%==================
 
 For modeling the contemporary range of sugar maple, both Phenofit and the naive model perform very well relative to the integrated model, espeicially when capturing the range margin (Fig \ref{fig:ex2}A, C, G).
 Conventional SDMs are quite good at producing empirical models of species distributions under present climatic regimes, and the naive model here could be further improved with the addition of more parameters or the inclusion of ensemble forecasting (See SI for model-fitting details).

@@ -1,0 +1,74 @@
+\documentclass[11pt]{letter}
+\usepackage[margin=1in]{geometry}
+
+\makeatletter
+\renewcommand{\closing}[1]{\par\nobreak\vspace{\parskip}%
+  \stopbreaks
+  \noindent
+  \ifx\@empty\fromaddress\else
+  \hspace*{\longindentation}\fi
+  \parbox{\indentedwidth}{\raggedright
+       \ignorespaces #1\\[1\medskipamount]%
+       \ifx\@empty\fromsig
+           \fromname
+       \else \fromsig \fi\strut}%
+   \par}
+\makeatother
+
+\usepackage{fontspec} 
+\defaultfontfeatures{Mapping=tex-text} % converts LaTeX specials (``quotes'' --- dashes etc.) to unicode
+\newopentypefeature{Contextuals}{NoAlternate}{-calt} % enable turning off the crazy Q in Garamond Premier Pro
+\usepackage{xunicode}
+\setmainfont{Garamond Premier Pro}
+\setsansfont[Scale=0.9]{Optima Regular} 
+
+\signature{Matthew V. Talluto, Isabelle Boulangeat, \& Dominique Gravel \\
+	Université du Québec à Rimouski \\ 
+	mtalluto@gmail.com}
+\address{Matthew V. Talluto, Ph.D. \\
+	Départament du Biologie, Chimie, et Géographie \\
+	300, Allée des Ursulines \\
+	Rimouski, Québec G5L 3A1, Canada \\
+	mtalluto@gmail.com}
+
+\begin{document}
+\addfontfeatures{Contextuals=NoAlternate}   % turn off the crazy Q in Garamond Premier Pro
+
+\begin{letter}{Marcel Holyoak \\ 
+	Editor-in-chief, \emph{Ecology Letters} \\ 
+	Department of Environmental Science and Policy \\
+	University of California, Davis \\
+	One Shields Avenue \\
+	Davis, CA 95616, USA }
+
+\opening{Dear Dr. Holyoak,}
+
+We are pleased to submit a proposal for a manuscript titled ``Cross-scale integration of knowledge for predicting species ranges: a metamodeling framework''. 
+We would appreciate your consideration of our manuscript for the \emph{Ideas and Perspectives} section of \emph{Ecology Letters}.
+
+%%% Proposals should be no more than 300 words long, describe the nature and novelty of the work, the contribution of the proposed article to the discipline, and the qualifications of the author(s) who will write the manuscript. Proposals should be sent to the Editorial Office 
+
+
+% Make this a bit nicer, maybe add some text from the intro including some refs if there is room
+% Mention qualifications
+% Mention all authors?
+There is great interest in modeling species ranges, resulting in a great diversity of modeling approaches.
+However, in general, individual approaches include only a small subset of the total available information about a species. 
+For example, a broad-scale correlative model might use climate variables to predict presence or absence, but ignore what is known about smaller-scale processes such as the effect of local climate on growth, fecundity, and dispersal rates.
+Furthermore an inherent problem with the diversity of approaches is that different models often produce distinct predictions for the same species, with no simple way to reconcile these predictions.
+We present a flexible framework for integrating models at multiple scales using hierarchical Bayesian methods. 
+The resulting meta-model framework produces probabilistic estimates of species presence with uncertainty that reflects error from data sources as well process error from all sub-models.
+ These predictions reflect all of the information used as input for the original scale-specific sub-models.
+We illustrate the metamodeling approach using two examples, and demonstrate that the framework can substantially reduce uncertainty when projecting beyond the range of some of the original data sources.
+We conclude by discussing the application of our method and its accessibility to conservation biologists and land managers.
+Although this hierarchical Baysian method requires extensive statistical programming experience, we anticipate the results will be of wide application and interest, and we therefore encourage collaboration between modelers and practitioners in applying our framework.
+We believe that our manuscript represents an important step toward a more holistic approach for forecasting future species ranges.
+Due to the importance of range shifts for both theoretical and applied ecology, the topic is of broad interest, and we hope you will find it of interest for the \emph{Ideas and Perspectives} section.
+We will be ready to submit the manuscript within one month.
+
+Thank you for considering out submission. We look forward to your reply.
+
+\closing{Sincerely,}
+
+\end{letter}
+\end{document}

@@ -43,41 +43,19 @@ This can create confusion and even some mistrust towards models, and as a conseq
 By integrating different types of models---and their outputs---into a common framework, we believe that our approach can contribute to overcome the gap between modelers and practitioners and thus promote wider use of models to support decision-making.
 \ia{This is repetitive with the applicability section. I suggest that you stick here on the modeling advantage of your approach and keep the applied advantage for the other section}
 
-\ia{suggest adding here:\\
-Model uncertainties is another key factor affecting applicability of model outputs (Addison et al., 2013). }
-Our approach also allows for a clear, transparent identification of uncertainties and how they are transmitted throughout the modeling process. 
-This is one of the main strengths of this approach, and offers several advantages. 
-For instance, transparency in uncertainty can be considered as a sort of sensitivity analysis, in which areas with large uncertainty can be detected and new experimental research or additional data collection can be designed (e.g., Example 1, Figs. \ref{fig:ex1_sampling}, \ref{fig:ex1_precip}).
+Model uncertainty is another key factor affecting applicability of model outputs \citep{Addison2013}.
+One of the main strengths of our approach is that it allows for a clear, transparent identification of uncertainties and how they are transmitted throughout the modeling process. 
+Transparency in uncertainty can be considered as a sort of sensitivity analysis, in which areas with large uncertainty can be detected and new experimental research or additional data collection can be designed (e.g., Example 1, Figs. \ref{fig:ex1_sampling}, \ref{fig:ex1_precip}).
 The new knowledge resulting from this research can be readily incorporated into the metamodel, allowing for an iterative learning process that will undoubtedly contribute to reduce uncertainty in predictions for a wide range of environmental conditions. 
 Moreover, our framework embraces change as a fundamental process and is able to adapt and respond to it. 
-The ease of incorporating new knowledge to the modeling framework (including new theory or the result of management and experimental efforts), will allow for a rapid adjustment of the predictions and the incorporation of the most recent available knowledge into management plans. 
-\fd{This framwork is in perfect accordance with the approach developed by Walters and Holling in Adaptive Management paradigm (Walters, C. J., \& Holling, C. S. (1990). Large-scale management experiments and learning by doing. Ecology, 71(6), 2060-2068.)\\
-Keith, D. A., Martin, T. G., McDonald-Madden, E., \& Walters, C. (2011). Uncertainty and adaptive management for biodiversity conservation. Biological Conservation, 144(4), 1175-1178.
-}
-In an era of continuous and unprecedented change, adaptive approaches such as the one presented here are often highlighted as a pressing need in order to develop strategies to promote ecosystems that are both feasible and resilient \citep[Fig. \ref{fig:adaptive_management};][]{Seastedt2008, Mori2013}.
+The ease of incorporating new knowledge to the modeling framework (including new theory or the result of management and experimental efforts), will allow for a rapid adjustment of the predictions and the incorporation of the most recent available knowledge into management plans \citep{Keith2010}.
+In an era of continuous and unprecedented change, adaptive approaches such as the one presented here are often highlighted as a pressing need in order to develop strategies to promote ecosystems that are both feasible and resilient \citep[Fig. \ref{fig:management};][]{Seastedt2008, Mori2013}.
 \wt{
 Perhaps we could also be more precise here. Give examples. Since you are working with forest data, an easy step forward would also be to calibrate growth curve of most tree species in function of both temp and precipitation, even a competition model (see Kunstler et al. 2011 J. of Ecology), that can then be integrated into SDMs. 
 Similarly you may also discuss about the NEON and LTER long term sites that could certainly give similar information than the one used in Ex 1. I think we should strenghen the different possibilities to make sure users find the approach useful. It remains to vague to me at this point. 
 If you think about the Cheaib et al. paper, you may also suggest that your approach could be run over all different model outputs to integrate thema all together. 
 In a way that should re-inforce the link between modelers and long term experimental ecologists that did not really discuss so far since it was difficult to integrate the two informations. 
 }
-\fd{Moreover, overlapping scale domains of different sub-models showing divergent repsonse point out particular process/scale that require investigation for reconciling the sub-models or identify limits of use for each sub-models.}
-
-\dm{Could write out the word Objectives in the Figure}
-%==================
-% FIGURE
-
-\begin{figure}[tb]
-	\includegraphics{management.pdf}
-	\caption{Sample workflow for applying the models presented in the first example in a management context.
-	Critical steps include specifying the metamodel, identifying additional sources of information to be used as constraints on the metamodel, and using the integrated prediction for decision-making.
-	As additional information becomes available from monitoring the results of management, this information can be incorporated in additional sub-models to further refine the metamodel.}
-	\label{fig:adaptive_management}
-\end{figure}
-
-% ERUGIF
-%==================
-\aa{The box in the right could maybe just say: monitoring of management actions}
 
 
 \subsection*{Challenges} 
@@ -96,18 +74,21 @@ A strong asset of our approach is that it can be used without the full suite of 
 Given that the metamodel is correlative, it can be effectively implemented with, e.g., only presence-absence data, or, in the case where true absences are difficult to obtain, with presences and pseudo absences (provided sufficient care is used in interpreting the results of such a model).
 Then any additional mechanistic data that are available will enhance predictions by constraining outputs of the metamodel. 
 
-\tf{Revised this paragraph to the following}
-\tf{Finally, determining the functions to use to express the likelihood of the sub-models given the metamodel (i.e., Eqs. 6, 7) is a critical point. In the context of integration models, the challenge is three fold: (i) which spatial and time scales, i.e. which processes, are to be considered, (ii) how to build scaling function in order to be consistent with the metamodel and (iii) how error and uncertainty are propagated from the finest sub-models scale to the largest metamodel scale. We argue that our proposed framework is able to easily deal with very different scale and that the Bayesian framework allows for an efficient integration of uncertainty throughout all scales considered. The building of scaling function deserve more investigation. We have shown in our examples that even simple scaling functions can provide reasonable constraints on the metamodel. However, with the objective to take into account all know processes and models, it is likely that the modeling process proposed may concern more than one scaling function and not necessarily from the same scale. Indeed, species distribution is a function of e.g. species growth rate (Sykes et al. 1996, Guisan \& Zimmerman 2000) which involves processes at the individual (e.g. competition) or cellular (e.g. photosynthesis) scales. Such very large differences in spatial scales imply that simple functions will be inadequate requiring more traditional upscaling methods. Therefore, intermediate models and processes corresponding to additionnal data will be necessary: additionnal parameters inducing additionnal uncertainty have to be estimated before meaningful model integration will be possible. In addition, not only the spatial scale is to be considered, but also temporal scales. Most of time, this scale is taken into account in the spatial scale, as there is a strong concordance between them: the most rapid processes corresponded to the finest scale (e.g. photosynthesis is related to daylight) while longest processes are related to largest spatial scale (e.g. species niche). }
-\tf{Sykes, M.T., Prentice, I.C., Cramer, W., 1996. A Bioclimatic Model for the Potential Distributions of North European Tree Species Under Present and Future Climates. Journal of Biogeography 23, 203–233.}
-Finally, determining the functions to use to express the likelihood of the sub-models given the metamodel (i.e., Eqs. \ref{eq:ex1_integrated}, \ref{eq:integrated2}) will remain a significant challenge.
+Finally, determining the functions to use to express the likelihood of the sub-models given the metamodel (i.e., Eqs. \ref{eq:ex1_integrated}, \ref{eq:integrated2}) is a critical point.
+In the context of integrated models, the challenge is three fold: (i) which spatial and temporal scales (i.e. which processes), are to be considered, (ii) how to build a scaling function that is consistent with the metamodel and (iii) how error and uncertainty are propagated from the scales of the sub-models scale to that of the metamodel. 
+Although we argue that our proposed framework is able to easily deal with very different scales and that the Bayesian framework allows for an efficient integration of uncertainty throughout all scales considered, the building of scaling function deserves further investigation. 
 We have shown in our examples that even simple scaling functions can provide reasonable constraints on the metamodel. 
-However, it is likely that with very large differences in scales (e.g., comparing cellular processes to landscapes), simple functions will be inadequate, requiring more traditional upscaling methods that combine explicit processes with additional data (and, necessarily, additional parameters) before meaningful model integration will be possible.
+However, with the objective to take into account all know processes and models, it is likely that the modeling process may include multiple scaling functions, each at different scales. 
+Indeed, if species distributions are a function of, e.g. poopulation growth rate \citep{Sykes1996, Guisan2000}, they will involve processes at the individual (e.g. competition) or cellular (e.g. photosynthesis) scales. 
+Such very large differences in spatial scales imply that simple functions will be inadequate, requiring more traditional upscaling methods. 
+Therefore, intermediate models and processes will need to be introduced, and this will require additional parameters, assumptions, and data, and will add uncertainty to the final integrated model.
+
 
 
 \subsection*{Applicability of the method}
 \defcitealias{TERN2013}{TERN, 2013} %% this is needed to make the organizational citation in the following paragraph work correctly
 Integrated approaches have gained momentum in recent years, with integrative science being featured as a central theme for several science-based governmental organizations around the world \citep[e.g.][\citetalias{TERN2013}]{Bernier2013}. 
-Incorporating information from multiple sources, particularly with respect to uncertainty,  fosters a connection between scientifically-generated knowledge and policy, and is therefore an important tool for adaptive management \citep[][Fig. \ref{fig:adaptive_management}; ]{Rehme2011}.
+Incorporating information from multiple sources, particularly with respect to uncertainty,  fosters a connection between scientifically-generated knowledge and policy, and is therefore an important tool for adaptive management \citep[][Fig. \ref{fig:management}; ]{Rehme2011}.
 Such approaches are needed in formulating management plans for vulnerable species and ecosystems to avoid basing decisions on too-narrow subsets of the available information \citep{Dawson2011}.
 The flexibility of our approach may also represent an advantage for management by easing the integration of specific decision making criteria (e.g. desired grain and extent of outputs) into model development. 
 Successful use of an integrated modeling approach will always remain dependent on an intimate understanding of the decision-making process by modelers, emphasizing the importance of close collaboration between with practitioners at all stages of model development \citep{Guisan2013}.
@@ -118,28 +99,23 @@ A key criterion for model applicability is the explicit and detailed communicati
 Integrating sub-models allows for clear specification of desired model outputs (via the specification of the metamodel) while easily retaining important ecological objectives (via careful specification of sub-models).
 Insufficiently documented models are difficult to assess in real world situation, and therefore only have limited relevance for decision support \citep{Addison2013, Guisan2013}.
 Model workflow documentation becomes more crucial in the case of integrated modeling approaches, which incorporates information from various scales and resolutions within a number of aggregated sub-models. 
-A transparent and well documented workflow describing the process of model integration ensures reproducibility and applicability (Fig. \ref{fig:adaptive_management}). 
+A transparent and well documented workflow describing the process of model integration ensures reproducibility and applicability (Fig. \ref{fig:management}). 
 
 \subsection*{Accessibility}
 \mjf{Accessibility of what? Modeling? Data?}
+\mt{maybe remove the label and relocate to challenges}
 Results of models predicting species ranges are increasingly used by resource managers, conservation biologists, or forest ecologists for formulating or adjusting recommendations. 
 The utility of such models depends on their ability to help evaluate events beyond the bounds of the available data, including in future situations constrained by climate change. 
 In this context, practitioners may judge model usefulness on two criteria: (1) Does the model provide reliable predictions at the needed time and space scales, and (2) can the model be implemented given the available data and technical expertise? 
-\tf{Practitioners may first want to validate models, no? This needs that practitioners are faithful to scientific results, which is not always the case.}
 Since most decision makers work at local space scales and follow specific time frames, modelers face the obvious challenge of providing detailed outputs while preserving implementation capacity.
 In terms of model outputs, our framework is transparent in terms of uncertainty by virtue of providing easily interpretable probability distributions for model parameters and predictions.
 However, developing the models requires careful model specification, understanding of applied Bayesian methods, and, in some cases, extensive programming.
-\tf{This is needed to develop models. But not for using models?}
 In many cases, off-the-shelf software \citep[e.g.,][]{R, RJAGS} can adequately express the model likelihoods with minimal programming, but more complicated models will require the development of custom software.
-Thus, this framework will require significant investment in developing customized code for the samplers in order to actually estimate parameters.
-No doubt, the implementation of our proposed method is currently too technically challenging for many practitioners. 
-\mt{This seems a bit negative to me... maybe nicen it up a bit}
-\dm{There is a difference between practioners and Decision-makers. You might want to work something in like: Adoption will be no doubt influenced by the percieved complexity and and usefulness to both practitioners (species distribution modelers) and decision-makers (those who would use to results to support operational or policy-related decisions). }
+Thus, this framework will require significant investment in developing customized code for the samplers in order to actually estimate parameters, which may be technically challenging for some practitioners and may limit the adoption of these methods by both practitioners and decision-makers.
 However, the same was true of all statistical techniques or modeling approaches when they were initially developed. 
 In addition, some of the computation costs that were associated with many techniques have now vanished, and even the conceptual challenges associated Bayesian statistics are being reduced as they gain recognition in the scientific literature. 
-\tf{I find this argument poor. This is not because a method is popular that it is a good one. Maybe recognition is better.}
 We therefore argue that our proposed approach as a strong potential for direct use in our real world where climate is quickly changing and conservation practices must be adjusted accordingly.
-\ia{This would be possible with a strengthen collaboration between modelers and practitioners}
+We further argue that forging stronger collaborations between modelers, decision-makers, and practitioners will improve the incorporation of this and other new methods into applied ecology and conservation.
 
 \subsection*{Future directions}
 \wt{Honestly, I do not really think you need this last part (future work) given space limitation (watch out the total number of words and references).}

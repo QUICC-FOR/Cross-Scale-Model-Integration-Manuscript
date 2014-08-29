@@ -15,8 +15,9 @@
 
 \usepackage{amsmath} % for better display of equations
 
+\usepackage{setspace}
 \usepackage{natbib} 
-
+ 
 \usepackage{titling} % controls the way the title information is displayed
 \pretitle{\begin{flushleft}\Large}
 \posttitle{\end{flushleft}}
@@ -27,6 +28,8 @@
 \setlength{\droptitle}{-3em}
 
 \usepackage{authblk} % adds some nice options for displaying the author list
+\renewcommand\Authsep{\protect\\}
+\renewcommand\Authands{\protect\\}
 
 \usepackage{acronym} % set up some acronyms
 \acrodef{SDM}{species distribution model}
@@ -65,11 +68,11 @@
 \newcommand{\db}[1]{\todo[color=violet!20]{\textsuperscript{Dominique B}#1}}
 \newcommand{\ab}[1]{\todo[color=teal!40]{\textsuperscript{Alyssa B}#1}}
 \newcommand{\fd}[1]{\todo[color=orange!30]{\textsuperscript{Frédérik D}#1}}
-%\newcommand{\rd}[1]{\todo[color=orange!40]{\textsuperscript{Ronnie D}#1}}
+\newcommand{\rd}[1]{\todo[color=orange!40]{\textsuperscript{Ronnie D}#1}}
 \newcommand{\mjf}[1]{\todo[color=green!60]{\textsuperscript{Marie-Josée F.}#1}}
 \newcommand{\tf}[1]{\todo[color=yellow!60]{\textsuperscript{Tony F.}#1}}
 \newcommand{\dm}[1]{\todo[color=lime!50]{\textsuperscript{Dan M.}#1}}
-%\newcommand{\ks}[1]{\todo[color=green!40]{\textsuperscript{Kevin S}#1}}
+\newcommand{\ks}[1]{\todo[color=green!40]{\textsuperscript{Kevin S}#1}}
 \newcommand{\ns}[1]{\todo[backgroundcolor=red!100, linecolor=orange!100, bordercolor=cyan!100]{{\color{magenta!40}\textsuperscript{Strigul}#1}}}
 \newcommand{\wt}[1]{\todo[color=orange!80]{\textsuperscript{Wilfried T}#1}}
 \newcommand{\dg}[1]{\todo[color=pink!40]{\textsuperscript{DG}#1}}
@@ -98,6 +101,7 @@
 % \renewcommand{\ia}[1]{\relax}%
 % \renewcommand{\db}[1]{\relax}%
 % \renewcommand{\ab}[1]{\relax}%
+% \renewcommand{\fd}[1]{\relax}%
 % \renewcommand{\rd}[1]{\relax}%
 % \renewcommand{\mjf}[1]{\relax}%
 % \renewcommand{\tf}[1]{\relax}%
@@ -116,13 +120,13 @@
 
 \title{Cross-scale integration of knowledge for predicting species ranges: a metamodeling framework}
 \date{}
-\author[1,2]{Matthew V. Talluto}
+\author[1,2,13]{Matthew V. Talluto (mtalluto@gmail.com)}
 \author[1,2]{Isabelle Boulangeat}
 \author[3]{Aitor Ameztegui}
 \author[4]{Isabelle Aubin}
 \author[1,2,5]{Dominique Berteaux}
 \author[1,2]{Alyssa Butler}
-\author[6,7]{Frédérik Doyon} %??
+\author[6,7]{Frédérik Doyon}
 \author[8]{C. Ronnie Drever}
 \author[9]{Marie-Josée Fortin}
 \author[1]{Tony Franceschini}
@@ -144,6 +148,7 @@
 \affil[10]{Department of Mathematics, Washington State University Vancouver, Washington, USA}
 \affil[11]{Université Grenoble Alpes, Laboratoire d’Ecologie Alpine (LECA), F-38000 Grenoble, France}
 \affil[12]{CNRS, Laboratoire d’Ecologie Alpine (LECA), F-38000 Grenoble, France}
+\affil[13]{Author for correspondance. Address: Departament de Biologie, chimie, et geographie, 300, Allée des Ursulines, Rimouski, Quebec G5L 3A1, Canada}
 
 
 %% ----------------------------------
@@ -153,20 +158,44 @@
 %% ----------------------------------
 
 \begin{document}
-
+\doublespacing
 %% ----------------------------------
 %
 %     TITLE PAGE
 %
 %% ----------------------------------
 
-\maketitle
+\begin{titlingpage}
+	\maketitle
 
-\begin{flushleft}
-\textbf{Keywords:} Uncertainty, scaling, range dynamics, trees, disturbances, patterns and processes, predict or understand, climate change, biotic interactions, spatial ecology, decision making, metamodeling, species distribution modeling
-\end{flushleft}
+	\mt{need to include email addresses of all authors}
+	
+	\begin{flushleft}
+	\textbf{Short title: } \mt{less than 45 chars including spaces}
+
+	\textbf{Type of article: } Ideas and Perspectives
+	
+	\textbf{Word counts: } \mt{main text excludes abstract, acknowledgements, references, table and figure legends; limited to 7500 words}
+	\begin{itemize}
+		\item[] Abstract: 
+		\item[] Main Text: 
+		\item[] Boxes:
+	\end{itemize}
+	
+	\textbf{Number of references: } \mt{limited to 80}
+
+	\textbf{Number of figures: } 6
+	
+	\textbf{Number of tables: } 0
+	
+	\textbf{Number of text boxes: } 1
+		
+	\textbf{Keywords:} Climate change, decision making, metamodeling, patterns and processes, range dynamics, scaling, spatial ecology, species distribution modeling, uncertainty
+	\end{flushleft}
+\end{titlingpage}
 
 \begin{abstract}
+\mt{limited to 200 words, currently at 235}
 There is great interest in modeling species ranges, resulting in a great diversity of modeling approaches.
 However, in general, individual approaches include only a small subset of the total available information about a species. 
 For example, a broad-scale correlative model might use climate variables to predict presence or absence, but ignore what is known about smaller-scale processes such as the effect of local climate on growth, fecundity, and dispersal rates.
@@ -200,11 +229,6 @@ Although this hierarchical Baysian method requires extensive statistical program
 %---------------------------------------------
 %---------------------------------------------
 
-\input{model_description}
-
-%---------------------------------------------
-%---------------------------------------------
-
 \section*{Acknowledgements}
 We acknowledge funding from the Quebec Centre for Biodiversity Science as well as NSERC strategic grant 430393-12. Comments from Charles Canham and William Godsoe improved a previous version of this manuscript.
 
@@ -226,7 +250,18 @@ We acknowledge funding from the Quebec Centre for Biodiversity Science as well a
 %
 %% ----------------------------------
 
+\input{figures}
 
+%% ----------------------------------
+%
+%     TEXT BOX
+%
+%% ----------------------------------
+
+\input{model_description}
+
+%---------------------------------------------
+%---------------------------------------------
 
 
 \end{document}
