@@ -5,7 +5,7 @@ Due to large temporal and spatial scales as well as the complex and nonlinear na
 Hence, range models are essential tools that have been applied to a large number of ecological subfields, including biogeography \citep{Schurr2012}, invasion biology \citep{Catterall2012, Gallien2012}, evolution \citep{Jay2012}, hybrid zone dynamics \citep{Engler2013}, and the impacts of climate change on species distributions \citep{Thuiller2011, Blois2013, Thuiller2014}. 
 However, despite having recognized potential to support decision making, the contributions of these models to conservation and applied ecology remain limited \citep{Guisan2013}.
 
-An important constraint on modeling ecological processes is having the appropriate ecological theory needed to link data to modeling objectives, and further in maintaining coherence between the spatial and temporal scales of data and theory.
+Two important constraints on modeling ecological processes prevent models from making unbiased predictions with acceptable uncertainty: (1) having the appropriate ecological theory needed to link data to modeling objectives, and (2) having sufficient data over a range of conditions to maintain coherence between the spatial and temporal scales of data and theory.
 Another constraint is a paucity of data over wide ranges of ecological conditions and scales.
 Poor data or incoherent models will result in predictions with unacceptably high uncertainty or precise but biased predictions.
 In recent decades, however, modeling techniques have proliferated to take advantage of what is available in terms of both data and modeling platforms.
@@ -16,6 +16,7 @@ For instance, biotic interactions (including trophic interactions) are usually n
 On the other hand, coarse-scale correlative models statistically relating species occurrences to associated distributions of other variables at the same scale have the advantage of indirectly accounting for underlying processes \citep{Guisan2000}.
 However, their predictions rely on the constancy of the relationships between occurrences and explanatory variables in time and space, implying that the selected variables are related to the processes limiting species ranges and that their correlations are constant for calibration and projection ranges in space and time \citep{Dormann2007}. 
 Extrapolating beyond the scope of the original data (e.g., predicting ranges based on future climate) is therefore problematic, because nonlinearities in responses to novel combinations of the explanatory variables cannot be accommodated in models that do not simulate the underlying processes.
+In cases where a selected explanatory variable indirectly accounts for a process (e.g., where the strength of biotic interactions are correlated with an environmental variable), extrapolation will produce biased predictions in temporal and spatial domains where the process and the environmental variable are decoupled.
 Furthermore, correlative models often do not explicitly incorporate ecological processes into their formulations, and when applied at coarse scales, they may miss important fine-scale processes, making a multi-scale approach desirable when accurate forecasting is required \citep{Austin2011, Thuiller2013}.
 On the other hand process-based models often require a variety of assumptions which may be poorly understood across space and time.
 
@@ -27,7 +28,7 @@ Some researchers have explicitly reproduced the hierarchical nature of ecologica
 Recent literature has also focused on the development of hybrid models, which allow for flexible combinations between mechanistic and phenomenological sub-models \citep{Gallien2010, Franklin2010, Thuiller2013}. 
 For instance, correlative models are used to account for abiotic variables limiting species distributions \citep{Guisan2005}, while mechanistic approaches can include space and time dynamics and therefore account for dispersal processes \citep{Kearney2008}. 
 This complementarity has been used to merge the two types of models into hybrid integrated models \citep[e.g.][]{Keith2008, Anderson2009, Smolik2010, Naujokaitis2013, Boulangeat2014}. 
-However, the link between different sub-models is based on assumptions about the scaling of ecological processes that are not easy to test \citep{Gallien2010}. 
+However, the link between different sub-models is based on assumptions about the scaling of ecological processes that are not easy to test \citep{Gallien2010}, and uncertainties are very difficult to quantify and identify from its many different sources. 
 Moreover, hybrid approaches are not suitable for merging models that are based on the same processes but with different underlying hypotheses.
 
 A second approach is to directly combine predictions.
