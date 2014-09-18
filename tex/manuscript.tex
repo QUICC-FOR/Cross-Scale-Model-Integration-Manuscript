@@ -152,15 +152,22 @@
 	\maketitle
 	
 	\begin{flushleft}
-	\textbf{Short title: } \mt{less than 45 chars including spaces}
+	
+	% less than 45 chars including spaces
+	\textbf{Short title: Integrated models of species ranges} 
 
 	\textbf{Type of article: } Ideas and Perspectives
 	
 	\textbf{Word counts: } \mt{main text excludes abstract, acknowledgements, references, table and figure legends; limited to 7500 words}
 	\begin{itemize}
-		\item[] Abstract: 
+		\item[] Abstract: 200 % limited to 200 words
 		\item[] Main Text: 
-		\item[] Boxes:
+		% current rough estimates:
+		% intro: 1187
+		% modeling framework: 2459
+		% discussion: 2734
+		% total: 6380
+		\item[] Boxes: 517 % limited to 750 words per box
 	\end{itemize}
 	
 	\textbf{Number of references: } \mt{limited to 80}
@@ -176,17 +183,16 @@
 \end{titlingpage}
 
 \begin{abstract}
-\mt{limited to 200 words, currently at 235}
+% limited to 200 words
 There is great interest in modeling species ranges, resulting in a great diversity of modeling approaches.
 However, in general, individual approaches include only a small subset of the total available information about a species. 
-For example, a broad-scale correlative model might use climate variables to predict presence or absence, but ignore what is known about smaller-scale processes such as the effect of local climate on growth, fecundity, and dispersal rates.
-Furthermore an inherent problem with the diversity of approaches is that different models often produce distinct predictions for the same species, with no simple way to reconcile these predictions.
+Correlative models often predict presence or absence as a function of climate, but ignore  smaller-scale processes such as growth, fecundity, and dispersal.
+Furthermore, the diversity of approaches often results in divergent predictions for the same species, with no simple way to reconcile these predictions.
 We present a flexible framework for integrating models at multiple scales using hierarchical Bayesian methods. 
-The resulting meta-model framework produces probabilistic estimates of species presence with uncertainty that reflects error from data sources as well process error from all sub-models.
- These predictions reflect all of the information used as input for the original scale-specific sub-models.
-We illustrate the metamodeling approach using two examples, and demonstrate that the framework can substantially reduce uncertainty when projecting beyond the range of some of the original data sources.
+The resulting metamodel produces probabilistic estimates of species presence, reports uncertainty from both data and process error from all sub-models, and incorporates all of the information used as input for the original scale-specific sub-models.
+We illustrate our approach using two examples, and demonstrate that the framework can substantially reduce uncertainty when projecting beyond the range of the original data.
 We conclude by discussing the application of our method and its accessibility to conservation biologists and land managers.
-Although this hierarchical Baysian method requires extensive statistical programming experience, we anticipate the results will be of wide application and interest, and we therefore encourage collaboration between modelers and practitioners in applying our framework.
+Although implementation of our method can be technically challenging, we anticipate the results will be of wide interest, and we encourage collaboration between modelers and practitioners in applying our framework.
 \end{abstract}
 
 %% ----------------------------------
