@@ -20,11 +20,10 @@ Bayesian model averaging considers models operating at the same scale and the po
 Bayesian calibration of process-based model focuses on uncertainty of the parameter values in the process-based models, in this case the values of the parameters are calibrated by the model output \citep{VanOijen2005, VanOijen2011, Hartig2012}. 
 In contrast with Bayesian model averaging and calibration techniques, our approach handles data and models operating at different hierarchical scales, and uses process-based models to constrain the shape of a generally more correlative metamodel.
 Similar hierarchical approaches have been applied to diverse fields, including engineering \citep{Booth2013}, hydraulic conductivity models \citep{Dostert2009, Efendiev2005, Efendiev2005a}, plant physiology \citep{Ogle2008, Ogle2009}, and climate and atmospheric modeling \citep{Zimmerman2005, Mcmillan2010, Kang2012}.
-\wt{Why not being more precise and exploratory here. You may actually run a model averaging around your approach, may not you? Indeed, if we think to Ex 1 you could have several native metamodel posterior distributions, right? Or even a direct model averaging from them. As said, you could actually run something like biomod2 to get the distribution of values for each pixel given the models/algorithms and data and use them directly as a posterior into the integration. . 
-The integration could also be done in the Ex 2 as far as I could see it. 
-It might nicely link your approach to the on-going move of SDM people towards ensemble modeling and forecasting. It also lonk to Bayesian model averaging. 
-If I was meant, I would say that a simple use of binomial GLM is a 10-years way back for most people where more 
-}
+Although our method as presented is distinct from Bayesian model averaging, it is fully compatible with these methods.
+Multiple metamodels could be averaged in this way if a consensus prediction from multiple metamodels (containing, e.g., different sub-model sets or different metamodel formulations).
+Furthermore, the metamodel can easily be incorporated into a broader multimodel inference scheme.
+For example, the metamodel can be used as one input in an ensemble forecasting scheme that also incorporates other common SDM formulations (e.g., Random Forest, MaxEnt).
 
 \fd{FD will work on this part: \\
 It would be good to compare this approach with the kind of one develop by Moorcroft et al. 2001 : Moorcroft, P. R., Hurtt, G. C., \& Pacala, S. W. (2001). A method for scaling vegetation dynamics: the ecosystem demography model (ED). Ecological monographs, 71(4), 557-586.\\
