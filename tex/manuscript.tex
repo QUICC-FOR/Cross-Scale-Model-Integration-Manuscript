@@ -289,8 +289,7 @@ The metamodel attempts to capture the realized distribution of a species; as a c
 However, for the purposes of forecasting, we would like to disentangle the fundamental response of a species to environmental variation from other processes in order to map the climatic envelope of where a species may be found in a natural setting. 
 Prior information of the physiological constraints affecting species distribution is sometimes available, but usually too incomplete to perform a reasonable comparison with the realized distribution.
 For instance, as in this example, a species distribution might be constrained by both temperature and precipitation, but experiments were conducted only over a precipitation gradient at one temperature. 
-We apply our framework here to such heterogeneous sources of information to reduce the bias in parameter estimation and more adequately represent uncertainty. 
-Here, we focus only on the specification of the modeling framework; complete procedural details and code for generating the data sets and executing the model are provided as supplemental information.
+We apply our framework here to such heterogeneous sources of information to reduce the bias in parameter estimation and more adequately represent uncertainty (see Appendix S1 in Supporting Information for procedural details and scripts for executing the model).
 
 We consider data collected from a species' historical distribution, where the goal is to predict the distribution following a substantial reduction in precipitation. 
 We will consider \(X_M\) (see Box 1, Fig. \ref{fig:diagram}) to be a vector of $n$ observations that takes the value of one to indicate presence and zero for absence:
@@ -399,13 +398,12 @@ There is considerable interest in comparing correlative and mechanistic projecti
 Despite being a relatively common application of \ac{SDM}s \citep{Guisan2005}, projecting models parameterized with modern climate data to future climate scenarios is problematic for a number of reasons previously discussed \citep{Araujo2006}.
 We used our metamodeling framework to inform a climate-based SDM with information obtained from Phenofit, a mechanistic model that predicts a species' probability of presence as a function of the suitability of the environment given the species' phenology \citep{Chuine2001, Morin2009}.
 We use data from \citet{Morin2009} for sugar maple (\emph{Acer saccharum}), an economically and ecologically important species occurring in eastern North America.
-Here we describe briefly the dataset, methods, and the results of the analysis.
-Complete details, including all data and scripts to reproduce the analysis, are included as supplemental information.
+Here we describe briefly the dataset, methods, and the results of the analysis (see Appendix S2 for data and scripts to reproduce the analysis).
 
 \defcitealias{IPCC2001}{IPCC, 2001} % this is needed to make the organizational citation in the following paragraph work correctly
 For the metamodel, we used a dataset of 1013 presence and 13863 absence records, at 0.5 degree resolution, sampled from North America.
 We reserved one-third of the dataset for validation, and used the area under the receiver operating characters curve (AUC) for validation of contemporary predictions.
-We used a binomial GLM to relate the suitability for sugar maple to 6 climate variables, scaled to the same resolution (see supplemental information for a descriptions of the climate variables and of the model selection process).
+We used a binomial GLM to relate the suitability for sugar maple to 6 climate variables, scaled to the same resolution (see Appendix S2 for details on the climate variables).
 We selected a GLM here for its simplicity and interpretability because our focus was on demonstrating the framework, but more complex methods (e.g., GAM) are compatible with the framework.
 For projection, we used predictions for 2080 from the HadCM3 GCM \citep{Pope2000} driven by the A2 emission scenario \citep{Nakicenovic2000}, and used the parameters of the GLM to forecast suitability into the future (i.e., \(\psi_N\)).
 Phenofit produces predictions at continental scales; thus the scaling function \(g\) was incorporated within Phenofit itself and we performed model integration directly on the outputs.
