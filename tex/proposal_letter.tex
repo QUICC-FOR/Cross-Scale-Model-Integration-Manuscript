@@ -1,5 +1,5 @@
 \documentclass[11pt]{letter}
-\usepackage[margin=1in]{geometry}
+\usepackage[margin=1.5in]{geometry}
 
 \makeatletter
 \renewcommand{\closing}[1]{\par\nobreak\vspace{\parskip}%
@@ -22,7 +22,11 @@
 \setmainfont{Garamond Premier Pro}
 \setsansfont[Scale=0.9]{Optima Regular} 
 
-\signature{Matthew V. Talluto, Isabelle Boulangeat, \& Dominique Gravel \\
+\usepackage{wallpaper}
+
+\signature{Matthew V. Talluto, \\
+	Isabelle Boulangeat, \& \\
+	Dominique Gravel \\
 	Université du Québec à Rimouski \\ 
 	mtalluto@gmail.com}
 \address{Matthew V. Talluto, Ph.D. \\
@@ -33,6 +37,7 @@
 
 \begin{document}
 \addfontfeatures{Contextuals=NoAlternate}   % turn off the crazy Q in Garamond Premier Pro
+\ThisULCornerWallPaper{0.22}{uqar-logo2}
 
 \begin{letter}{Marcel Holyoak \\ 
 	Editor-in-chief, \emph{Ecology Letters} \\ 
@@ -43,51 +48,30 @@
 
 \opening{Dear Dr. Holyoak,}
 
+%TC:break opening
 We are pleased to submit a proposal for a manuscript titled ``Cross-scale integration of knowledge for predicting species ranges: a metamodeling framework''. 
 We would appreciate your consideration of our manuscript for the \emph{Ideas and Perspectives} section of \emph{Ecology Letters}.
 
-%%% Proposals should be no more than 300 words long, describe the nature and novelty of the work, the contribution of the proposed article to the discipline, and the qualifications of the author(s) who will write the manuscript. Proposals should be sent to the Editorial Office 
 
-%%% will need to shorten this quite a bit
-
-% Make this a bit nicer, maybe add some text from the intro including some refs if there is room
-% Mention qualifications
-% Mention all authors?
-
-%%%% Comments from dom:
-
-%- First, it gives the impression that it is only a methodological contribution while we go one step ahead. The conceptual contribution is overlooked in this paragraph and the first sentence should point at it. 
-%
-%- Second, I wonder if it does not over emphasize the Bayesian approach. again, I think we go beyond Bayes stats, it's just the tool we use to accomplish our needs. 
-%
-%- Isa is right, the paragraph does not underline clearly how this paper differs from previous ones: how does it differ from model averaging? From reviews and Ideas papers by Clark on Bayes stats in the same journal?
-%
-%May be you can start with an issue that is more fundamental, the one of mechanistic vs empirical/correlative models. The problem of working at the right scale and of complex systems could also be a good entry point.
-
-%% From Isa:
-% Yes. in the argument, you may insist on that the proposition solve the problem of uncertainty propagation.
-
-
-We present a novel application of hierarchical Bayesian methods to integrating the predictions of multiple models into a single metamodel of a species distribution.
-There is great interest in modeling species ranges, resulting in a great diversity of modeling approaches.
-However, in general, individual approaches include only a small subset of the total available information about a species. 
-For example, a broad-scale correlative model might use climate variables to predict presence or absence, but ignore what is known about smaller-scale processes such as the effect of local climate on growth, fecundity, and dispersal rates.
+%TC:break body
+We present a novel framework for integrating small-scale, more mechanistic models into large-scale correlative species distribution models.
+The processes generating species ranges are complex and operate at multiple scales; thus, a wealth of theory (e.g., metapopulation theory, niche theory, and complexity theory) underlies models of species ranges.
+Furthermore, there is great interest in modeling ranges, resulting in a diversity of approaches.
+In practice, however, most models do not include all available information; for example, correlative models predicting presence/absence as a function of climate often ignore smaller-scale processes such as growth, fecundity, and dispersal.
 Furthermore, individual models often produce distinct predictions for the same species, with no simple way to reconcile these predictions.
-Our framework is highly flexible and can integrate information from sub-models operating a multiple spatial and temporal scales.
-The resulting metamodel framework produces probabilistic estimates of species presence that includes uncertainty from data sources as well as all sub-models.
- These predictions reflect all of the information used as input for the original sub-models.
-We illustrate the metamodeling approach using two examples, and demonstrate that the framework can substantially reduce uncertainty when projecting beyond the range of some of the original data sources.
-We conclude by discussing the application of our method and its accessibility to conservation biologists and land managers.
-We believe that our manuscript represents an important step toward a more holistic approach for forecasting future species ranges.
-Due to the importance of range shifts for both theoretical and applied ecology, the topic is of broad interest, and we hope you will find it of interest for the \emph{Ideas and Perspectives} section.
+Our contribution is the first to propose a conceptual and analytical framework that goes further than \emph{a posteriori} aggregation of predictions from different models. 
+It draws on the flexibility of hierarchical Bayesian methods to integrate knowledge of a focal species at varying ecological scales in order to provide more robust predictions of its future distribution.
+Moreover, our method quantifies uncertainty and its variablity in space while also propagating uncertainty from each information source.
+This is of crucial for identifying knowledge gaps, as thus as a to guide future research.
+Finally, under our framework future information can be added as it becomes available, which makes its potential application for adaptive management very appealing.
+We illustrate our approach using two examples, and demonstrate that the framework can reduce both bias and uncertainty when projecting beyond the range of the original data.
+We believe that our manuscript represents an important step toward a more holistic approach for forecasting species ranges.
+This is of broad interest due to the importance of range shifts for theoretical and applied ecology, and we hope you will consider it for the \emph{Ideas and Perspectives} section.
 
 % Suggestion from Isa for a novelty statement:
-Our contribution is the first to propose a conceptual and analytical framework that goes further than aggregating a posteriori different predictions from different models. 
-Based on Bayesian statistics, it provides a way to integrate all available knowledge gathered for a focal species at different ecological scale in order to provide more robust predictions of its future distributions.
-Moreover it is able not only to quantify uncertainties and their variablity in space, but also to propagate them from each piece of information we add to the framework.
-This is of considerable importance in order to identify the sources of uncertainties and the knowledge gaps, as well as to guide futur research.
-Finally, the framework allows integrating future knowledge step by step in order to refine the predictions, which makes its potential application for adaptive management very appealing.
 
+
+%TC:break closing
 Thank you for considering our submission. We will be ready to submit the manuscript within one month. We look forward to your reply.
 
 \closing{Sincerely,}
