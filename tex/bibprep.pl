@@ -4,7 +4,7 @@ use strict;
 use warnings;
 
 my $inFilename = $ARGV[0];
-my @fileContents = [];
+my @fileContents;
 my $i = 1;
 my $newItem = 0;
 my $name = "";
@@ -26,5 +26,7 @@ close(inFile);
 
 open(inFile, ">", $inFilename) or die "Cannot open file $inFilename\n";
 foreach (@fileContents) {
+	print "$_\n";
 	print inFile "$_\n";
 }
+
