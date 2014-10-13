@@ -1,6 +1,8 @@
 manuscript: manuscript.pdf
 
-letter: proposal_letter.pdf
+proposal: proposal_letter.pdf
+
+cover: cover_letter14-10-2014.pdf
 
 manuscript.pdf: tex/manuscript.tex tex/model_integration.bib tex/model_integration.bst \
 tex/ex1_Sampling.pdf tex/ex1_map.pdf tex/ex1_precip.pdf tex/ex2.pdf tex/management.pdf \
@@ -10,6 +12,10 @@ tex/diagram.tex tex/bibprep.pl
 	cd tex; pdflatex manuscript; pdflatex manuscript
 	mv tex/manuscript.pdf manuscript.pdf
 	
+cover_letter14-10-2014.pdf: tex/cover_letter.tex tex/uqar-logo2.pdf
+	cd tex; xelatex cover_letter
+	mv tex/cover_letter.pdf cover_letter14-10-2014.pdf
+
 proposal_letter.pdf: tex/proposal_letter.tex tex/uqar-logo2.pdf
 	cd tex; xelatex proposal_letter
 	mv tex/proposal_letter.pdf proposal_letter.pdf

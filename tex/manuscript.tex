@@ -7,7 +7,7 @@
 %% ----------------------------------
 
 
-%\usepackage[margin=1in]{geometry}
+\usepackage[margin=1in]{geometry}
 
 % use proper unicode fonts
 \usepackage[T1]{fontenc}
@@ -56,28 +56,28 @@
 %     Remove from the final manuscript
 %
 %% ----------------------------------
-\usepackage[top=1in, left=1in, bottom=1in, right=2.5in]{geometry}
-
-\usepackage[textsize=tiny, backgroundcolor=white, textwidth=2.2in, colorinlistoftodos=true]{todonotes} % for margin notes using \todo{}
+%\usepackage[top=1in, left=1in, bottom=1in, right=2.5in]{geometry}
+%
+%\usepackage[textsize=tiny, backgroundcolor=white, textwidth=2.2in, colorinlistoftodos=true]{todonotes} % for margin notes using \todo{}
 
 %%% available colors:
 %%% red, green, blue, cyan, magenta, yellow, gray, drakfray, lightgray, brown, lime, olive, orange, pink, purple, teal, violet
 %
-\newcommand{\mt}[1]{\todo[color=blue!40]{\textsuperscript{MT}#1}}
+%\newcommand{\mt}[1]{\todo[color=blue!40]{\textsuperscript{MT}#1}}
 %\newcommand{\ib}[1]{\todo[color=magenta!40]{\textsuperscript{IB}#1}} 				
-\renewcommand{\aa}[1]{\todo[color=violet!40]{\textsuperscript{Aitor A}#1}}
-\newcommand{\ia}[1]{\todo[color=blue!20]{\textsuperscript{Isabelle A}#1}}
-\newcommand{\db}[1]{\todo[color=violet!20]{\textsuperscript{Dominique B}#1}}
+%\renewcommand{\aa}[1]{\todo[color=violet!40]{\textsuperscript{Aitor A}#1}}
+%\newcommand{\ia}[1]{\todo[color=blue!20]{\textsuperscript{Isabelle A}#1}}
+%\newcommand{\db}[1]{\todo[color=violet!20]{\textsuperscript{Dominique B}#1}}
 %\newcommand{\ab}[1]{\todo[color=teal!40]{\textsuperscript{Alyssa B}#1}}
 %\newcommand{\fd}[1]{\todo[color=orange!30]{\textsuperscript{Frédérik D}#1}}
 %\newcommand{\rd}[1]{\todo[color=orange!40]{\textsuperscript{Ronnie D}#1}}
-\newcommand{\mjf}[1]{\todo[color=green!60]{\textsuperscript{Marie-Josée F.}#1}}
+%\newcommand{\mjf}[1]{\todo[color=green!60]{\textsuperscript{Marie-Josée F.}#1}}
 %\newcommand{\tf}[1]{\todo[color=yellow!60]{\textsuperscript{Tony F.}#1}}
-\newcommand{\dm}[1]{\todo[color=lime!50]{\textsuperscript{Dan M.}#1}}
-\newcommand{\ks}[1]{\todo[color=green!40]{\textsuperscript{Kevin S}#1}}
+%\newcommand{\dm}[1]{\todo[color=lime!50]{\textsuperscript{Dan M.}#1}}
+%\newcommand{\ks}[1]{\todo[color=green!40]{\textsuperscript{Kevin S}#1}}
 %\newcommand{\ns}[1]{\todo[backgroundcolor=red!100, linecolor=orange!100, bordercolor=cyan!100]{{\color{magenta!40}\textsuperscript{Strigul}#1}}}
-\newcommand{\wt}[1]{\todo[color=orange!80]{\textsuperscript{Wilfried T}#1}}
-\newcommand{\dg}[1]{\todo[color=pink!40]{\textsuperscript{DG}#1}}
+%\newcommand{\wt}[1]{\todo[color=orange!80]{\textsuperscript{Wilfried T}#1}}
+%\newcommand{\dg}[1]{\todo[color=pink!40]{\textsuperscript{DG}#1}}
 
 % uncomment to disable individual authors
 % \renewcommand{\mt}[1]{\relax}%
@@ -211,23 +211,16 @@ Due to large temporal and spatial scales as well as the complex and nonlinear na
 Hence, range models are essential tools that have been applied to a large number of ecological subfields, including biogeography \citep{Schurr2012}, invasion biology \citep{Catterall2012, Gallien2012}, evolution \citep{Jay2012}, hybrid zone dynamics \citep{Engler2013}, and forecasting the impacts of climate change on species distributions \citep{Thuiller2011, Blois2013, Thuiller2014}. 
 
 Despite the recognized potential of these models, difficulties in producing predictions with acceptable precision and low bias has limited their contributions \citep{Guisan2013}.
-Two important constraints on modeling ecological processes can prevent models from making unbiased predictions with acceptable uncertainty: 
+For mechanistic models, two important constraints on modeling ecological processes can prevent models from making unbiased predictions with acceptable uncertainty: 
 (1) having the appropriate ecological theory needed to link data to modeling objectives, and (2) having sufficient data over a range of conditions to maintain coherence between the spatial and temporal scales of data and theory.
-Poor data or incoherent models will result in predictions with unacceptably high uncertainty or precise but biased predictions.
+Poor data or incoherent models will result in predictions with high uncertainty or precise but biased predictions.
 In recent decades, however, modeling techniques have proliferated to take advantage of what is available in terms of both data and modeling platforms.
 Model diversification also arises due to the diversity of processes generating species ranges \citep{Boulangeat2012}.
-In the context of forecasting, mechanistic and correlative approaches represent quite different modes of inference, but both have strong limitations. 
 Fine-scale mechanistic models may capture important ecological processes quite well, but due to their specificity, they may perform poorly when applied at the scale of species ranges.
 For instance, biotic interactions (including trophic interactions) are usually not modeled mechanistically at the scale of species distributions because they are poorly known, or have not been recorded, despite being considered a key determinant of range limits \citep{Holt2005, Pigot2013}. 
-On the other hand, coarse-scale correlative models statistically relating species occurrences to associated distributions of other variables have the advantage of indirectly accounting for underlying processes \citep{Guisan2000}.
+In contrast to mechanistic models, more correlative approaches that statistically relate species occurrences to associated distributions of other variables have the advantage of indirectly accounting for underlying processes \citep{Guisan2000}.
 However, their predictions rely on the constancy of the relationships between occurrences and explanatory variables in time and space, implying that the selected variables are related to the processes limiting species ranges and that their correlations are constant for calibration and projection ranges in space and time \citep{Dormann2007}. 
 Extrapolating beyond the scope of the original data (e.g., predicting ranges based on future climate) is therefore problematic, because nonlinearities in responses to novel combinations of the explanatory variables cannot be accommodated in models that do not simulate the underlying processes.
-Furthermore, correlative models often do not explicitly incorporate ecological processes into their formulations, and when applied at coarse scales, they may miss important fine-scale processes, making a multi-scale approach more suitable when accurate forecasting is required \citep{Thuiller2013}.
-On the other hand process-based models often require a variety of assumptions which may be poorly understood across space and time.
-\mt{This last sentence could go, and the sentence before is actually a bit repetitive. Suggest reorganizing a bit to still end on this point, but reduce repetition}
-\aa{you mentioned fine-scale mechanistic models and, on the other hand, coarse-scale correlative models. To talk now about process-based models sounds a bit bizarre and may make the reader wonder why are you mentioning them now.}
-\ia{Finish abruptely here. Feels like one sentence is missing}
-\ks{Feels like it is getting snuck in here…almost an after thought… I would recommend either removing it or developing it a tad further. }
 %% ----------------------------------
 %% ----------------------------------
 %% ----------------------------------
@@ -397,22 +390,21 @@ For the second example, we consider the problem of forecasting the potential dis
 There is considerable interest in comparing correlative and mechanistic projections with respect to climate change \citep{Morin2009}, and correctly characterizing uncertainty is a critical aspect of this problem \citep{Cheaib2012}.
 Despite being a relatively common application of \ac{SDM}s \citep{Guisan2005}, projecting models parameterized with modern climate data to future climate scenarios remains problematic \citep{Araujo2006}.
 We used our metamodeling framework to inform a climate-based SDM with information obtained from Phenofit, a mechanistic model that predicts a species' probability of presence as a function of the suitability of the environment given the species' phenology \citep{Chuine2001, Morin2009}.
-We use data from \citet{Morin2009} for sugar maple (\emph{Acer saccharum}), an economically and ecologically important species occurring in eastern North America.
+We used data from \citet{Morin2009} for sugar maple (\emph{Acer saccharum}), an economically and ecologically important species occurring in eastern North America.
 Here we describe briefly the dataset, methods, and the results of the analysis (see Appendix S2 for data and scripts to reproduce the analysis).
 
 \defcitealias{IPCC2001}{IPCC, 2001} % this is needed to make the organizational citation in the following paragraph work correctly
-For the metamodel, we used a dataset of 1013 presence and 13863 absence records, at 0.5 degree resolution, sampled from North America.
-We reserved one-third of the dataset for validation, and used the area under the receiver operating characters curve (AUC) for validation of contemporary predictions.
-We used a binomial GLM to relate the suitability for sugar maple to 6 climate variables, scaled to the same resolution (see Appendix S2 for details on the climate variables).
-\aa{I would cite here the climatic variables used (just cite them, without further description)}
-We selected a GLM here for its simplicity and interpretability because our focus was on demonstrating the framework, but more complex methods (e.g., GAM) are compatible with the framework.
+For the metamodel, we used a dataset of 1013 presence and 13863 absence records at 0.5 degree resolution.
+We used a binomial GLM to relate the suitability for sugar maple to 3 climate variables: the number of degree days, mean summer precipitation, and the ratio of mean annual precipitation to potential evapotranspiration.
+These variables were selected from the initial set of 6 variables from \citet{Morin2009}; see Appendix S2 for details on model construction and selection.
+We selected a GLM for its simplicity and interpretability because our focus was on demonstrating the framework, but more complex methods (e.g., GAM) are compatible with the framework.
 For projection, we used predictions for 2080 from the HadCM3 GCM \citep{Pope2000} driven by the A2 emission scenario \citep{Nakicenovic2000}, and used the parameters of the GLM to forecast suitability into the future (i.e., \(\psi_N\)).
 Phenofit produces predictions at continental scales; thus the scaling function \(g\) was incorporated within Phenofit itself and we performed model integration directly on the outputs.
-To perform the integration, we used \ac{MCMC} to condition the parameters of the metamodel  on two likelihood functions.
-The first is the naive SDM, where the likelihood of a ``success'' in the presence/absence dataset was a Bernoulli density with the (logit-transformed) probability expressed as a linear function of the climate predictors.
-For the sub-model, we considered that Phenofit, being a process-based model, may perform better when projecting into the future.
+To perform the integration, we used a Metropolis-Hastings scheme within \ac{MCMC} to condition the parameters of the metamodel on two likelihood functions.
+The first was the naive SDM, where the likelihood of a ``success'' in the presence/absence dataset was a Bernoulli density with the (logit-transformed) probability expressed as a linear function of the climate predictors.
+For the sub-model, we considered that Phenofit, being a process-based model, may perform better when projecting into the future, particularly if suitability is primarily driven by the phenological match to the environment.
 Thus, we used the predicted future probability of presence as the basis for generating simulated future presence-absence datasets.
-This procedure inherently incorporates some uncertainty by randomly determining where the species is present (though uncertainty in the probabilities themselves could not be incorporated, as they were not available).
+This procedure inherently incorporates some uncertainty by randomly determining where the species is present (though uncertainty in the probabilities themselves could not be incorporated, as it is not possible to obtain them from Phenofit).
 Thus, the sub-model likelihood is simply the probability, given the predictions of the metamodel, of observing a simulated dataset \(X_s\) that is randomly drawn from the phenofit predictions \(\psi_s\); i.e., \(X_s = f(\psi_s)\):
 \begin{equation}
 \label{eq:integrated2}
@@ -430,27 +422,18 @@ and \(\theta_S\) is the model relating the Phenofit predictions to the metamodel
 Furthermore, the integration is performed on the \emph{predictions} of the sub-model directly, rather than on compatible parameters as in Example 1. 
 Thus, the metamodel must appear in the sub-model likelihood.
 
-\mt{Comments about this from the group discussion. The integrated present predictions are confusing, because that panel is not addressing the main modeling question. It would be a good idea to emphasize this; that the modeling approach reflects the questions being asked, and it is important to carefully identify these questions.}
-For present climates, the predictions of Phenofit (Fig \ref{fig:ex2}A) were largely similar to those of the naive SDM (Fig \ref{fig:ex2}C). 
-Furthermore, variance in the predictions of the naive model was relatively low throughout the spatial domain (Fig \ref{fig:ex2}E).
-\ks{provide specific figures for variance of the different models}
-Similar patterns were repeated for analogous climates under the future scenario (Fig \ref{fig:ex2}D); however these predictions differed considerably from the predictions of the mechanistic sub-model (Fig \ref{fig:ex2}B), and uncertainty for the projection was relatively high, particularly for eastern Canada (Fig \ref{fig:ex2}F).
-\aa{ instead of calling it 'mechanistic sub-model' I suggest saying Phenofit, for consistency.}
-In general, Phenofit predicted considerably less northward migration by 2080.
-The integrated model, which included both the presence-absence data as well as the Phenofit predictions for the future, made intermediate predictions in terms of northward range shifts for sugar maple (Fig \ref{fig:ex2}H).
-Globally, the integrated model expressed somewhat more uncertainty 
-\wt{for the future}
-than the naive model (Fig \ref{fig:ex2}J), reflecting the divergent predictions of Phenofit and the naive model.
-\wt{Are you sure? From the map, I would have said the reverse.}
-However, in areas where the naive model performed worst (e.g., eastern Canada), the level of uncertainty in the integrated model was similar to the uncertainty in other locations.
-Unsurprisingly, integration resulted in worse predictions for the present distribution of the species (Fig \ref{fig:ex2}G) compared with either the naive model or Phenofit in isolation.
-\aa{it may not be unsurprising that integration yields worse predictions than the other 2 models, but it is striking to see that it predicts such high suitabilities in southeastern US. In my opinion, it is not sufficiently explained why this should be considered as expected. I may have missed the point, but this is likely to happen to other readers also.}
-\mt{This ties in with the group discussion in Grenoble}
-Conventional SDMs are quite good at producing empirical models of species distributions under present climatic regimes, and the naive model here could be further improved with the addition of more parameters or the inclusion of ensemble forecasting.
-This is due to the integration focusing on future predictions; if integration was desired for the present range of the species (perhaps as a way to more accurately quantify uncertainty), a better approach would have been to use the present predictions from Phenofit.
-Unfortunately, validation is difficult for projections, as we lack data to evaluate model performance.
-For the desired outcome of this model (future projections), validations against present data may not be useful; the predictions of naive model were superior (AUC = 0.99) to those of the integrated model (AUC = 0.96), yet the future predictions of the integrated model may be more realistic than those of the naive model.
-
+Considering the models individually, the predictions of Phenofit were much more conservative than those of the naive model (Fig \ref{fig:ex2}).
+Although both models predicted a northward range shift, the change under Phenofit was limited to approximately 200 km north of the present range limit of the species, compared with more than 900 km for the naive model.
+Phenofit also predicted little change in the southern range limit of the species, while the naive model projected a lack of suitability over the southern half of the present distribution.
+Model integration produced predictions that were intermediate between the extremes set by the individual models (Fig \ref{fig:ex2}C).
+The northern limit of the species was forecast to move by approximately 400--500 km, with reduced suitabilities but little extirpation throughout the southern portion of the present range.
+Uncertainty in the naive model was relatively low, particularly for the southern portion of the range where the model predicted extirpation (Fig \ref{fig:ex2}D).
+However, uncertainty in the predictions was locally extreme, particularly in portions of eastern Canada.
+Prediction uncertainty was generally increased for the integrated model relative to the naive model (Fig \ref{fig:ex2}E), likely due to the large amount of disagreement in the predictions of the two models.
+Unfortunately, validation of future projections is not possible due to a lack of data with which to compare model predictions.
+However, model integration in this case provides a greater degree of humility in interpreting the predictions; for example, the naive model predicted with a high degree of certainty that much of the southern portion of the present range of sugar maple will be unsuitable by 2080.
+The integrated model suggests that we should not be so confident in this interpretation.
+Furthermore, the relatively high variance in predictions in the south suggests that further exploration of limiting factors in that region may be useful in providing further understanding and more precise predictions for changes to the distribution of this species.
 
 
 %% ----------------------------------
@@ -666,17 +649,17 @@ We acknowledge funding from the Quebec Centre for Biodiversity Science as well a
 
 %==================
 % FIGURE 5
-%% 140 words
+%% 125 words
 %TC:break fig 5
-\aa{Figure 5E and 5F: the legend should say 'naive SDM', as in 5C and 5D.}
-\aa{Another comment about this figure: have you considered showing the actual current distribution of the species? I am not saying it is needed to understand anything, but if I was a reviewer I think I would ask for it, just to compare with predictions from both the SDM and Phenofit, and especially to assess how worse are predictions of the integrated model as compared to SDM and Phenofit.}
 \textbf{Figure \ref{fig:ex2}:}
 	Results of model integration for sugar maple, \emph{Acer saccharum}.
-	The mechanistic sub-model Phenofit predicts present (A) and future (B) suitability using phenological information, but does not provide estimates of uncertainty.
-	Predictions from a naive metamodel for the present (C) were quite similar to the sub-model, but future predictions  differed (D).
-	Uncertainty in future projections was quite high in the eastern portion of the range (F) relative to uncertainty in predictions for the present (E).
-	Model integration resulted in poor predictions for present range (G), with future predictions that were intermediate between the two models (H).
-	Uncertainty in the integrated model (I, J) was generally greater than in the naive model, reflecting the disagreement between the naive model and the sub-model, but there were fewer extremes in model uncertainty when projecting the integrated model (J) compared with the naive model (F).
+	All panels show information using predicted climate from 2080 under the HadA2 scenario (see main text).
+	For reference, the present range of the species is outlined in red \citep{Little1971}.
+	The mechanistic sub-model Phenofit (A) predicted fairly small shifts sugar maple range.
+	In contrast, the naive model (B) projected large northward shifts in suitable habitat.
+	Model integration (C) produced predictions that were intermediate between the two models.
+	Uncertainty in the naive model (D) was fairly low, except for some portions of the northeast where uncertainty was extreme.
+	Model integration produced uncertainty (E) that was globally somewhat higher reflecting the disagreement between the naive model (B) and the sub-model (A), but with fewer extremes in prediction uncertainty.
 	
 
 %==================

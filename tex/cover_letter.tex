@@ -1,0 +1,81 @@
+%%%%
+%
+%	cover letter for initial submission the week of Oct 13, 2014
+%
+%%%%
+
+\documentclass[11pt]{letter}
+\usepackage[margin=1in]{geometry}
+
+\makeatletter
+\renewcommand{\closing}[1]{\par\nobreak\vspace{\parskip}%
+  \stopbreaks
+  \noindent
+  \ifx\@empty\fromaddress\else
+  \hspace*{\longindentation}\fi
+  \parbox{\indentedwidth}{\raggedright
+       \ignorespaces #1\\[1\medskipamount]%
+       \ifx\@empty\fromsig
+           \fromname
+       \else \fromsig \fi\strut}%
+   \par}
+\makeatother
+
+\usepackage{fontspec} 
+\defaultfontfeatures{Mapping=tex-text} % converts LaTeX specials (``quotes'' --- dashes etc.) to unicode
+\newopentypefeature{Contextuals}{NoAlternate}{-calt} % enable turning off the crazy Q in Garamond Premier Pro
+\usepackage{xunicode}
+\setmainfont{Garamond Premier Pro}
+\setsansfont[Scale=0.9]{Optima Regular} 
+
+\usepackage{wallpaper}
+
+\signature{Matthew V. Talluto, \\
+	Isabelle Boulangeat, \\
+	Dominique Gravel \\
+	Départament du Biologie \\
+	Université du Québec à Rimouski \\ 
+	mtalluto@gmail.com}
+\address{Matthew V. Talluto, Ph.D. \\
+	Départament du Biologie \\
+	300, Allée des Ursulines \\
+	Rimouski, Québec G5L 3A1, Canada \\
+	mtalluto@gmail.com}
+
+\begin{document}
+\addfontfeatures{Contextuals=NoAlternate}   % turn off the crazy Q in Garamond Premier Pro
+\ThisULCornerWallPaper{0.22}{uqar-logo2}
+
+\begin{letter}{Marcel Holyoak \\ 
+	Editor-in-Chief \\
+	\emph{Ecology Letters}
+}
+\opening{Dear Dr. Holyoak,}
+
+We are pleased to submit a manuscript titled ``Cross-scale integration of knowledge for predicting species ranges: a metamodeling framework''. 
+A proposal for the manuscript was reviewed and accepted by Dr. Bascompte on 2 October, 2014. 
+We would appreciate your consideration of our manuscript for the \emph{Ideas and Perspectives} section of \emph{Ecology Letters}.
+
+We present a novel framework for integrating small-scale, more mechanistic models into large-scale correlative species distribution models in order to improve the forecasts of these models.
+The processes generating species ranges are complex and operate at multiple scales.
+Consequently, a wealth of theory (e.g., metapopulation theory, niche theory, and complexity theory) underlies models of species ranges, resulting in a diversity of approaches.
+In practice, however, most models do not include all available information; for example, correlative models predicting presence/absence as a function of climate often ignore smaller-scale processes such as growth, fecundity, and dispersal.
+Furthermore, individual models often produce distinct predictions for the same species, with no simple way to reconcile these predictions.
+Our contribution is the first to propose a conceptual and analytical framework that goes further than \emph{a posteriori} aggregation of predictions from different models. 
+We use hierarchical Bayesian methods to integrate knowledge at varying ecological scales in order to provide more robust predictions future species distributions.
+Moreover, our method explicitly quantifies uncertainty and propagates it from all information sources.
+This is of crucial for identifying knowledge gaps, as thus as a to guide future research.
+We illustrate our approach using two examples, and demonstrate that the framework can reduce bias and uncertainty when projecting beyond the range of the original data.
+In order to provide a platform for continuing to develop the framework, we include all code and data for the examples as supporting information with the manuscript.
+Understanding range shifts are of broad interest for both theoretical and applied ecologists, and we believe that our manuscript represents an important step toward a more holistic approach for forecasting species ranges.
+
+This manuscript represents original unpublished work and is not under consideration for publication elsewhere. 
+No portion of it is published, in press, submitted, or in preparation for submission elsewhere; however, we use previously published data (with permission and appropriate citation) in our second example
+The authors are aware of no conflicts of interest regarding publication of this manuscript. 
+All authors have reviewed this work and approved it for submission. 
+Thank you for considering our manuscript for the \emph{Ideas and Perspectives} section, and we look forward to your response.
+
+\closing{Sincerely,}
+
+\end{letter}
+\end{document}
