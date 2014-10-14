@@ -118,7 +118,7 @@
 \author[10]{Jean Liénard (jean.lienard@gmail.com)}
 \author[4]{Dan McKenney (Dan.McKenney@nrcan-rncan.gc.ca)}
 \author[2,3]{Kevin A. Solarik (kevinsolarik@hotmail.com)}
-\author[10]{Nickolay Strigul (nick.strigul@vancouver.wsu.edu)}
+\author[10]{Nikolay Strigul (nick.strigul@vancouver.wsu.edu)}
 \author[11, 12]{Wilfried Thuiller (wilfried.thuiller@ujf-grenoble.fr)}
 \author[1,2]{Dominique Gravel (dominique\_gravel@uqar.ca)}
 \affil[1]{Département de biologie, Université du Québec à Rimouski, Rimouski, Quebec, Canada}
@@ -130,7 +130,7 @@
 \affil[7]{Institut des Sciences de la Forêt Tempérée (ISFORT), Ripon, Quebec, Canada}
 \affil[8]{The Nature Conservancy Canada, Ottawa, Ontario, Canada}
 \affil[9]{Department of Ecology and Evolutionary Biology, University of Toronto, Toronto, Ontario, Canada}
-\affil[10]{Department of Mathematics, Washington State University Vancouver, Washington, USA}
+\affil[10]{Department of Mathematics, Washington State University, Vancouver, Washington, USA}
 \affil[11]{Université Grenoble Alpes, Laboratoire d’Ecologie Alpine (LECA), F-38000 Grenoble, France}
 \affil[12]{CNRS, Laboratoire d’Ecologie Alpine (LECA), F-38000 Grenoble, France}
 \affil[13]{Author for correspondance. Address: Departament de Biologie, chimie, et geographie, 300, Allée des Ursulines, Rimouski, Quebec G5L 3A1, Canada}
@@ -165,9 +165,9 @@
 	% main text excludes abstract, acknowledgements, references, table and figure legends; limited to 7500 words
 	% boxes limited to 750 words each
 	% figure captions limited to 150 words each
-	\textbf{Word counts: } Abstract: 200; Main Text: 6086; Boxes: 517
+	\textbf{Word counts: } Abstract: 200; Main Text: 5953; Boxes: 516
 
-	\textbf{Number of references:} 79 % limited to 80
+	\textbf{Number of references:} 80 % limited to 80
 
 	\textbf{Number of figures:} 6
 	
@@ -395,7 +395,7 @@ Here we describe briefly the dataset, methods, and the results of the analysis (
 
 \defcitealias{IPCC2001}{IPCC, 2001} % this is needed to make the organizational citation in the following paragraph work correctly
 For the metamodel, we used a dataset of 1013 presence and 13863 absence records at 0.5 degree resolution.
-We used a binomial GLM to relate the suitability for sugar maple to 3 climate variables: the number of degree days, mean summer precipitation, and the ratio of mean annual precipitation to potential evapotranspiration.
+We used a binomial GLM to relate the suitability for sugar maple to 3 climate variables: the number of degree days, mean summer precipitation, and the ratio of annual precipitation to potential evapotranspiration.
 These variables were selected from the initial set of 6 variables from \citet{Morin2009}; see Appendix S2 for details on model construction and selection.
 We selected a GLM for its simplicity and interpretability because our focus was on demonstrating the framework, but more complex methods (e.g., GAM) are compatible with the framework.
 For projection, we used predictions for 2080 from the HadCM3 GCM \citep{Pope2000} driven by the A2 emission scenario \citep{Nakicenovic2000}, and used the parameters of the GLM to forecast suitability into the future (i.e., \(\psi_N\)).
@@ -430,10 +430,16 @@ The northern limit of the species was forecast to move by approximately 400--500
 Uncertainty in the naive model was relatively low, particularly for the southern portion of the range where the model predicted extirpation (Fig \ref{fig:ex2}D).
 However, uncertainty in the predictions was locally extreme, particularly in portions of eastern Canada.
 Prediction uncertainty was generally increased for the integrated model relative to the naive model (Fig \ref{fig:ex2}E), likely due to the large amount of disagreement in the predictions of the two models.
-Unfortunately, validation of future projections is not possible due to a lack of data with which to compare model predictions.
+
+Although validation is an important tool for analyzing the performance of SDMs, it is not possible to validation predictions for the future due to a lack of data with which to compare model predictions.
 However, model integration in this case provides a greater degree of humility in interpreting the predictions; for example, the naive model predicted with a high degree of certainty that much of the southern portion of the present range of sugar maple will be unsuitable by 2080.
 The integrated model suggests that we should not be so confident in this interpretation.
-Furthermore, the relatively high variance in predictions in the south suggests that further exploration of limiting factors in that region may be useful in providing further understanding and more precise predictions for changes to the distribution of this species.
+The naive model predicts suitability based on the values of selected climate variables (in this case, number of degree days, mean summer precipitation, and the ratio of annual precipitation to potential evapotranspiration).
+These variables were selected because they provided the best fit to the present distribution; however, this does not mean these variables are the most important climatic drivers of the processes generating the distribution, nor that they will continue to be important in the future.
+In contrast, Phenofit predicts fitness based on how climate affects phenological timings, frost injury, reproduction, and survival \citep{Chuine2001, Morin2009}.
+Thus, climatic factors that ultimately limit species distribution might be quite different under Phenofit, as illustrated by the substantial differences in the potential future distributions predicted by Phenofit and the naive model.
+In the absence of information about which model is ``best,'' the integrated model provides a consensus view of these two very different models by fitting parameters that maximize the joint likelihood of the presence-absence dataset and the Phenofit predictions.
+Furthermore, the integrated model provides robust estimates of uncertainty; in the southern portion of the range, the relatively high variance in predictions reflects the disagreement in the models and suggests that further exploration of limiting factors in that region may be useful in improving understanding and providing more precise predictions for changes to the distribution of sugar maple.
 
 
 %% ----------------------------------
@@ -572,7 +578,7 @@ By incorporating this knowledge into species distribution models, we can hopeful
 %TC:ignore
 \nolinenumbers
 \section*{Acknowledgements}
-We acknowledge funding from the Quebec Centre for Biodiversity Science as well as NSERC strategic grant 430393-12. Comments from Charles Canham and William Godsoe improved a previous version of this manuscript. WT received support funding from the European Research Council under the European Community's Seven Framework Programme FP7/2007-2013 Grant Agreement no. 281422 (TEEMBIO). 
+We acknowledge funding from the Quebec Centre for Biodiversity Science as well as NSERC strategic grant 430393-12. Comments from Charles Canham, William Godsoe, and Tamara Münkemüller improved a previous version of this manuscript. WT received support funding from the European Research Council under the European Community's Seven Framework Programme FP7/2007-2013 Grant Agreement no. 281422 (TEEMBIO). 
 %TC:endignore
 
 
@@ -588,6 +594,8 @@ We acknowledge funding from the Quebec Centre for Biodiversity Science as well a
 \bibliographystyle{model_integration}
 
 
+\section*{Supporting Information}
+Additional Supporting Information may be downloaded via the online version of this article at Wiley Online Library (www.ecologyletters.com). As a service to our authors and readers, this journal provides supporting information supplied by the authors. Such materials are peer-reviewed and may be reorganized for online delivery, but are not copy-edited or typeset. Technical support issues arising from supporting information (other than missing files) should be addressed to the authors.
 
 %% ----------------------------------
 %

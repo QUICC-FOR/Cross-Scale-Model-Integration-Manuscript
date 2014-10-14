@@ -1,0 +1,23 @@
+Marcel Holyoak
+Editor-in-Chief, Ecology Letters
+Department of Environmental Science and Policy
+University of California
+1 Shields Ave., Davis, CA 95616, USA
+
+Dear Dr. Holyoak,
+
+We are pleased to submit a manuscript titled "Cross-scale integration of knowledge for predicting species ranges: a metamodeling framework". A proposal for the manuscript was reviewed and accepted by Dr. Bascompte on 2 October, 2014. We would appreciate your consideration of our manuscript for the Ideas and Perspectives section of Ecology Letters.
+
+We present a novel framework for integrating small-scale, more mechanistic models into large-scale correlative species distribution models in order to improve the forecasts of these models. The processes generating species ranges are complex and operate at multiple scales. Consequently, a wealth of theory (e. g., metapopulation theory, niche theory, and complexity theory) underlies models of species ranges, resulting in a diversity of approaches. In practice, however, most models do not include all available information; for example, correlative models predicting presence/absence as a function of climate often ignore smaller-scale processes such as growth, fecundity, and dispersal. Furthermore, individual models often produce distinct predictions for the same species, with no simple way to reconcile these predictions. Our contribution is the first to propose a conceptual and analytical framework that goes further than a posteriori aggregation of predictions from different models. We use hierarchical Bayesian methods to integrate knowledge at varying ecological scales in order to provide more robust predictions future species distributions. Moreover, our method explicitly quantifies uncertainty and propagates it from all information sources. This is of crucial for identifying knowledge gaps, as thus as a to guide future research. Understanding range shifts are of broad interest for both theoretical and applied ecologists, and we believe that our manuscript represents an important step toward a more holistic approach for forecasting species ranges.
+
+We illustrate our approach using two examples. In the first, we use simulated data to illustrate the steps of the framework, and show that both bias and uncertainty can be reduced relative to non-integrated models, particularly when projecting beyond the range of some original data sources. For the second, we combine a correlative species distribution model with a process-based phenological model for sugar maple (Acer saccharum), and ecologically and economically important North American tree. The integrated model produced predictions for the potential future range of sugar maple that were more ecologically plausible than the SDM, and provided improvements to the estimates of uncertainty (with reduced uncertainty where the models agreed, and increased uncertainty where the models disagreed). In order to provide a platform for continuing to develop the framework, we include all code and data for the examples as supporting information with the manuscript.
+
+This manuscript represents original unpublished work and is not under consideration for publication elsewhere. No portion of it is published, in press, submitted, or in preparation for submission elsewhere; however, we use previously published data (with permission and appropriate citation) in our second example. The authors are aware of no conflicts of interest regarding publication of this manuscript. All authors have reviewed this work and approved it for submission. Thank you for considering our manuscript for the Ideas and Perspectives section, and we look forward to your response.
+
+Sincerely,
+
+Matthew V. Talluto,
+Isabelle Boulangeat,
+Dominique Gravel
+Departament du Biologie
+Universitee du Quebec a Rimouski
