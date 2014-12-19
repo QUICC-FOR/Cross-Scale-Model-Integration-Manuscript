@@ -1,0 +1,79 @@
+Previous reviews and authors' responses
+
+Referee: 1
+
+Comments for the Authors
+This study shows an application of hierarchical Bayesian modeling (or Bayesian multilevel modeling?) to integrate predictions from statistical and process models of species occurrence and their uncertainties. The aim is to ‘condition the predictions of a metamodel at the target scale…’
+
+Modeling species distributions in a changing environment is an important problem and this paper shows a useful approach. It nicely illustrates the use of hierarchical Bayesian modeling in this problem context using hypothetical and real case studies. They show that model integration using this approach can better characterize our degree of confidence in model predictions. 
+
+The paper is well written. Appropriate literature is cited. The paper is very well referenced. The examples make intuitive and logical sense to me.
+
+1. I did not really understand how “an application of hierarchical Bayesian methods that uses output from multiple models” (“Bayesian multilevel modeling” – the unique aspect of their methods) is fundamentally different from hierarchical Bayesian modeling.  I am not an expert on hierarchical Bayesian modeling and so I cannot rigorously critique that aspect of the paper – I hope another reviewer can judge its novelty and correct implementation (someone like Kiona Ogle).
+
+AUTHORS' RESPONSE:
+Point 1: We have changed the langage slightly to avoid this confusion, as the two terms really refer to the same thing, as the reviewer pointed out.
+
+---------------------
+
+Referee: 2
+
+Comments for the Authors
+The current paper presents a Bayesian framework for model integration in order to predict species distributions. The authors mathematically present the main workflow for integration in Box 1. Subsequently, the authors make use of two examples to illustrate their framework. In example one experimental data is used to constraint a parameter of the correlative model. In the second example, authors constraint a correlative species distribution model with a mechanistic phenological model. The authors further discuss their framework and the several challenges that the framework poses to practitioners and scientists. This is a useful paper and a step ahead in model integration from the modeling perspective and detailed explanations of the Bayesian workflow. That said, I have several concerns regarding the presentation of the information and the conceptual advancement that the framework represents to the field of ecology.
+
+The main advancement that the framework presents over other traditional model integration is the use of a hierarchical Bayesian approach. The authors make a good summary of the appropriateness of Bayesian modeling for model integration and use arguments from Bayesian statisticians to emphasize the benefits of the framework they present. That information, per se, it is not a qualitative advancement in the field of ecology (Ellison 2004, Wickle 2003, etc.). However, I am not aware of such integration  in the field of biogeography. Therefore, such technical advancement may be important for modelers of species distributions.
+
+2. One issue with this paper is that their highly technical basis may difficult widespread readership, but also precludes the conceptual underpinnings that are meaningful to the field of ecology. I think the authors should make an effort to provide integration of several models in an ecological hierarchical basis (see Stewart-Koster et al. 2013 as an example). For instance, the authors spend most of the manuscript explaining the rationale for model integration, but little effort is devoted to understand the cross-scale linkages and rather, it seems that the integration over the outputs do not follow any hierarchy in the processes involved in species distributions. In general I found a very loose use of the term ‘scale’ throughout the paper and rather seems to be a word used in a very general way. 
+
+AUTHORS' RESPONSE:
+Point 2: The reviewer points out that the paper is mostly concerned with the tecnhical aspects of our framework, and suggests adding additional applications of the framework to ecological questions. We fully agree with this point. However, in the interests of brevity, and recognizing that the manuscript is already somewhat long in the first place, we feel that this presentation would be best saved for an additional manuscript, with the focus of the current manuscript remaining methodological.
+
+---------------------
+
+3. Pg.4  What  specific aspect of scale do the authors refer to? What is ecological scale?
+
+“The key idea of our approach is formulate a metamodel that integrates data at the same ecological scale as the desired predictions.”
+
+“As an example, the metamodel could take the form of a simple correlative species distribution model (SDM), with one or more fine-scaled process-based sub-models.”
+
+“The output of sub-models should provide additional predictions at a comparable ecological scale at which the metamodel operates, although it is not necessary for the sub-models to actually operate at the same scale.”
+
+
+AUTHORS' RESPONSE:
+Point 3: We have avoided using a narrow definition of scale, as the cross-scale linkages between sub-model and metamodel will depend on the models used and the questions of interest. We suspect that most readers will be interested in questions of spatial scale, and have tailored our examples as such, however the framework is compatible with other types of scaling as well. We have clarified some language when we are specifically referring to spatial scale, but have left the term "ecological scale," as it best reflects the flexibility in how the framework addresses scale.
+
+---------------------
+
+4. It is my understanding that the idea is to integrate different model outputs. The candidate sub-models operate at different spatial and temporal scales, and imply different levels of biological organization. That is performed via a ‘scaling function’, however the same authors recognize that the challenge of this integration is the temporal scales, how to build the scaling function and how error uncertainty propagate from submodels to metamodel (Pg 16 lines 14). Under this circumstances, the paper left me unconvinced that this paper is goes beyond the mathematical application of Bayesian modeling for integration to be applied to ecology. In this regard, I do not believe that the paper performs a cross-scale integration but rather an output integration or a sort of (very well performed) ensemble modeling. 
+
+
+AUTHORS' RESPONSE:
+Point 4: We do not agree with the reviewer's criticism that our framework is simply integrating outputs, rather than operating across scales; different sub-models in our framework operate at different levels of biological organization. The propagation of error from sub-models to the metamodel, and the ability to incorporate more flexible relationships among sub-models and scales distinguishes our model from ensemble modelling. We have clarified the language in the discussion that discusses these points (see the section starting with line 327).
+
+---------------------
+
+5. I do not think example one is especially illustrative. In a way, integrating knowledge as prior information on a parameter is one of the main motivations in Bayesian modeling. Maybe I missed something, but what is the difference between this example and a typical Bayesian regression where you update parameter values using priors from other experiments or the literature? In my opinion the authors could use their former framework on cross-scale integration of species distribution published in Ecology Letters (Boulangeat et al. 2012) and apply Bayesian integration used here. In other words, use an ecological framework to apply the Bayesian integration processes used here.
+
+AUTHORS' RESPONSE:
+Point 5: The first example is intended to be a very simple demonstration of the framework, such that less experienced readers can follow the presentation of the framework without reading the more abstract and technical presentation in Box 1. Thus, we feel that an example with simulated data is the most appropriate. As to the difference between this and a more traditional application of prior knowledge, the key step is the change in scale between the sub-model and the metamodel. The results from the experiment are not simply used as a prior for the metamodel, as the scale is inappropriate; rather, a simple model is constructed to connect the submodel with the metamodel. We have revised lines 110-118 to clarify the purpose of the examples.
+
+---------------------
+
+6. One of the key, and very useful, messages of this research is that it is possible to constraint responses of correlative species distribution models (the meta model) using mechanistic process based models. In their comparison of their methodology to other integration models the authors state: “it can often be difficult to identify parameters that can be used to connect different modeling frameworks and which parameters can produce meaningful responses (Thuiller et al., 2013)” [regarding ‘hybrid models’]. Well, I may be missing something but isn’t that also challenging for your approach? For instance, the relationship between the model relating the metamodel and the submodel can be challenging to fit or very difficult to interpret ecologically.
+
+AUTHORS' RESPONSE:
+Point 6: The reviewer has indeed identified a key and very important aspect of our research. An important challenge of hybrid approaches is that parameters connecting models of different scales, which often have little ecological meaning, must be estimated explicitly with data or tuned during the process of model calibration. In our approach, integration can be performed on the submodel outputs and parameters estimated for the metamodel via the likelihood. Thus our approach significantly reduces the challenges of combining these different sources of information; in general, it is a much simpler task to express and compute the likelihood of the outputs of one model given the parameters of another than it is to attempt to accurately describe the processes connecting the two scales at which the models operate. 
+
+---------------------
+
+7. The basis for this model integration is the metamodel, which is a purely correlative model. I do not have a strong opinion about it, but what do authors think of a correlative model being the basis for integration rather than the integration of several mechanistic models without the use of a correlative model? 
+
+AUTHORS' RESPONSE:
+Point 7: We chose correlative models as the meta-model in both examples because they are simple to express at the scale of interest (i.e., an entire range). However, the only requirements for the metamodel are that it produces output at the final desired scale and that it can be estimated in a realistic timeframe using MCMC. For example, the long computational time for a single run of Phenofit, the mechanistic model in the second example, precludes its use as the metamodel. Thus, the meta-model does not necessarily need to be correlative in our approach; computational limitations and the desired modelling objectives should dictate the type of model used.
+
+---------------------
+
+8. Finally...have you, in your experience found issues with model convergence? Would you envision issues with that and ways to solve that if your framework needs to incorporate several submodels? 
+
+AUTHORS' RESPONSE:
+Point 8: We have not yet experienced convergence issues with this framework, however, it is certainly a possibility. Potential remedies include carefully considering the form of the metamodel (and changing or eliminating parameters with very flat likelihoods) and trying alternative algorithms (e.g., approximate Bayesian computation, ABC)

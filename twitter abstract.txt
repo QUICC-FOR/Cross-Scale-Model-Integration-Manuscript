@@ -1,0 +1,1 @@
+Cross-scale model integration can reduce bias and improve uncertainty estimation in species distribution modelling.
