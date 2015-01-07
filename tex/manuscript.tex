@@ -289,7 +289,7 @@ We accomplish model integration by treating the posterior of \(\theta_S\) as pri
 	\overbrace{p(\theta_M \mid X_M, T_M, P_M, \theta_S, \psi_S, P_S)}^\text{integrated posterior}
 	\propto
 	\overbrace{p\left (\psi_S \mid \theta_S,P_S \right )}^{\substack{\text{new information} \\ \text{from sub-model}}}
-	\overbrace{p \left(X_M \mid \theta_M, T_M, P_M \right) P \left(\theta_M \right)}^{\substack{\text{naive metamodel} \\ \text{posterior}}}
+	\overbrace{p \left(X_M \mid \theta_M, T_M, P_M \right) p \left(\theta_M \right)}^{\substack{\text{naive metamodel} \\ \text{posterior}}}
 	\overbrace{p \left(\theta_S \right)}^{\substack{\text{prior for} \\ \text{sub-model}}}	
 \end{equation}
 %-----
@@ -350,7 +350,7 @@ Thus, the sub-model likelihood is simply the probability, given the predictions 
 	p( \theta_M \mid X_M, D_M, \psi_s, \theta_S )
 	\propto 
 	p( X_S = f(\psi_s)\mid \theta_M, \theta_S )
-	p( Y_M \mid \theta_M, D_M ) 
+	p( X_M \mid \theta_M, D_M ) 
 	p( \theta_M )
 	p( \theta_S )
 \end{equation}
