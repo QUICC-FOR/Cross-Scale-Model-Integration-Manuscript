@@ -12,6 +12,9 @@
 \usepackage{natbib} 
 \bibpunct{(}{)}{;}{a}{}{,}
 
+\usepackage{caption}
+\captionsetup{labelformat=simple, labelsep=none}
+
 \usepackage{titling} % controls the way the title information is displayed
 \pretitle{\begin{flushleft}\Large}
 \posttitle{\end{flushleft}}
@@ -101,7 +104,9 @@
 	
 	\textbf{Short title:} Integrated models of species ranges
 	
-	\textbf{Word counts: } 7100
+	\textbf{Abstract word count: } 258
+	
+	\textbf{Main text word count: } 7121	
 	
 	\textbf{Authorship:} All authors contributed substantially to an initial outline of the paper and ideas. MT, IB, and DG built the model and wrote the first draft of the introduction and model description. All authors contributed to the complete first draft and all subsequent revisions to the manuscript.
 		
@@ -113,26 +118,22 @@
 %TC:break abstract
 \linenumbers
 \begin{abstract}
-\noindent \begin{enumerate}
+\noindent
 
-\item Current interest in modeling potential changes to species ranges have resulted in a great diversity of approaches to species distribution modeling.
+Current interest in modeling potential changes to species ranges have resulted in a great diversity of approaches to species distribution modeling.
 However, in general, individual approaches include only a small subset of the available information about a species. 
 Correlative models often predict presence or absence as a function of climate, but ignore  smaller-scale processes such as growth, fecundity, and dispersal.
 Furthermore, different approaches often produce divergent predictions, with no simple method to reconcile them.
-We present a flexible framework for integrating models at multiple scales using hierarchical Bayesian methods.
-
-\item Our framework uses a metamodel, estimated in a hierarchical Bayesian framework, that is constrained by both data directly applied to the metamodel and by the results of one or more sub-models.
+We present a flexible framework for integrating models at multiple scales using hierarchical Bayesian methods. 
+Our framework uses a metamodel, estimated in a hierarchical Bayesian framework, that is constrained by both data directly applied to the metamodel and by the results of one or more sub-models.
 The output of the metamodel is in the form of probabilistic estimates of species presence.
 Metamodel outputs also incorporate uncertainty from both data and process error from all sub-models, and include all of the information used as input for the original scale-specific sub-models.
-\item We illustrate our approach using two examples, and demonstrate that the framework can substantially reduce uncertainty when projecting beyond the range of the original data.
-\item We conclude by discussing the application of our method and its accessibility to conservation biologists and land managers.
+We illustrate our approach using two examples, and demonstrate that the framework can substantially reduce uncertainty when projecting beyond the range of the original data.
+We conclude by discussing the application of our method and its accessibility to conservation biologists and land managers.
 The framework has wide potential for use in species distribution modelling, and can drive better integration of multi-scale data into ecological decision-making.
 Although implementation of our method can be technically challenging, we anticipate the results will be of wide interest, and we encourage collaboration between modelers and practitioners in applying our framework.
 
- 
-
-\end{enumerate}
-\end{abstract}
+ \end{abstract}
 
 %TC:break manuscript
 %% ----------------------------------
@@ -221,7 +222,7 @@ The metamodel attempts to capture the realized distribution of a species; as a c
 However, for the purposes of forecasting, we would like to disentangle the fundamental response of a species to environmental variation from other processes in order to map the climatic envelope of where a species may be found in a natural setting. 
 Prior information of the physiological constraints affecting species distribution is sometimes available, but usually too incomplete to perform a reasonable comparison with the realized distribution.
 For instance, as in this example, a species distribution might be constrained by both temperature and precipitation, but experiments were conducted only over a precipitation gradient at one temperature. 
-We apply our framework here to such heterogeneous sources of information to reduce the bias in parameter estimation and more adequately represent uncertainty (see Appendix 1 in Supporting Information for procedural details and scripts for executing the model).
+We apply our framework here to such heterogeneous sources of information to reduce the bias in parameter estimation and more adequately represent uncertainty (see Appendix S1 in Supporting Information for procedural details and scripts for executing the model).
 
 We consider data collected from a species' historical distribution, where the goal is to predict the distribution following a substantial reduction in precipitation. 
 We will consider \(X_M\) (see Box 1, Fig. \ref{fig:diagram}) to be a vector of $n$ observations that takes the value of one to indicate presence and zero for absence:
@@ -330,12 +331,12 @@ There is considerable interest in comparing correlative and mechanistic projecti
 Despite being a relatively common application of SDMs \citep{Guisan2005}, projecting models parameterized with modern climate data to future climate scenarios remains problematic \citep{Araujo2006}.
 We used our metamodeling framework to inform a climate-based SDM with information obtained from Phenofit, a mechanistic model that predicts a species' probability of presence as a function of the suitability of the environment given the species' phenology \citep{Chuine2001, Morin2009}.
 We used data from \citet{Morin2009} for sugar maple, an economically and ecologically important species occurring in eastern North America.
-Here we describe briefly the dataset, methods, and the results of the analysis (see Appendix 2 for data and scripts to reproduce the analysis).
+Here we describe briefly the dataset, methods, and the results of the analysis (see Appendices S2 and S3 for data and scripts to reproduce the analysis).
 
 \defcitealias{IPCC2001}{IPCC, 2001} % this is needed to make the organizational citation in the following paragraph work correctly
 For the metamodel, we used a dataset of 1013 presence and 13863 absence records at 0.5 degree resolution.
 We used a binomial GLM to relate the suitability for sugar maple to 3 climate variables: the number of degree days, mean summer precipitation, and the ratio of annual precipitation to potential evapotranspiration.
-These variables were selected from the initial set of 6 variables from \citet{Morin2009}; see Appendix 2 for details on model construction and selection.
+These variables were selected from the initial set of 6 variables from \citet{Morin2009}; see Appendix S2 for details on model construction and selection.
 We selected a GLM for its simplicity and interpretability because our focus was on demonstrating the framework, but more complex methods (e.g., GAM) are compatible with the framework.
 For projection, we used predictions for 2080 from the HadCM3 GCM \citep{Pope2000} driven by the A2 emission scenario \citep{Nakicenovic2000}, and used the parameters of the GLM to forecast suitability into the future (i.e., \(\psi_N\)).
 Phenofit produces predictions at continental scales; thus the scaling function \(g\) was incorporated within Phenofit itself and we performed model integration directly on the outputs.
@@ -516,13 +517,24 @@ By incorporating this knowledge into species distribution models, we can hopeful
 
 %TC:ignore
 \section*{Data Accessibility}
-All data, as well as all code required to repeat the analyses, have been uploaded as online supporting information.
+All data, as well as all code required to repeat the analyses, have been uploaded as online supporting information in Appendix S3.
 
-\nolinenumbers
+
+%% ----------------------------------
+%
+%     Supporting information
+%
+%% ----------------------------------
+\section*{Supporting information}
+Appendix S1: Supporting information on using the code and data for example 1. \\
+Appendix S2: Supporting information on using the code and data for example 2. \\
+Appendix S3: Scripts and data required to reproduce the analyses.
+
 \section*{Acknowledgements}
 We acknowledge funding from the Quebec Centre for Biodiversity Science as well as NSERC strategic grant 430393-12. Comments from Charles Canham, William Godsoe, and Tamara Münkemüller improved a previous version of this manuscript. WT received support funding from the European Research Council under the European Community's Seven Framework Programme FP7/2007-2013 Grant Agreement no. 281422 (TEEMBIO). 
 %TC:endignore
 
+\nolinenumbers
 
 %TC:break references
 %% ----------------------------------
@@ -538,9 +550,66 @@ We acknowledge funding from the Quebec Centre for Biodiversity Science as well a
 
 %% ----------------------------------
 %
+%     BIOSKETCH (GEB)
+%
+%% ----------------------------------
+
+\section*{Biosketch}
+%TC:break biosketch
+The Theoretical Ecosystem Ecology lab group at the Université du Québec à Rimouski focuses on interactions between species distributions, community structure and ecosystem functioning.
+We apply principles of spatial ecology to a variety of organisms and systems, from bacteria to entire forests.
+We also use theoretical and simulation models to develop hypotheses and extend our work beyond the technical limitations of empirical studies.
+More information can be found at: http://chaire-eec.uqar.ca/
+
+%% ----------------------------------
+%
 %     FIGURES
 %
 %% ----------------------------------
+
+\newpage
+%TC:break fig legends
+\section*{Figure Legends}
+\begin{flushleft}
+
+\textbf{Figure 1:} The parameters of a correlative metamodel model (left column) are conditioned on the predictions of a mechanistic sub-model (right column).
+	The metamodel ($\theta_M$) operates at a single scale and uses occurrence data (\(X_M\)) and explanatory variables ($D_M$) to produce a naive (i.e., not conditioned on sub-models) prediction $\psi_N$.
+	The mechanistic sub-model \(\theta_S\) includes data about the response (\(X_S\)) of lower-level behaviours of the system to explanatory variables ($D_S$). 
+	The models are integrated by calibrating $\theta_M$ to data ($X_M, D_M$) as well as the output of the sub-model ($\psi_S$). 
+	This is possible because predictions from the sub-model ($\psi_S$) emerge at the scale of the metamodel via a scaling function \(g(\theta_S, D_S)\).
+	This prediction incorporates multiple sources of information coming from several calibration datasets (i.e., $X_M, D_M, X_S, $ and $D_S$) as well as from multiple types of models (i.e., $\theta_M$ and $\theta_S$).
+
+\textbf{Figure 2:} Two simulated datasets used to illustrate the model integration framework.
+	(a) Presences (circles) or absences (x's) of the species in ecological space, where precipitation ranges from 0--1.
+	(b) Growth rate ($r$) as a function of manipulations to the precipitation regime (whiskers show $\pm$ 1 SE), with a larger range for precipitation (i.e., \(-\)1--1).
+	The dashed line shows the threshold above which the species net growth rate is positive (implying presence).
+	Axis scales for temperature and precipitation are arbitrary, but note the different scales on the horizontal axes.
+
+\textbf{Figure 3:} Results of integration showing the probability of presence (\(\psi\)) when considering only precipitation.
+	(a) Naive model, using only presence-absence data. Uncertainty increases dramatically when attempting to project beyond the scope of the source data (represented by the horizontal line above the bottom axis).
+	(b) Mechanistic model, using observations of an experiment to infer probability of presence. Predictions are highly precise due to high quality source data, but are likely to be overly optimistic given the simplicity in assuming only precipitation determines probability of presence (see text).
+	(c) Integrated model, showing predictions that are intermediate between the two sub-models and uncertainty that is reduced compared to (a).
+	Uncertainty is represented as dashed lines, showing the limits of 90\% Bayesian credible intervals.
+
+\textbf{Figure 4:} Maps showing the predicted probability of presence (\(\psi\); (a) and (c)) and the standard deviation of \(\psi\) ((b) and (d)) for the naive and integrated models.
+	Historical (e.g., where presence-absence samples were available) and predicted future precipitation regimes are shown below the horizontal axes.
+	Uncertainty in the naive model was extreme when predicting beyond the historical precipitation regime.
+	Uncertainty in the integrated model was considerably reduced, reflecting the additional information provided by the mechanistic model.
+
+\textbf{Figure 5:} Results of model integration for sugar maple.
+	All panels show information using predicted climate from 2080 under the HadA2 scenario (see main text).
+	For reference, the present range of the species is outlined in red \citep{Little1971}.
+	The mechanistic sub-model Phenofit (A) predicted fairly small shifts sugar maple range.
+	In contrast, the naive model (B) projected large northward shifts in suitable habitat.
+	Model integration (C) produced predictions that were intermediate between the two models.
+	Uncertainty in the naive model (D) was fairly low, except for some portions of the northeast where uncertainty was extreme.
+	Model integration produced uncertainty (E) that was globally somewhat higher reflecting the disagreement between the naive model (B) and the sub-model (A), but with fewer extremes in prediction uncertainty.
+
+\textbf{Figure 6:} Sample workflow for applying the models presented in the first example in a management context.
+	Critical steps include specifying the metamodel, identifying additional sources of information to be used as constraints on the metamodel, and using the integrated prediction for decision-making.
+	As additional information becomes available from monitoring the results of management, this information can be incorporated in additional sub-models to further refine the metamodel.
+
+\end{flushleft}
 
 %==================
 % FIGURE 1
@@ -548,12 +617,7 @@ We acknowledge funding from the Quebec Centre for Biodiversity Science as well a
 \newpage
 \begin{figure}[h!]
 \input{diagram}
-\caption{The parameters of a correlative metamodel model (left column) are conditioned on the predictions of a mechanistic sub-model (right column).
-	The metamodel ($\theta_M$) operates at a single scale and uses occurrence data (\(X_M\)) and explanatory variables ($D_M$) to produce a naive (i.e., not conditioned on sub-models) prediction $\psi_N$.
-	The mechanistic sub-model \(\theta_S\) includes data about the response (\(X_S\)) of lower-level behaviours of the system to explanatory variables ($D_S$). 
-	The models are integrated by calibrating $\theta_M$ to data ($X_M, D_M$) as well as the output of the sub-model ($\psi_S$). 
-	This is possible because predictions from the sub-model ($\psi_S$) emerge at the scale of the metamodel via a scaling function \(g(\theta_S, D_S)\).
-	This prediction incorporates multiple sources of information coming from several calibration datasets (i.e., $X_M, D_M, X_S, $ and $D_S$) as well as from multiple types of models (i.e., $\theta_M$ and $\theta_S$).}
+\caption{}
 \label{fig:diagram}
 \end{figure}
 
@@ -564,11 +628,7 @@ We acknowledge funding from the Quebec Centre for Biodiversity Science as well a
 \newpage
 \begin{figure}[h!]
 	\includegraphics{ex1_sampling.pdf}
-	\caption{Two simulated datasets used to illustrate the model integration framework.
-	(a) Presences (circles) or absences (x's) of the species in ecological space, where precipitation ranges from 0--1.
-	(b) Growth rate ($r$) as a function of manipulations to the precipitation regime (whiskers show $\pm$ 1 SE), with a larger range for precipitation (i.e., \(-\)1--1).
-	The dashed line shows the threshold above which the species net growth rate is positive (implying presence).
-	Axis scales for temperature and precipitation are arbitrary, but note the different scales on the horizontal axes.}
+	\caption{}
 	\label{fig:ex1_sampling}
 \end{figure}
 
@@ -579,11 +639,7 @@ We acknowledge funding from the Quebec Centre for Biodiversity Science as well a
 \newpage
 \begin{figure}[h!]
 	\includegraphics{ex1_precip.pdf}
-	\caption{Results of integration showing the probability of presence (\(\psi\)) when considering only precipitation.
-	(a) Naive model, using only presence-absence data. Uncertainty increases dramatically when attempting to project beyond the scope of the source data (represented by the horizontal line above the bottom axis).
-	(b) Mechanistic model, using observations of an experiment to infer probability of presence. Predictions are highly precise due to high quality source data, but are likely to be overly optimistic given the simplicity in assuming only precipitation determines probability of presence (see text).
-	(c) Integrated model, showing predictions that are intermediate between the two sub-models and uncertainty that is reduced compared to (a).
-	Uncertainty is represented as dashed lines, showing the limits of 90\% Bayesian credible intervals.}
+	\caption{}
 	\label{fig:ex1_precip}
 \end{figure}
 
@@ -594,10 +650,7 @@ We acknowledge funding from the Quebec Centre for Biodiversity Science as well a
 \newpage
 \begin{figure}[h!]
 	\includegraphics[width=5.25in]{ex1_map.pdf}
-	\caption{Maps showing the predicted probability of presence (\(\psi\); (a) and (c)) and the standard deviation of \(\psi\) ((b) and (d)) for the naive and integrated models.
-	Historical (e.g., where presence-absence samples were available) and predicted future precipitation regimes are shown below the horizontal axes.
-	Uncertainty in the naive model was extreme when predicting beyond the historical precipitation regime.
-	Uncertainty in the integrated model was considerably reduced, reflecting the additional information provided by the mechanistic model.}
+	\caption{}
 	\label{fig:ex1_map}
 \end{figure}
 
@@ -608,14 +661,7 @@ We acknowledge funding from the Quebec Centre for Biodiversity Science as well a
 \newpage
 \begin{figure}[h!]
 	\includegraphics[width=6in]{ex2.pdf}
-	\caption{Results of model integration for sugar maple.
-	All panels show information using predicted climate from 2080 under the HadA2 scenario (see main text).
-	For reference, the present range of the species is outlined in red \citep{Little1971}.
-	The mechanistic sub-model Phenofit (A) predicted fairly small shifts sugar maple range.
-	In contrast, the naive model (B) projected large northward shifts in suitable habitat.
-	Model integration (C) produced predictions that were intermediate between the two models.
-	Uncertainty in the naive model (D) was fairly low, except for some portions of the northeast where uncertainty was extreme.
-	Model integration produced uncertainty (E) that was globally somewhat higher reflecting the disagreement between the naive model (B) and the sub-model (A), but with fewer extremes in prediction uncertainty.}
+	\caption{}
 	\label{fig:ex2}
 \end{figure}
 
@@ -626,9 +672,7 @@ We acknowledge funding from the Quebec Centre for Biodiversity Science as well a
 \newpage
 \begin{figure}[h!]
 	\includegraphics{management.pdf}
-	\caption{Sample workflow for applying the models presented in the first example in a management context.
-	Critical steps include specifying the metamodel, identifying additional sources of information to be used as constraints on the metamodel, and using the integrated prediction for decision-making.
-	As additional information becomes available from monitoring the results of management, this information can be incorporated in additional sub-models to further refine the metamodel.}
+	\caption{}
 	\label{fig:management}
 \end{figure}
 
@@ -644,7 +688,6 @@ We acknowledge funding from the Quebec Centre for Biodiversity Science as well a
 \newpage
 \linenumbers
 \section*{Box 1: Model description}
-% Boxes are limited to 750 words
 We begin with a simple correlative model (i.e. calibrated with data provided at the same ecological scale as predictions), characterized in a Bayesian framework to allow further integration. 
 We refer to this model (with associated parameters) as the metamodel, \(\theta_M\), and it is parameterized with information on the species' presence, \(X_M\), along with associated covariates (e.g., climate, presence/absence of interacting species, etc.), collectively referred to as \(D_M\). 
 The naive (i.e., not integrated with information from sub-models) probability that a species is present, \(\psi_N\), is a deterministic function of the metamodel and its covariates::

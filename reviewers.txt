@@ -1,0 +1,24 @@
+James S. Clark
+Duke University
+jimclark@duke.edu
+non-preferred
+
+Margaret Evans
+University of Arizona
+mekevans@email.arizona.edu
+preferred
+
+Laëtitia Buisson
+Université Paul Sabatier
+laetitia.buisson@univ-tlse3.fr
+preferred
+
+Céline Bellard
+University College, London
+cber@ucl.ac.uk
+preferred
+
+Niklaus E. Zimmermann
+Swiss Federal Research Institute
+niklaus.zimmermann@wsl.ch
+preferred
