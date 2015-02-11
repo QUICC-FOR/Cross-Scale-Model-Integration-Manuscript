@@ -10,7 +10,7 @@
 
 \usepackage{setspace}
 \usepackage{natbib} 
-\bibpunct{(}{)}{;}{a}{}{,}
+%\bibpunct{(}{)}{;}{a}{}{,} -- uncomment this for the final version
 
 \usepackage{caption}
 \captionsetup{labelformat=simple, labelsep=none}
@@ -190,7 +190,7 @@ We illustrate our approach with two examples.
 We begin with a hypothetical example, using simulated data, that presents a simplified application of our framework to multiple sources of information from different scales (Example 1).
 In a second example, we apply the framework to combine presence-absence information with phenological data to improve uncertainty estimates and reduce bias when predicting changes to the range of sugar maple (\emph{Acer saccharum} Marsh.), a widespread foundation tree species from eastern North America, in response to climate change.
 Both examples are presented with complete code and data (in Supporting Information).
-Finally, we provide a more formal mathematical presentation in Box 1.
+Finally, we provide a more formal mathematical presentation in Appendix S1.
 
 %% ----------------------------------
 %
@@ -206,8 +206,8 @@ As an example, the metamodel could take the form of a simple correlative species
 Ideally, each sub-model incorporates different data types and hypotheses that specify underlying ecological mechanisms contributing to the model output.
 The output of sub-models should provide additional predictions at a comparable ecological scale at which the metamodel operates, although it is not necessary for the sub-models to actually operate at the same scale.
 For sub-models operating at a substantially different scale than the metamodel, scaling functions will be required; however, these functions can be simple while still contributing useful information to the metamodel (see Example 1). 
-All predictions may therefore be integrated in a single Bayesian framework when evaluating the parameters of the metamodel (see Box 1, Fig. \ref{fig:diagram}).
-We present and apply the framework here with two examples, and follow with a more formal presentation in Box 1.
+All predictions may therefore be integrated in a single Bayesian framework when evaluating the parameters of the metamodel (see Appendix S1, Fig. \ref{fig:diagram}).
+We present and apply the framework here with two examples, and follow with a more formal presentation in Appendix S1.
 
 
 %% ----------------------------------
@@ -222,10 +222,10 @@ The metamodel attempts to capture the realized distribution of a species; as a c
 However, for the purposes of forecasting, we would like to disentangle the fundamental response of a species to environmental variation from other processes in order to map the climatic envelope of where a species may be found in a natural setting. 
 Prior information of the physiological constraints affecting species distribution is sometimes available, but usually too incomplete to perform a reasonable comparison with the realized distribution.
 For instance, as in this example, a species distribution might be constrained by both temperature and precipitation, but experiments were conducted only over a precipitation gradient at one temperature. 
-We apply our framework here to such heterogeneous sources of information to reduce the bias in parameter estimation and more adequately represent uncertainty (see Appendix S1 in Supporting Information for procedural details and scripts for executing the model).
+We apply our framework here to such heterogeneous sources of information to reduce the bias in parameter estimation and more adequately represent uncertainty (see Appendix S2 in Supporting Information for procedural details and scripts for executing the model).
 
 We consider data collected from a species' historical distribution, where the goal is to predict the distribution following a substantial reduction in precipitation. 
-We will consider \(X_M\) (see Box 1, Fig. \ref{fig:diagram}) to be a vector of $n$ observations that takes the value of one to indicate presence and zero for absence:
+We will consider \(X_M\) (see Appendix S1, Fig. \ref{fig:diagram}) to be a vector of $n$ observations that takes the value of one to indicate presence and zero for absence:
 \begin{equation}
 X_M = \{x_{M,1}, x_{M,2}, \ldots, x_{M,n}\}
 \end{equation}
@@ -336,7 +336,7 @@ Here we describe briefly the dataset, methods, and the results of the analysis (
 \defcitealias{IPCC2001}{IPCC, 2001} % this is needed to make the organizational citation in the following paragraph work correctly
 For the metamodel, we used a dataset of 1013 presence and 13863 absence records at 0.5 degree resolution.
 We used a binomial GLM to relate the suitability for sugar maple to 3 climate variables: the number of degree days, mean summer precipitation, and the ratio of annual precipitation to potential evapotranspiration.
-These variables were selected from the initial set of 6 variables from \citet{Morin2009}; see Appendix S2 for details on model construction and selection.
+These variables were selected from the initial set of 6 variables from \citet{Morin2009}; see Appendix S3 for details on model construction and selection.
 We selected a GLM for its simplicity and interpretability because our focus was on demonstrating the framework, but more complex methods (e.g., GAM) are compatible with the framework.
 For projection, we used predictions for 2080 from the HadCM3 GCM \citep{Pope2000} driven by the A2 emission scenario \citep{Nakicenovic2000}, and used the parameters of the GLM to forecast suitability into the future (i.e., \(\psi_N\)).
 Phenofit produces predictions at continental scales; thus the scaling function \(g\) was incorporated within Phenofit itself and we performed model integration directly on the outputs.
@@ -399,7 +399,7 @@ The difficulty of including information from experimental studies or ecological 
 Even when a link can be formed to include this information, it often is oversimplified to facilitate computation \citep{Gallien2010}. 
 The methods presented in this study aim to overcome some of these limitations through the use of Bayesian statistics.
 Bayesian methods provide a natural framework for the incorporation of multiple sources of information.
-Because the metamodel is expressed as a series of conditional probabilities (see Box 1), this information can be included simply provided the probability of the metamodel, conditional on information from the sub-models, can be expressed mathematically.
+Because the metamodel is expressed as a series of conditional probabilities (see Appendix S1), this information can be included simply provided the probability of the metamodel, conditional on information from the sub-models, can be expressed mathematically.
 Furthermore, Bayesian methods produce results as an entire distribution instead of a single point, allowing for a comprehensive understanding of the uncertainty of estimates \citep{Link2010}. 
 The estimation of model parameters (and predictions) as distributions can also help decrease overparameterization that can be a concern for hybrid models. 
 Finally, Bayesian methods inherently allow for feedbacks or interactions between sub models, which may be a more realistic representation of ecological dynamics where many factors may simultaneously influence the system.
@@ -517,7 +517,7 @@ By incorporating this knowledge into species distribution models, we can hopeful
 
 %TC:ignore
 \section*{Data Accessibility}
-All data, as well as all code required to repeat the analyses, have been uploaded as online supporting information in Appendix S3.
+All data, as well as all code required to repeat the analyses, have been uploaded as online supporting information in Appendix S4.
 
 
 %% ----------------------------------
@@ -526,9 +526,10 @@ All data, as well as all code required to repeat the analyses, have been uploade
 %
 %% ----------------------------------
 \section*{Supporting information}
-Appendix S1: Supporting information on using the code and data for example 1. \\
-Appendix S2: Supporting information on using the code and data for example 2. \\
-Appendix S3: Scripts and data required to reproduce the analyses.
+Appendix S1: Complete model description. \\
+Appendix S2: Supporting information on using the code and data for example 1. \\
+Appendix S3: Supporting information on using the code and data for example 2. \\
+Appendix S4: Scripts and data required to reproduce the analyses.
 
 \section*{Acknowledgements}
 We acknowledge funding from the Quebec Centre for Biodiversity Science as well as NSERC strategic grant 430393-12. Comments from Charles Canham, William Godsoe, and Tamara Münkemüller improved a previous version of this manuscript. WT received support funding from the European Research Council under the European Community's Seven Framework Programme FP7/2007-2013 Grant Agreement no. 281422 (TEEMBIO). 
@@ -677,85 +678,6 @@ More information can be found at: http://chaire-eec.uqar.ca/
 \end{figure}
 
 
-%% ----------------------------------
-%
-%     TEXT BOX
-%
-%% ----------------------------------
-
-%TC:break box 1
-
-\newpage
-\linenumbers
-\section*{Box 1: Model description}
-We begin with a simple correlative model (i.e. calibrated with data provided at the same ecological scale as predictions), characterized in a Bayesian framework to allow further integration. 
-We refer to this model (with associated parameters) as the metamodel, \(\theta_M\), and it is parameterized with information on the species' presence, \(X_M\), along with associated covariates (e.g., climate, presence/absence of interacting species, etc.), collectively referred to as \(D_M\). 
-The naive (i.e., not integrated with information from sub-models) probability that a species is present, \(\psi_N\), is a deterministic function of the metamodel and its covariates::
-%-----
-\begin{equation}
-\label{eq:sdm1}
-	\psi_N = f(\theta_M, D_M)
-\end{equation}
-%-----
-The goal of model fitting is to estimate the posterior probability distribution for the parameters of \(\theta_M\), given the observations (\(X_M\)) and covariates (\(D_M\)):
-%-----
-\begin{equation}
-\label{eq:sdm2}
-	p( \theta_M \mid X_M, D_M)
-\end{equation}
-%-----
-
-Using Bayes' theorem, we find the posterior probability of \(\theta_M\) as follows:
-%-----
-\begin{equation}
-\label{eq:sdm3}
-	p( \theta_M \mid X_M, D_M ) = \frac{ p( X_M \mid \theta_M, D_M ) p( \theta_M ) } { p(X_M, D_M) }
-\end{equation}
-%-----
-where \(p( X_M \mid \theta_M, D_M )\) is referred to as the likelihood of the observations, \(p(\theta_M )\) is the prior probability of the model, and \(p(X_M, D_M)\) is the normalization constant.
-The normalization constant involves computing integrals that are often impossible to solve analytically. 
-In practice, simulation techniques such as MCMC can be used to sample directly from the posterior distribution, making such computations unnecessary.
-Thus, we use the proportional form of Bayes' Theorem:
-%-----
-\begin{equation}
-\label{eq:sdm4}
-	p( \theta_M \mid X_M, D_M ) \propto p( X_M \mid \theta_M, D_M ) p( \theta_M ) 
-\end{equation}
-%-----
-
-The role of the metamodel is to integrate data at the same ecological scale of predictions.
-Additional sub-models require outputs that should be comparable to this given ecological scale (e.g. constraining presence or absence on the landscape).
-Formally, we will add an additional model, \(\theta_S\), that is based on a different set of hypotheses and that makes predictions \((\psi_S)\) based on an additional dataset \((X_S, D_S)\):
-%-----
-\begin{equation}
-\label{eq:model2-1}
-	\psi_S = g(\theta_S, X_S, D_S)
-\end{equation}
-%-----
-
-For integration to be successful, it must be possible to compute the likelihood of this prediction given the metamodel, \(p \left( \psi_S \mid \theta_M \right) = p \left(\theta_S \mid \theta_M, X_S, D_S \right)\); the function \(g\) serves to transform the parameters of the sub-model to the scale of the metamodel. Thus, we refer to $g$ as the \emph{scaling function}. 
-In many cases, computing this likelihood will be challenging.
-The simplest case is when the parameters of \(\theta_S\) are directly comparable to those in \(\theta_M\) (see Example 1), or when the scaling is performed directly within the sub-model (see Example 2), but other solutions are possible.
-This new likelihood, which integrates the information from the second model into the first, can be treated as new ``data'' to evaluate the parameters of \(\theta_M\).
-We simply use the posterior distribution of $\theta_M$ from the previous step (Eq. \ref{eq:sdm4}) as the new prior probability of $\theta_M$, and evaluate the posterior probability of $\theta_M$ in light of the new data (i.e., information from the submodel \(\theta_S\)) and the prior knowledge, as before:
-
-%-----
-\begin{equation}
-\label{eq:integrated2}
-	\overbrace{p( \theta_M \mid X_M, D_M, \theta_S, X_S, D_S )}^\text{integrated posterior}
-	\propto 
-	\overbrace{p( \theta_S \mid \theta_M, X_S, D_S )}^\text{likelihood}
-	\overbrace{p( X_M \mid D_M, \theta_M ) P( \theta_M )}^{\text{prior for } \theta_M}
-	\overbrace{p(\theta_S)}^{\text{prior for } \theta_S}
-\end{equation}
-%-----
-
-This procedure may be applied to an arbitrary number of models, limited only by available data and computational power. 
-The models may be implemented simultaneously, when multiple datasets are available and can be evaluated under different underlying models, or they may be run sequentially, updating the posterior distribution of $\theta_M$ as new information becomes available. 
-Note that $\theta_S$ itself need not be implemented in a Bayesian framework and the output need not be identical in form to the output of \(\theta_M\); it is enough to produce an output that can be evaluated as a likelihood under the first model and to have some assessment of the confidence in the parameter estimates of $\theta_S$ to use as a prior.
-
-%---------------------------------------------
-%---------------------------------------------
 
 
 \end{document}

@@ -6,6 +6,10 @@ tex/diagram.tex
 	cd tex; pdflatex manuscript; bibtex manuscript; pdflatex manuscript; \
 			pdflatex manuscript
 	mv tex/manuscript.pdf manuscript.pdf
+	
+Appendix_S1.pdf: tex/appendix_s1.tex
+	cd tex; pdflatex appendix_s1
+	mv tex/appendix_s1.pdf Appendix_S1.pdf
 		
 clean:
 	cd tex; rm -f *.aux *.log *.bbl *.blg *.loc *.gz *.cut
