@@ -1,8 +1,18 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in, left=1.2in]{geometry}
+
+% use proper unicode fonts
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+\usepackage{amsmath} % for better display of equations
+
 %% ----------------------------------
 %
 %     TEXT BOX
 %
 %% ----------------------------------
+\begin{document}
 
 \section*{Appendix S1: Model description}
 We begin with a simple correlative model (i.e. calibrated with data provided at the same ecological scale as predictions), characterized in a Bayesian framework to allow further integration. 
@@ -52,7 +62,7 @@ Formally, we will add an additional model, \(\theta_S\), that is based on a diff
 
 For integration to be successful, it must be possible to compute the likelihood of this prediction given the metamodel, \(p \left( \psi_S \mid \theta_M \right) = p \left(\theta_S \mid \theta_M, X_S, D_S \right)\); the function \(g\) serves to transform the parameters of the sub-model to the scale of the metamodel. Thus, we refer to \(g\) as the \emph{scaling function}. 
 In many cases, computing this likelihood will be challenging.
-The simplest case is when the parameters of \(\theta_S\) are directly comparable to those in \(\theta_M\) (see Example 1), or when the scaling is performed directly within the sub-model (see Example 2), but other solutions are possible.
+The simplest case is when the parameters of \(\theta_S\) are directly comparable to those in \(\theta_M\) (see Main Text, Example 1), or when the scaling is performed directly within the sub-model (see Main Text, Example 2), but other solutions are possible.
 This new likelihood, which integrates the information from the second model into the first, can be treated as new ``data'' to evaluate the parameters of \(\theta_M\).
 We simply use the posterior distribution of \(\theta_M\) from the previous step (Eq. \ref{eq:sdm4}) as the new prior probability of \(\theta_M\), and evaluate the posterior probability of \(\theta_M\) in light of the new data (i.e., information from the submodel \(\theta_S\)) and the prior knowledge, as before:
 
@@ -73,3 +83,4 @@ Note that \(\theta_S\) itself need not be implemented in a Bayesian framework an
 
 %---------------------------------------------
 %---------------------------------------------
+\end{document}

@@ -12,3 +12,4 @@
 *.docx
 !tex/*.pdf
 *.tdo
+manuscript.texbackup

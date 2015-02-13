@@ -1,6 +1,6 @@
 \documentclass[11pt]{article}
 
-\usepackage[margin=1in, left=1.2in]{geometry}
+%\usepackage[margin=1in, left=1.2in]{geometry}
 
 % use proper unicode fonts
 \usepackage[T1]{fontenc}
@@ -10,7 +10,6 @@
 
 \usepackage{setspace}
 \usepackage{natbib} 
-%\bibpunct{(}{)}{;}{a}{}{,} -- uncomment this for the final version
 
 \usepackage{caption}
 \captionsetup{labelformat=simple, labelsep=none}
@@ -40,6 +39,15 @@
 
 \usepackage{lineno}
 
+%% ----------------------------------
+%
+%     Packages to be used for drafts and editing
+%     Remove from the final manuscript
+%
+%% ----------------------------------
+\usepackage[top=1in, left=1in, bottom=1in, right=2.5in]{geometry}
+\usepackage[textsize=tiny, backgroundcolor=white, textwidth=2.2in, colorinlistoftodos=true]{todonotes} % for margin notes using \todo{}
+\newcommand{\mt}[1]{\todo[color=blue!40]{\textsuperscript{MT}#1}}
 
 
 %% ----------------------------------
@@ -106,7 +114,7 @@
 	
 	\textbf{Abstract word count: } 258
 	
-	\textbf{Main text word count: } 7121	
+	\textbf{Main text word count: } 6197 %WORD_COUNT %Target 5000
 	
 	\textbf{Authorship:} All authors contributed substantially to an initial outline of the paper and ideas. MT, IB, and DG built the model and wrote the first draft of the introduction and model description. All authors contributed to the complete first draft and all subsequent revisions to the manuscript.
 		
@@ -148,14 +156,12 @@ Models of species range limits have wide applications and can play a large role 
 Due to large temporal and spatial scales as well as the complex and nonlinear nature of ecosystem dynamics, it is often impossible to construct experiments that can adequately explore the ecological processes generating species range limits \citep{Wu1995, Levin1998}. 
 Hence, range models are essential tools that have been applied to a large number of ecological subfields, including biogeography \citep{Schurr2012}, invasion biology \citep{Catterall2012, Gallien2012}, evolution \citep{Jay2012}, hybrid zone dynamics \citep{Engler2013}, and forecasting the impacts of climate change on species distributions \citep{Thuiller2011, Blois2013, Thuiller2014}. 
 
-Despite the recognized potential of these models, difficulties in producing predictions with acceptable precision and low bias has limited their contributions \citep{Guisan2013}.
-For mechanistic models, two important constraints on modeling ecological processes can prevent models from making unbiased predictions with acceptable uncertainty: 
-(1) having the appropriate ecological theory needed to link data to modeling objectives, and (2) having sufficient data over a range of conditions to maintain coherence between the spatial and temporal scales of data and theory.
-Poor data or incoherent models will result in predictions with high uncertainty or precise but biased predictions.
-In recent decades, however, modeling techniques have proliferated to take advantage of what is available in terms of both data and modeling platforms.
-Model diversification also arises due to the diversity of processes generating species ranges \citep{Boulangeat2012}.
-Fine-scale mechanistic models may capture important ecological processes quite well, but due to their specificity, they may perform poorly when applied at the scale of species ranges.
-For instance, biotic interactions (including trophic interactions) are usually not modeled mechanistically at the scale of species distributions because they are poorly known, or have not been recorded, despite being considered a key determinant of range limits \citep{Holt2005, Pigot2013}. 
+Despite the recognized potential of these models, it can be difficult to produce predictions with acceptable levels of precision and bias \citep{Guisan2013}.
+For mechanistic models, two important constraints can present difficulties in reducing uncertainty and bias: (1) having the appropriate ecological theory needed to link data to modeling objectives, and (2) having sufficient data over a range of conditions to maintain coherence between the spatial and temporal scales of data and theory.
+In recent decades, however, modeling techniques have proliferated to take advantage of increased availability of data. 
+A growing body of theory, reflecting the diversity of processes generating species ranges, also has contributed to model diversification \citep{Boulangeat2012}.
+Of these model types, fine-scale mechanistic models may capture important ecological processes quite well, but due to their specificity, perform poorly when applied at the scale of species ranges.
+For instance, biotic interactions are usually not modeled mechanistically at the scale of species distributions because they are poorly known or have not been recorded, despite being considered a key determinant of range limits \citep{Holt2005, Pigot2013}. 
 In contrast to mechanistic models, more correlative approaches that statistically relate species occurrences to associated distributions of other variables have the advantage of indirectly accounting for underlying processes \citep{Guisan2000}.
 However, their predictions rely on the constancy of the relationships between occurrences and explanatory variables in time and space, implying that the selected variables are related to the processes limiting species ranges and that their correlations are constant for calibration and projection ranges in space and time \citep{Dormann2007}. 
 Extrapolating beyond the scope of the original data (e.g., predicting ranges based on future climate) is therefore problematic, because nonlinearities in responses to novel combinations of the explanatory variables cannot be accommodated in models that do not simulate the underlying processes.
@@ -164,9 +170,19 @@ Extrapolating beyond the scope of the original data (e.g., predicting ranges bas
 %% ----------------------------------
 
 \subsection*{Toward an integrated approach for modeling ranges}
+\mt{this transition is fairly abrupt. it would be nice to have more of an intro explaining the motivation. perhaps it comes later in the intro; if so, it should be moved here}
+\mt{a structure to consider:\\
+1. intro sentence (gee it would be great to combine data sources) \\
+2. "Some researchers... hierarchical nature..." (but make it less awful) \\
+3. Hybrid models (and rewrite -- it is a bit redundant) \\
+4. Ensemble forecasting
+5. Our approach
+-- could break this into different paragraphs
+}
 To include knowledge of species from multiple sources and scales into distribution models, we present an application of hierarchical Bayesian methods that uses outputs from multiple model outputs to inform the results of the final model.
 Our approach is an alternative to other approaches to multimodel inference that offers improved flexibility in incorporating data and theory from multiple scales and provides transparent estimation of uncertainty.
 By integrating all available knowledge while producing a single prediction, our approach potentially mitigates the limitations inherent in each individual model, contributing to more robust predictions \citep{Pearson2003, Guisan2005, Araujo2006, Quillet2010}.
+\mt{Blech. This transition is also terrible}
 Some researchers have explicitly reproduced the hierarchical nature of ecological systems using hierarchical models \citep[e.g.][]{Royale2008, Boulangeat2012, Catterall2012, Strigul2012, Soranno2014}. 
 Recent literature has also focused on the development of hybrid models, which allow for flexible combinations between mechanistic and phenomenological sub-models \citep{Gallien2010, Thuiller2013}. 
 For instance, correlative models are used to account for abiotic variables limiting species distributions \citep{Guisan2005}, while mechanistic approaches can include space and time dynamics and therefore account for dispersal processes \citep{Kearney2008}. 
@@ -175,12 +191,10 @@ However, the link between different sub-models is based on assumptions about the
 Moreover, hybrid approaches are not suitable for merging models that are based on the same processes but with different underlying hypotheses.
 
 A commonly-employed alternative to hybrid models is the direct combination of predictions.
-If models operate at the same scale and have compatible parameterizations, predictions can be combined using multi-model inference \citep[e.g., model averaging, ensemble forecasting;][]{Thuiller2004, Araujo2007}. 
-If models are not comparable because they are based on different data or hypotheses, the use of convergent predictions from multiple models is a way to provide more robust projections \citep{Morin2009, Marmion2009, Cheaib2012, Serra-Diaz2013}.
-However, the applicability of ensemble forecasts is limited; for example, it is not currently possible to evaluate the effects of convergent predictions on the total uncertainty of the outcomes, despite its potential importance in a prediction context.
+Predictions from models operating at the same spatio-temporal scales and having compatible parameterizations can be combined using multi-model inference \citep[e.g., model averaging, ensemble forecasting;][]{Thuiller2004, Araujo2007}. 
+However, the applicability of such techniques is limited; for example, it is not currently possible to evaluate the effects of convergent predictions on the total uncertainty of the outcomes, despite its potential importance in a prediction context.
 A more comprehensive understanding of uncertainty can guide biodiversity management and prioritize future data collection by identifying the parameters that contribute most to variance in the model predictions \citep{McMahon2011}. 
-Clearly, an approach that integrates predictions and uncertainty from multiple model types is needed \citep{Beck2012, Thuiller2013}. 
-Such an approach would incorporate multiple modes of inference and integrate data from multiple sources and scales \citep{Levin1992, Peters2004, Thuiller2013}.
+Clearly, we require an approach that can both (1) flexibly incorporate multiple modes of inference (i.e., mechanistic, correlative models), (2) encompasses data from multiple sources and scales, and (3) explicitly includes uncertainty from all sources \citep{Levin1992, Peters2004, Beck2012, Thuiller2013}. 
 
 Here, we present a framework for modeling species range dynamics that aims to account for all the information available on a focal species, from a variety of sources and scales.
 Contrary to hybrid and hierarchical models, the aim is not to link different sub-models into a single model, but to condition the predictions of a metamodel at the target scale (e.g., an entire species' range) with information from independent sub-models at a variety of spatial scales, allowing for as much flexibility as possible regarding the type of information included. 
@@ -208,6 +222,7 @@ The output of sub-models should provide additional predictions at a comparable e
 For sub-models operating at a substantially different scale than the metamodel, scaling functions will be required; however, these functions can be simple while still contributing useful information to the metamodel (see Example 1). 
 All predictions may therefore be integrated in a single Bayesian framework when evaluating the parameters of the metamodel (see Appendix S1, Fig. \ref{fig:diagram}).
 We present and apply the framework here with two examples, and follow with a more formal presentation in Appendix S1.
+\mt{There is still some repetition here -- two refs to Appendix S1 in 2 sentences}
 
 
 %% ----------------------------------
@@ -226,6 +241,7 @@ We apply our framework here to such heterogeneous sources of information to redu
 
 We consider data collected from a species' historical distribution, where the goal is to predict the distribution following a substantial reduction in precipitation. 
 We will consider \(X_M\) (see Appendix S1, Fig. \ref{fig:diagram}) to be a vector of $n$ observations that takes the value of one to indicate presence and zero for absence:
+\mt{will need to edit this, since \(X_M\) is no longer defined clearly in the text (has been moved to appendix S1)}
 \begin{equation}
 X_M = \{x_{M,1}, x_{M,2}, \ldots, x_{M,n}\}
 \end{equation}
@@ -515,7 +531,6 @@ By incorporating this knowledge into species distribution models, we can hopeful
 %---------------------------------------------
 %---------------------------------------------
 
-%TC:ignore
 \section*{Data Accessibility}
 All data, as well as all code required to repeat the analyses, have been uploaded as online supporting information in Appendix S4.
 
@@ -533,11 +548,9 @@ Appendix S4: Scripts and data required to reproduce the analyses.
 
 \section*{Acknowledgements}
 We acknowledge funding from the Quebec Centre for Biodiversity Science as well as NSERC strategic grant 430393-12. Comments from Charles Canham, William Godsoe, and Tamara Münkemüller improved a previous version of this manuscript. WT received support funding from the European Research Council under the European Community's Seven Framework Programme FP7/2007-2013 Grant Agreement no. 281422 (TEEMBIO). 
-%TC:endignore
 
 \nolinenumbers
 
-%TC:break references
 %% ----------------------------------
 %
 %     REFERENCES
@@ -555,8 +568,8 @@ We acknowledge funding from the Quebec Centre for Biodiversity Science as well a
 %
 %% ----------------------------------
 
-\section*{Biosketch}
 %TC:break biosketch
+\section*{Biosketch}
 The Theoretical Ecosystem Ecology lab group at the Université du Québec à Rimouski focuses on interactions between species distributions, community structure and ecosystem functioning.
 We apply principles of spatial ecology to a variety of organisms and systems, from bacteria to entire forests.
 We also use theoretical and simulation models to develop hypotheses and extend our work beyond the technical limitations of empirical studies.
@@ -568,8 +581,8 @@ More information can be found at: http://chaire-eec.uqar.ca/
 %
 %% ----------------------------------
 
+%TC:break figures
 \newpage
-%TC:break fig legends
 \section*{Figure Legends}
 \begin{flushleft}
 
