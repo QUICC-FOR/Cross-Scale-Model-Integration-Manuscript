@@ -6,18 +6,31 @@
 \usepackage[utf8]{inputenc}
 
 \usepackage{amsmath} % for better display of equations
+\usepackage{natbib} 
 
-%% ----------------------------------
-%
-%     TEXT BOX
-%
-%% ----------------------------------
+
+\usepackage{graphicx}
+%\usepackage[nomarkers,nolists,heads]{endfloat}
+\usepackage{caption}
+\DeclareCaptionLabelFormat{appendix}{#1 S#2}
+\captionsetup{labelformat=appendix}
+
+
+% Tikz libraries for building the diagram
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usetikzlibrary{calc, shapes}
+\usetikzlibrary{shapes.geometric,shapes.arrows,decorations.pathmorphing}
+\usetikzlibrary{matrix,chains,scopes,positioning,arrows,fit}
+
 \begin{document}
 
-\section*{Appendix S1: Model description}
+\section*{Appendix S1: Model description and methodology}
+\subsection*{Model description}
+
 We begin with a simple correlative model (i.e. calibrated with data provided at the same ecological scale as predictions), characterized in a Bayesian framework to allow further integration. 
-We refer to this model (with associated parameters) as the metamodel, \(\theta_M\), and it is parameterized with information on the species' presence, \(X_M\), along with associated covariates (e.g., climate, presence/absence of interacting species, etc.), collectively referred to as \(D_M\). 
-The naive (i.e., not integrated with information from sub-models) probability that a species is present, \(\psi_N\), is a deterministic function of the metamodel and its covariates::
+We refer to this model (with associated parameters) as the metamodel, \(\theta_M\), and it is parameterized with information on the species' presence, \(X_M\), along with associated covariates (e.g., climate, presence/absence of interacting species, etc.), collectively referred to as \(D_M\) (Fig. S\ref{fig:diagram}). 
+The naive (i.e., not integrated with information from sub-models) probability that a species is present, \(\psi_N\), is a deterministic function of the metamodel and its covariates:
 %-----
 \begin{equation}
 \label{eq:sdm1}
@@ -32,6 +45,20 @@ The goal of model fitting is to estimate the posterior probability distribution 
 \end{equation}
 %-----
 
+%==================
+% FIGURE 1
+\begin{figure}[t]
+\input{diagram}
+\caption{The parameters of a correlative metamodel model (left column) are conditioned on the predictions of a mechanistic sub-model (right column).
+	The metamodel ($\theta_M$) operates at a single scale and uses occurrence data (\(X_M\)) and explanatory variables ($D_M$) to produce a naive (i.e., not conditioned on sub-models) prediction $\psi_N$.
+	The mechanistic sub-model \(\theta_S\) includes data about the response (\(X_S\)) of lower-level behaviours of the system to explanatory variables ($D_S$). 
+	The models are integrated by calibrating $\theta_M$ to data ($X_M, D_M$) as well as the output of the sub-model ($\psi_S$). 
+	This is possible because predictions from the sub-model ($\psi_S$) emerge at the scale of the metamodel via a scaling function \(g(\theta_S, D_S)\).
+	This prediction incorporates multiple sources of information coming from several calibration datasets (i.e., $X_M, D_M, X_S, $ and $D_S$) as well as from multiple types of models (i.e., $\theta_M$ and $\theta_S$).}
+\label{fig:diagram}
+\end{figure}
+%==================
+
 Using Bayes' theorem, we find the posterior probability of \(\theta_M\) as follows:
 %-----
 \begin{equation}
@@ -41,7 +68,7 @@ Using Bayes' theorem, we find the posterior probability of \(\theta_M\) as follo
 %-----
 where \(p( X_M \mid \theta_M, D_M )\) is referred to as the likelihood of the observations, \(p(\theta_M )\) is the prior probability of the model, and \(p(X_M, D_M)\) is the normalization constant.
 The normalization constant involves computing integrals that are often impossible to solve analytically. 
-In practice, simulation techniques such as MCMC can be used to sample directly from the posterior distribution, making such computations unnecessary.
+In practice, simulation techniques such as MCMC can be used to sample directly from the posterior distribution, making such computations unnecessary \citep{Link2006}.
 Thus, we use the proportional form of Bayes' Theorem:
 %-----
 \begin{equation}
@@ -62,7 +89,7 @@ Formally, we will add an additional model, \(\theta_S\), that is based on a diff
 
 For integration to be successful, it must be possible to compute the likelihood of this prediction given the metamodel, \(p \left( \psi_S \mid \theta_M \right) = p \left(\theta_S \mid \theta_M, X_S, D_S \right)\); the function \(g\) serves to transform the parameters of the sub-model to the scale of the metamodel. Thus, we refer to \(g\) as the \emph{scaling function}. 
 In many cases, computing this likelihood will be challenging.
-The simplest case is when the parameters of \(\theta_S\) are directly comparable to those in \(\theta_M\) (see Main Text, Example 1), or when the scaling is performed directly within the sub-model (see Main Text, Example 2), but other solutions are possible.
+The simplest case is when the parameters of \(\theta_S\) are directly comparable to those in \(\theta_M\), or when the scaling is performed directly within the sub-model, but other solutions are possible.
 This new likelihood, which integrates the information from the second model into the first, can be treated as new ``data'' to evaluate the parameters of \(\theta_M\).
 We simply use the posterior distribution of \(\theta_M\) from the previous step (Eq. \ref{eq:sdm4}) as the new prior probability of \(\theta_M\), and evaluate the posterior probability of \(\theta_M\) in light of the new data (i.e., information from the submodel \(\theta_S\)) and the prior knowledge, as before:
 
@@ -83,4 +110,61 @@ Note that \(\theta_S\) itself need not be implemented in a Bayesian framework an
 
 %---------------------------------------------
 %---------------------------------------------
+
+\section*{Example 1}
+To produce the simulated dataset used in the first example, we first simulated 100 presence-absence points at randomized locations in ecological space (i.e., temperature and precipitation) using the spsample function from package sp in R \citep{Bivand2013, R}.
+This function generates points with a specified amount of spatial clustering (ranging from 0 to 1, where 1 represents complete spatial independence); we selected a value of 0.2 for our analysis.
+Presence or absence at each point was determined by randomly sampling from a Bernoulli distribution, where the probability was selected using a pre-determined function of temperature and precipitation.
+We then fit the naive model in JAGS as a logistic regression, with both linear and quadratic terms for both temperature and precipitation and using uninformative priors (Normal with \(\mu = 0\) and \(\sigma = 10000\)).
+We discarded the first 5000 MCMC samples as burnin, and then collected an additional 2000 samples for analysis.
+The final sample size was selected to provide for relatively rapid computational time; the addition of longer final samples or extended burnin periods had no effect on the results.
+
+For the mechanistic submodel, we computed the predicted probability of presence as a function of precipitation, using the experimental data and the theoretical prediction that the species will be present when the population growth rate is greater than 0.
+For each of the five experimental treatments, we computed the probability of presence as the integral of the normal density from 0 to infinity, where the mean of the normal distribution was equal to the average population growth rate at each precipitation treatment and the standard deviation was the corresponding standard error for each treatment.
+We then fit these data to the same model, priors, and sample sizes as those from the previous step.
+Fitting the metamodel is simply a matter of repeating the exact procedure for fitting the naive model, but using informative priors generated from the naive model step.
+Because the sub-model considered only precipitation, and because the response was highly correlated to precipitation, we expected the submodel to produce highly precise estimates of the parameters for the effect of precipitation on the probability of presence.
+However, the sub-model was quite simplistic, and thus likely over-estimates its precision when considering the species range wholistically (as is done with the metamodel).
+Thus, we applied a prior weight of 0.05 to the sub-model.
+This allowed the sub-model to inform the integrated model without dominating the results.
+
+All scripts were prepared in R and tested under R version 3.0.3.
+The MCMC analyses were performed using the JAGS (Just Another Gibbs Sampler) software package, version 3.4.0 \citep{RJAGS}.
+Additionally, the rjags, coda, and sp packages are required to complete the analysis.
+
+\section*{Example 2}
+We formulated a metamodel for the second example that allowed for the full use of three sources of data: occurrences from forestry plots (see below) as well as coarser-scale presence-absence information and Phenofit projections \citep[both from][]{Morin2009}.
+Plot data originated from four forest permanent plot databases and included samples widely distributed in Eastern North America, from Florida to north Canada (Fig. S\ref{fig:plotmap}).
+In the US, we included 86,000 plots standardized since 1990 and monitored until 2013 with up to 4 remeasurements by forest plot \citep{OConnell2013}.
+Quebec data were provided from the Ministère des Forêts de la Faune et des Parcs with 12,409 permanent plots, and DOMTAR, a forest company in paper production with 1,741 plots, and surveyed from 1960--2011 with up to 10 remeasurements \citep{MFFP2013}.
+Ontario and New-Brunswick included 1,038 and 2,748 plots respectively \citep{Porter1999, Ontario2014}.
+Ontario monitored forest plots from 1992--2006 with up to 3 remeasurement, and New-Brunswick from 1985--2010 with up to 7 remeasurements.
+
+\begin{figure}[t]
+\includegraphics{figs/plotmap.pdf}
+\caption{Map of permanent forest plot locations}
+\label{fig:plotmap}
+\end{figure}
+
+We divided the dataset into calibration and validation subsets, with 1/3 of the data reserved for validation and the remaining 2/3 used for calibration.
+As in the previous example, we modeled the probability of presence as a function of climate.
+We considered seven climate variables: the number of degree days (ddeg), minimum temperature (min\_temp), potential evapotranspiration (PET), annual precipitation (an\_prcp), summer precipitation (sum\_prcp), winter precipitation (win\_prcp), and the ratio of annual precipitation to potential evapotranspiration (pToPET).
+See \citet{Morin2009} for a complete description of these variables.
+For projection, we used predictions for 2080 from the HadCM3 GCM \citep{Pope2000} driven by the A2 emission scenario \citep{Nakicenovic2000}, and used the parameters of the models to forecast suitability into the future.
+Exploratory analysis revealed that there were collinearities within the predictor variables.
+Thus, we only included three variables in the model: ddeg, an\_prcp, and pToPET.
+To select the form of the naive model (and thus the metamodel), we used stepwise regression with BIC as the evaluation criteria.
+The search scope included all models with linear, quadratic, and cubic terms for all three variables.
+Because Phenofit provided predictions in the form of a probability of presence (rather than directly in terms of the metamodel parameters as in the previous example), it was necessary to develop a method for relating these predictions to the metamodel.
+We opted to do this via simulation because it is a natural method to use in an MCMC scheme.
+For each MCMC iteration, we generated a simulated dataset by drawing \(N_x\) samples with probability \(p_x\) from a Binomial distribution, where \(N_x\) is the number of observations in the occurrence dataset for a given grid cell \(x\), and \(p_x\) is the predicted probability of presence from Phenofit for that cell.
+The metamodel was then fit to these simulated data (with prior conditioning on the naive model).
+This procedure, by generating a random dataset with each iteration, incorporated the variance in the Phenofit predictions.
+Convergence for all models was assessed by comparing the results of multiple chains with overdispersed starting points.
+Based on the results of these initial runs, we thinned all posterior samples by recording only every 50th sample, and we obtained 25000 posterior samples for each model following a burn-in period of 20000 samples.
+
+\renewcommand\refname{Literature Cited}
+\bibliography{model_integration}{}
+\bibliographystyle{model_integration}
+
 \end{document}

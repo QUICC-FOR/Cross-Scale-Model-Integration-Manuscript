@@ -1,16 +1,16 @@
-manuscript: manuscript.pdf
+manuscript: manuscript.pdf Appendix_S1.pdf
 
 manuscript.pdf: tex/manuscript.tex tex/model_integration.bib tex/model_integration.bst \
-tex/ex1_Sampling.pdf tex/ex1_map.pdf tex/ex1_precip.pdf tex/ex2.pdf tex/management.pdf \
-tex/diagram.tex 
+tex/figs/ex1_Sampling.pdf tex/figs/ex1_map.pdf tex/figs/ex1_precip.pdf \
+tex/figs/ex2_params.pdf tex/figs/ex2_response.pdf tex/figs/management.pdf 
 	# the first line performs a wordcount and inserts it directly into the manuscript
 	cd tex; ./wordcount.sh
 	cd tex; pdflatex manuscript; bibtex manuscript; pdflatex manuscript; \
 			pdflatex manuscript
 	mv tex/manuscript.pdf manuscript.pdf
 	
-Appendix_S1.pdf: tex/appendix_s1.tex
-	cd tex; pdflatex appendix_s1; pdflatex appendix_s1
+Appendix_S1.pdf: tex/appendix_s1.tex tex/diagram.tex tex/model_integration.bib tex/model_integration.bst
+	cd tex; pdflatex appendix_s1; bibtex appendix_s1; pdflatex appendix_s1; pdflatex appendix_s1
 	mv tex/appendix_s1.pdf Appendix_S1.pdf
 		
 clean:

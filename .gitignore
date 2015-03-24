@@ -12,4 +12,5 @@
 *.docx
 !tex/*.pdf
 *.tdo
+*.fff
 manuscript.texbackup
