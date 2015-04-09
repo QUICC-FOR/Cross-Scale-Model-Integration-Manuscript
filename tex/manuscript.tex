@@ -1,6 +1,6 @@
 \documentclass[11pt]{article}
 
-\usepackage[margin=1in]{geometry}
+%\usepackage[margin=1in]{geometry}
 
 % use proper unicode fonts
 \usepackage[T1]{fontenc}
@@ -41,9 +41,11 @@
 %     Remove from the final manuscript
 %
 %% ----------------------------------
-%\usepackage[top=1in, left=1in, bottom=1in, right=2.5in]{geometry}
-%\usepackage[textsize=tiny, backgroundcolor=white, textwidth=2.2in, colorinlistoftodos=true]{todonotes} % for margin notes using \todo{}
-%\newcommand{\mt}[1]{\todo[color=blue!40]{\textsuperscript{MT}#1}}
+\usepackage[top=1in, left=1in, bottom=1in, right=2.0in]{geometry}
+\usepackage[textsize=tiny, backgroundcolor=white, textwidth=1.8in, colorinlistoftodos=true]{todonotes} % for margin notes using \todo{}
+\newcommand{\mt}[1]{\todo[color=blue!40]{\textsuperscript{MT}#1}}
+\newcommand{\ib}[1]{\todo[color=red!40]{\textsuperscript{IB}#1}}
+\newcommand{\fd}[1]{\todo[color=orange!40]{\textsuperscript{FD}#1}}
 
 
 %% ----------------------------------
@@ -63,7 +65,7 @@
 \author[1,2]{Alyssa Butler (ca.butler10@gmail.com)}
 \author[6,7]{Frédérik Doyon (Frederik.Doyon@uqo.ca)}
 \author[8]{C. Ronnie Drever (cdrever@TNC.ORG)}
-\author[9]{Marie-Josée Fortin (fortinmj@gmail.com)}
+\author[9]{Marie-Josée Fortin (mariejosee.fortin@utoronto.ca)}
 \author[1]{Tony Franceschini (Tony.Franceschini@uqar.ca)}
 \author[10]{Jean Liénard (jean.lienard@gmail.com)}
 \author[4]{Dan McKenney (Dan.McKenney@nrcan-rncan.gc.ca)}
@@ -108,13 +110,13 @@
 	
 	\textbf{Short title:} Integrated models of species ranges
 	
-	\textbf{Abstract word count: } 258 %ABS_COUNT
+	\textbf{Abstract word count: } 235 %ABS_COUNT
 	
-	\textbf{Main text word count: } 4641 %WORD_COUNT %Target 5000
+	\textbf{Main text word count: } 4848 %WORD_COUNT %Target 5000
 	
-	\textbf{Authorship:} All authors contributed substantially to an initial outline of the paper and ideas. MT, IB, and DG built the model and wrote the first draft of the introduction and model description. All authors contributed to the complete first draft and all subsequent revisions to the manuscript.
+%	\textbf{Authorship:} All authors contributed substantially to an initial outline of the paper and ideas. MT, IB, and DG built the model and wrote the first draft of the introduction and model description. All authors contributed to the complete first draft and all subsequent revisions to the manuscript.
 		
-	\textbf{Keywords:} Climate change, decision making, metamodeling, patterns and processes, range dynamics, scaling, spatial ecology, species distribution modeling, uncertainty
+	\textbf{Keywords:} Climate change, decision making, patterns and processes, range dynamics, scaling, spatial ecology, species distribution modeling, uncertainty
 	\end{flushleft}
 \end{titlingpage}
 %TC:endignore
@@ -125,17 +127,16 @@
 \noindent
 
 Current interest in modeling potential changes to species ranges have resulted in a great diversity of approaches to species distribution modeling.
-However, in general, individual approaches include only a small subset of the available information about a species. 
-Correlative models often predict presence or absence as a function of climate, but ignore  smaller-scale processes such as growth, fecundity, and dispersal.
+However, in general, single approaches include only a small subset of the available information about a species. 
+Correlative models often predict presence or absence as a function of the environment, but ignore smaller-scale processes such as growth, fecundity, and dispersal.
 Furthermore, different approaches often produce divergent predictions, with no simple method to reconcile them.
 We present a flexible framework for integrating models at multiple scales using hierarchical Bayesian methods. 
 Our framework uses a metamodel, estimated in a hierarchical Bayesian framework, that is constrained by both data directly applied to the metamodel and by the results of one or more sub-models.
 The output of the metamodel is in the form of probabilistic estimates of species presence.
 Metamodel outputs also incorporate uncertainty from both data and process error from all sub-models, and include all of the information used as input for the original scale-specific sub-models.
-We illustrate our approach using two examples, and demonstrate that the framework can substantially reduce uncertainty when projecting beyond the range of the original data.
+We illustrate our approach using theoretical and empirical examples, and demonstrate that the framework better characterizes uncertainty and can substantially reduce uncertainty when projecting beyond the range of the original data.
 We conclude by discussing the application of our method and its accessibility to conservation biologists and land managers.
 The framework has wide potential for use in species distribution modelling, and can drive better integration of multi-scale data into ecological decision-making.
-Although implementation of our method can be technically challenging, we anticipate the results will be of wide interest, and we encourage collaboration between modelers and practitioners in applying our framework.
 
  \end{abstract}
 
@@ -150,10 +151,10 @@ Although implementation of our method can be technically challenging, we anticip
 
 Models of species range limits have wide applications and can play a large role in conservation biology, where they can be used as decision-making tools in biodiversity management \citep{Guisan2013}.
 Due to large temporal and spatial scales as well as the complex and nonlinear nature of ecosystem dynamics, it is often impossible to construct experiments that can adequately explore the ecological processes generating species range limits \citep{Wu1995, Levin1998}. 
-Hence, range models are essential tools that have been applied to a large number of ecological subfields, including biogeography \citep{Schurr2012}, invasion biology \citep{Catterall2012, Gallien2012}, hybrid zone dynamics \citep{Engler2013}, and forecasting the impacts of climate change on species distributions \citep{Blois2013, Thuiller2014}. 
+Hence, range models are essential tools that have been applied to a large number of ecological subfields, including biogeography \citep{Schurr2012}, invasion biology \citep{Catterall2012, Gallien2012}, hybrid zone dynamics \citep{Engler2013}, and climate change impacts on species distributions \citep{Blois2013, Thuiller2014}. 
 
 Despite the recognized potential of these models, it can be difficult to produce species distribution models (SDMs) with acceptable levels of precision and bias \citep{Guisan2013}.
-For mechanistic models, two important constraints can present difficulties: (1) having the appropriate ecological theory needed to link data to modeling objectives, and (2) having sufficient data over a range of conditions to maintain coherence between the spatial and temporal scales of data and theory.
+For mechanistic models, two important constraints can cause difficulties: (1) having the appropriate ecological theory needed to link data to modeling objectives, and (2) having sufficient data over a range of conditions to maintain coherence between the spatial and temporal scales of data and theory.
 In recent decades, however, modeling techniques have proliferated to take advantage of increased data availability. 
 A growing body of theory, reflecting the diversity of processes generating species ranges, also has contributed to model diversification \citep{Boulangeat2012}.
 Of these model types, fine-scale mechanistic models may capture important ecological processes quite well, but due to their specificity, perform poorly when applied at the scale of species ranges.
@@ -165,27 +166,25 @@ Extrapolating beyond the scope of the original data (e.g., predicting ranges bas
 %% ----------------------------------
 %% ----------------------------------
 
-Clearly, an approach is needed that unifies the strength of the diversity of modeling approaches and can incorporate multiple data sources and modeling paradigms.
-Toward this end, we present here an application of hierarchical Bayesian methods that uses outputs from multiple model outputs to inform the results of the final model.
+Clearly, an approach is needed to unify the strength of different modeling approaches that can incorporate multiple data sources and modeling paradigms.
+Toward this end, we present here an application of hierarchical Bayesian methods that uses outputs from multiple models to inform the results of the final model.
 Techniques for multimodel inference have proliferated in recent years.
 For example, hybrid models that allow for flexible combinations between mechanistic and phenomenological sub-models are commonly employed in SDMs \citep{Gallien2010, Thuiller2013, Boulangeat2014}.
-Within the hybrid framework, a correlative model might be used to account for abiotic variables limiting species distributions \citep{Guisan2005}, while a more mechanistic approach could include space and time dynamics and therefore account for dispersal \citep{Smolik2010}.
-However, the link between different sub-models is based on assumptions about the scaling of ecological processes that are poorly known and difficult to test \citep{Gallien2010}, and the sources and magnitudes of uncertainties are difficult to quantify. 
+Within the hybrid framework, a correlative model might be used to account for abiotic variables limiting species distributions \citep{Guisan2005}, while a more mechanistic approach could include biotic interactions and space-time dynamics through dispersal \citep{Smolik2010}.
+However, the link between different sub-models is based on assumptions about the scaling of ecological processes that are poorly known and difficult to test \citep{Gallien2010}, and uncertainties are approximated and their attribution to different sources is difficult to distinguish.
 A commonly-employed alternative to hybrid models is the direct combination of predictions, where predictions from models operating at the same spatio-temporal scales can be combined \citep[e.g., model averaging, ensemble forecasting;][]{Araujo2007}. 
-However, the applicability of such techniques is limited; for example, it is not currently possible to evaluate the effects of convergent predictions on the total uncertainty of the outcomes, despite its potential importance in a prediction context.
+However, the applicability of such techniques is limited; for example, because uncertainty is approximated and may be poorly understood, it is not possible to evaluate the effects of convergent predictions on the total uncertainty of the outcomes, despite its potential importance in a prediction context.
 
-We propose an alternative to these other approaches to multimodel inference.
-We use the power and generality of a hierarchical Bayesian framework, which provides a number of desirable advantages, including (1) the ability to incorporate multiple modes of inference (e.g., mechanistic, correlative models) \citep{VanOijen2005, Clark2006, Hobbs2011, Hartig2012}, (2) an easy mechanism to include multiple data sources at various scales \citep{Levin1992, Peters2004}, and (3) intuitive and comprehensive reporting of uncertainty in model predictions that  reflects uncertainty at all levels of organization \citep{Cressie2009, Hobbs2011}.
-Contrary to hybrid and ensemble methods, the aim is not to link different sub-models into a single model, but to condition the predictions of a metamodel at the target scale (e.g., an entire species' range) with information from independent sub-models at a variety of spatial scales, allowing for as much flexibility as possible regarding the type of information included. 
+We propose an alternative to these other approaches using a hierarchical Bayesian framework. 
+This approach provides a number of desirable advantages, including (1) the ability to incorporate multiple modes of inference (e.g., mechanistic, correlative models) \citep{VanOijen2005, Clark2006, Hobbs2011, Hartig2012}, (2) an easy mechanism to include multiple data sources at various scales \citep{Levin1992, Peters2004}, and (3) an intuitive and comprehensive reporting of uncertainty in model predictions that  reflects uncertainty at all levels of organization \citep{Cressie2009, Hobbs2011}.
+Contrary to hybrid methods, the aim is not to link different sub-models into a single model, but to condition the predictions of a metamodel at the target scale (e.g., an entire species' range) with information from independent sub-models at a variety of spatial scales, allowing for more flexibility regarding the type of information included. 
 By integrating all available knowledge while producing a single prediction, our approach potentially mitigates the limitations inherent in each individual model, contributing to more robust predictions \citep{Guisan2005, Araujo2006}.
 Moreover, a more comprehensive understanding of uncertainty can guide biodiversity management and prioritize future data collection by identifying the parameters that contribute most to variance in the model predictions \citep{McMahon2011}. 
 
-We illustrate our approach with two examples.
+We illustrate our framework with two examples.
 We begin with a hypothetical example, using simulated data, where we define the framework and demonstrate its application to multiple sources of information from different scales.
 In a second example, we apply the framework to combine presence-absence information with phenological data to improve uncertainty estimates and reduce bias when predicting changes to the range of sugar maple (\emph{Acer saccharum} Marsh.), a widespread foundation tree species from eastern North America, in response to climate change.
-Both examples are presented with complete code and data (in Supporting Information).
-Finally, we provide a more formal mathematical presentation in Appendix S1.
-
+We provide a more formal mathematical presentation (Appendix S1) along with complete code and data for both examples (Appendix S2).
 
 %% ----------------------------------
 %
@@ -193,13 +192,13 @@ Finally, we provide a more formal mathematical presentation in Appendix S1.
 %
 %% ----------------------------------
 \section*{Example 1: Adding experimental evidence for the fundamental niche to a species distribution model}
-The key idea of our approach is formulate a metamodel that integrates data at the same ecological scale as the desired predictions, and to constrain the parameters of this model using the output of one or more sub-models
-In this hypothetical example, we build a metamodel relating the distribution (i.e. occurrence probability) of an annual plant to coarse-scale climate with complementary information originating from a fine-scale experiment manipulating the precipitation regime.
+The key idea of our approach is to formulate a metamodel that integrates data at the same ecological scale as the desired predictions, and to constrain the parameters of this model using the output of one or more sub-models.
+In this hypothetical example, we build a metamodel relating the distribution of an annual plant to coarse-scale climate with complementary information originating from a fine-scale experiment manipulating the precipitation regime.
 The metamodel attempts to capture the realized distribution of a species; as a correlative model, it implicitly captures the major physiological constraints and ecological processes constraining the distribution of the target species. 
 However, for the purposes of forecasting, we would like to disentangle the fundamental response of a species to environmental variation from other processes in order to map the climatic envelope of where a species may be found in a natural setting.
 Thus, we use additional information on the physiological constraints affecting species distribution.
 Because these data are often collected at a finer scale than that of rangewide occurence data, we apply a simple scaling function, drawing on ecological theory, to compute the likelihood of a set of metamodel parameters given both the occurrence and the physiological data.
-See Appendix S1 in Supporting Information for procedural details and scripts for executing the model.
+See Appendix S1 for procedural details and scripts for executing the model.
 
 %==================
 %TC:ignore
@@ -207,7 +206,7 @@ See Appendix S1 in Supporting Information for procedural details and scripts for
 	\includegraphics{figs/ex1_sampling.pdf}
 	\caption{Two simulated datasets used to illustrate the model integration framework.
 	(a) Presences (circles) or absences (x's) of the species in ecological space, where precipitation ranges from 0--1.
-	(b) Growth rate ($r$) as a function of manipulations to the precipitation regime (whiskers show $\pm$ 1 SE), with a larger range for precipitation (i.e., \(-\)1--1).
+	(b) Growth rate ($r$) as a function of manipulations to the precipitation regime (whiskers show $\pm$ 1 SE), with a larger range for precipitation (i.e., -1.0--1.0).
 	The dashed line shows the threshold above which the species net growth rate is positive (implying presence).
 	Axis scales for temperature and precipitation are arbitrary, but note the different scales on the horizontal axes.}
 	\label{fig:ex1_sampling}
@@ -216,9 +215,8 @@ See Appendix S1 in Supporting Information for procedural details and scripts for
 %==================
 
 We consider data collected from a species' historical distribution, where the goal is to predict the distribution following a substantial reduction in precipitation.
-We assume a presence-absence dataset, which we term \(X_M\), where the subscripted \(M\) indicates that the data were collected at the same scale as the metamodel.
-We simulated a relatively high-quality dataset that provides coverage of a variety of ecological conditions (Fig. \ref{fig:ex1_sampling}).
-We desire to model the species' distribution as a function of temperature, \(T_M\), and precipitation, \(P_M\).
+For the metamodel-scale data, we simulate a relatively high-quality presence-absence dataset covering a variety of ecological conditions, which we term \(X_M\), where the subscripted \(M\) indicates that the data were collected at the same scale as the metamodel (Fig. \ref{fig:ex1_sampling}).
+We desire to mo0del the species' distribution as a function of temperature, \(T_M\), and precipitation, \(P_M\).
 An initial version of the metamodel \((\theta_M)\) that has no constraints from other datasets will be referred to as the naive model.
 This naive model uses a simple Bayesian logistic regression to estimate the naive probability of occurrence \((\psi_N)\) as a function of second order effects of temperature and precipitation:
 %-----
@@ -230,7 +228,7 @@ This naive model uses a simple Bayesian logistic regression to estimate the naiv
 \end{aligned}
 \end{equation}
 %-----
-where \(theta_M\) is the parameter vector of the model, \(D_M\) is the covariate matrix (i.e., \(T_M, P_M\), and quadratic terms, with the first column taken to be unity to allow an intercept to be fit), and \(\text{logit}^{-1}\) is the inverse of the logit function.
+where \(\theta_M\) is the parameter vector of the model, \(D_M\) is the covariate matrix (i.e., \(T_M, P_M\)), and \(\text{logit}^{-1}\) is the inverse of the logit function.
 We estimate parameters using a Markov Chain Monte Carlo (MCMC) method using the proportional form of Bayes' theorem:
 %-----
 \begin{equation}
@@ -248,11 +246,11 @@ Furthermore, no information is available regarding the temperature regime for th
 Transplant experiments that evaluate performance beyond the range of a species are common, and represent a plausible scenario for model integration \citep{Hargreaves2014}.
 According to niche theory \citep{Holt2009}, the fundamental niche corresponds to the set of environmental conditions where the per capita intrinsic growth rate $r$ is positive.
 This concept gives us a reasonable model to fit a scaling function for our sub-model (Appendix S1).
-If we hypothesize that the errors from Figure \ref{fig:ex1_sampling}b \( \left(\sigma_{S} \right) \) are normally distributed, then for an observation $i$, we can interpret the probability of presence \( \left(\psi_{S,i}\right)\) as the probability that the observed growth rate \(X_{S,i}\) is positive:
+If we hypothesize that the errors from Figure \ref{fig:ex1_sampling}b \( \left(\sigma_{S} \right) \) are normally distributed (where the \(S\) subscript indicates information pertaining to the submodel), then for an observation $i$, we can interpret the probability of presence \( \left(\psi_{S,i}\right)\) as the probability that the observed growth rate \(X_{S,i}\) is positive:
 \begin{equation}
 	\psi_{S,i} = \int_0^\infty N \left(X_{S,i}, \sigma_{S,i} \right)
 \end{equation}
-where \(N\) is the Normal density function.
+where \(N\) is the normal density function.
 We can then estimate the posterior distribution for the sub-model by fitting the relationship between \(\psi_S\) and precipitation \( \left( P_S \right) \) using Bayesian beta regression \citep{Ferrari2004}:
 %-----
 \begin{equation}
@@ -263,10 +261,10 @@ We can then estimate the posterior distribution for the sub-model by fitting the
 \end{equation}
 %-----
 
-Although the two datasets were collected at considerably different scales, we now have sub-model predictions arising from a fine-scale experiment that are relevant at the scale of the metamodel (i.e., the probability of presence at a given precipitation). 
-The scaling is quite simplistic; it treats the fundamental niche as the only driver of species distribution, and only considers a single dimension of the niche.
+Although the two datasets were collected at considerably different scales, we have sub-model predictions arising from a fine-scale experiment that are relevant at the scale of the metamodel (i.e., the probability of presence at a given precipitation). 
+The scaling treats the fundamental niche as the only driver of species distribution, and only considers a single dimension of the niche.
 As such, it would be unwise to expect predictions from this model alone to resemble the actual distribution of the species; as a mechanistic model, it is simply too incomplete to predict distribution.
-As we will show, however, the information from this sub-model, when applied as a constraint on the metamodel, can result in improved predictions that incorporate the information within each model.
+However, the information from this sub-model, when applied as a constraint on the metamodel, can result in improved predictions that incorporate the information within each model.
 
 We accomplish model integration by treating the posterior of \(\theta_S\) as prior information about some of the parameters of \(\theta_M\) (i.e., parameters related to precipitation), expanding Equation \ref{eq:ex1_bayes} to incorporate the new information from the sub-model:
 %-----
@@ -281,7 +279,6 @@ We accomplish model integration by treating the posterior of \(\theta_S\) as pri
 %-----
 As before, the metamodel \(\theta_M\) can be used to predict probability of occurrence \((\psi_I)\).
 However, these predictions now reflect the presence-absence data \(X_M\) as well as the information from \(\theta_S\), including all of the data sources used to produce this sub-model.
-In other words, with this evaluation, the set of parameters $\theta_M$ is most likely when it agrees with both the original data and predictions from the sub-model. 
 Finally, we note the presence of marginal distributions for both models (i.e., \(p(\theta_M)\) and \(p(\theta_S)\)).
 These can be informative (e.g., incorporating further prior information or the predictions of additional sub-models), semi-informative (e.g., to provide greater weight to more informative models), or uninformative.
 For purposes of this example, we used these terms to reduce the precision of the second model to reflect the uncertainty of the modeling process (due to the lack of additional mechanisms in the second model, as mentioned above).
@@ -290,10 +287,12 @@ For purposes of this example, we used these terms to reduce the precision of the
 \begin{figure}[bt]
 	\includegraphics{figs/ex1_precip.pdf}
 	\caption{Comparison of the naive model, mechanistic sub-model, and the integrated model showing the probability of presence (\(\psi\)) as a function of precipitation.
+	Uncertainty is represented as dashed lines, showing the limits of 90\% Bayesian credible intervals.
+	The shaded region shows the calibration range for the naive model.
 	(a) Naive model, using only presence-absence data. Uncertainty increases dramatically when attempting to project beyond the scope of the source data.
 	(b) Mechanistic model, using observations of an experiment to infer probability of presence.
 	(c) Integrated model, showing predictions that are intermediate between the two sub-models and uncertainty that is reduced compared to (a).
-	Uncertainty is represented as dashed lines, showing the limits of 90\% Bayesian credible intervals. The shaded region shows the calibration range for the naive model.}
+	}
 	\label{fig:ex1_precip}
 \end{figure}
 %==================
@@ -303,9 +302,7 @@ For purposes of this example, we used these terms to reduce the precision of the
 \begin{figure}[tb]
 	\includegraphics[width=5.25in]{figs/ex1_map.pdf}
 	\caption{Maps showing the predicted probability of presence (\(\psi\); (a) and (c)) and the standard deviation of \(\psi\) ((b) and (d)) for the naive and integrated models.
-	Historical (e.g., where presence-absence samples were available) and predicted future precipitation regimes are shown below the horizontal axes.
-	Uncertainty in the naive model was extreme when predicting beyond the historical precipitation regime.
-	Uncertainty in the integrated model was considerably reduced, reflecting the additional information provided by the mechanistic model.
+	Historical (i.e., where presence-absence samples were available) and predicted future precipitation regimes are shown below the horizontal axes.
 }
 	\label{fig:ex1_map}
 \end{figure}
@@ -333,12 +330,12 @@ Here we describe briefly the dataset, methods, and the results of the analysis (
 
 We obtained climate variables, occurrence data, and Phenofit projections at 0.5-degree resolution for both the present and for 2080 for sugar maple, an economically and ecologically important species occurring in eastern North America \citep{Morin2009}.
 These data defined the metamodel scale.
-To these data, we added 4903 recorded presences and 21701 absences derived from permanent forest sample plots located in the United States and Canada.
-We reserved 1/3 of this dataset for validation, and used the remaining records to calibrate the models.
+To these data, we added 4903 recorded presences and 21701 absences derived from permanent forest sample plots located in the United States and Canada (See Appendix S1 for a map of plot locations).
+We reserved 1/3 of this dataset for evaluation, and used the remaining records to calibrate the models.
 We constructed the naive model by using a binomial generalized linear model (GLM) to relate the presence-absence dataset to three climate variables: the number of degree days (ddeg), mean annual precipitation (an\_prcp), and the ratio of annual precipitation to potential evapotranspiration (pToPET).
 These variables were selected from an initial set of 6 variables \citep[see Appendix S1 and ][for details on the climate variables]{Morin2009}.
 We selected a GLM for its simplicity and interpretability because our focus was on demonstrating the framework, but more complex methods (e.g., generalized additive models) are compatible with the framework.
-The parameters for the model were estimated using a Metropolis-Hastings algorithm within Markov Chain Monte Carlo (MCMC).
+The parameters for the model were estimated using a Metropolis-Hastings algorithm.
 
 To perform the integration, we constrained the estimates of the naive model with the additional information from Phenofit while considering two different potential modeling goals.
 The first is improving our model of the present range of the species.
@@ -347,10 +344,10 @@ Assuming we have chosen climate variables that well represent the constraints on
 Second, the posterior predictions of the model (that is, the probability of presence projected into geographic space) will incorporate uncertainty from all sources, including the modeling process, data, parameterization, and the ecological processes included.
 This can provide a much more accurate estimate of the uncertainty of our predictions.
 Thus, for our first integration we combined the naive model with the Phenofit predictions for the present; we refer to this model as ``Integrated-Present'' hereafter.
-We also validated this model and compared it against the naive model by computing the area under the receiver operating curve (AUC), a commonly-used metric that measures the rate of correct classification and varies from 0 to 1 (where a value of 1 indicates perfect classification) \citep{Swets1988}.
+We also validated this model and compared it against the naive model by computing the area under the receiver operating curve (AUC), a commonly-used metric that measures the rate of correct classification and varies from 0 to 1 (where a value of 1 indicates perfect classification and 0.5 indicates no difference from a random model) \citep{Swets1988}.
 The second modeling goal is projecting changes to the range of sugar maple following climate change.
 Process-based models and correlative models often differ substantially when projecting beyond the range of the original data (see Example 1).
-Thus, we obtained predictions for 2100 from Phenofit \citep{Morin2009} and used the predictions to condition the metamodel given the predicitons of the naive model under future climate.
+Thus, we obtained predictions for 2100 from Phenofit \citep{Morin2009} and used them to condition the metamodel given the results of the naive model under future climate.
 This procedure provided a consensus view of the future range of the species; we refer to this model as ``Integrated-Future.''
 
 
@@ -420,10 +417,10 @@ For reference, the present range of the species is outlined in red \citep{Little
 
 % results
 %% compare parameters
-Model integration resulted substantial reduction in posterior uncertainty in the parameters, and, for the Integrated-Future model, a relatively large revision in the the estimate for the response of sugar maple to temperature (i.e., variable ddeg) (Table \ref{tab:ex2_params}, Fig. \ref{fig:ex2_response}).
+Model integration resulted in substantial reduction in posterior uncertainty in the parameters, and, for the Integrated-Future model, a relatively large revision in the the estimate for the response of sugar maple to temperature (i.e., variable ddeg) (Table \ref{tab:ex2_params}, Fig. \ref{fig:ex2_response}).
 When projecting beyond the calibration range for the naive model, the greater coverage provided by the integrated model produced substantial reductions in uncertainty (Fig. \ref{fig:ex2_response}).
-When considering the species distribution, the naive and Integrated-Present models made very similar predictions (Fig. \ref{fig:ex2_map_pres}).
-Furthermore, both models performed well when validating against reserved data, with AUC values of 0.72 and 0.73 for the naive and integrated models, respectively.
+When considering the present species distribution, the naive and Integrated-Present models made very similar predictions (Fig. \ref{fig:ex2_map_pres}).
+Furthermore, both models performed relatively well when evaluated against reserved data, with AUC values of 0.72 and 0.73 for the naive and integrated models, respectively.
 The small difference between the models indicates that both models effectively predict the probability of presence of sugar maple.
 The major advantage to integration is the improved understanding of uncertainty in the predictions, with greater uncertainty in southern portions of the range (Fig. \ref{fig:ex2_map_pres}).
 It is important to note that the naive model was the basis for the integrated model; thus the increased uncertainty present in the integrated model is not the result of a ``worse'' model, but rather should be viewed as a correction to overfitting in the naive model. 
@@ -461,7 +458,7 @@ Phenofit also predicted little change in the southern range limit of the species
 \section*{Discussion}
 
 \subsection*{Comparison with other methods}
-The methods provided here expand upon the motivation of hybrid models to develop a more robust approach for using ecological models for predictoin while overcoming some limitations characteristic of other integrated approaches.
+The methods provided here expand upon the motivation of hybrid models to develop a more robust approach for using ecological models for prediction while overcoming some limitations characteristic of other integrated approaches.
 In particular, it is often difficult in a hybrid model to identify parameters that can be used to connect different modeling frameworks and produce a meaningful response \citep{Thuiller2013}. 
 The difficulty of including information from experimental studies or ecological processes at lower scales can be a possible drawback of hybrid models \citep{Smolik2010, Thuiller2014a}. 
 Bayesian methods such as ours are able to overcome some of these limitations, as they provide a natural framework for the incorporation of multiple sources of information.
@@ -474,10 +471,6 @@ In particular, it has certain similarities with Bayesian model averaging and Bay
 Bayesian model averaging aims to combine several alternative models that operate at the same scale to obtain better predictions while taking into account parameter uncertainties \citep{Hoeting1999}, and has been applied numerous times in ecology where the mechanisms underlying a complex phenomenon are often unknown \citep[e.g.,][]{Wintle2003, Link2006}. 
 Bayesian calibration of process-based models focuses on uncertainty of the parameter values, in this case the values of the parameters are calibrated by the model output \citep{VanOijen2005, Hartig2012}. 
 In contrast with these methods, our approach handles data and models operating at different hierarchical scales, and uses process-based models to constrain the shape of the metamodel.
-%Similar hierarchical approaches have been applied to diverse fields, including engineering \citep{Booth2013}, hydraulic conductivity models \citep{Dostert2009}, and climate and atmospheric modeling \citep{Kang2012}.
-%Although our method as presented is distinct from Bayesian model averaging, it is fully compatible with these methods.
-%Multiple metamodels could be averaged in this way if a consensus prediction from multiple metamodels (containing, e.g., different sub-model sets or different metamodel formulations).
-%Furthermore, the metamodel can easily be incorporated into a broader multimodel inference scheme.
 
 
 %----------------------------
@@ -485,8 +478,8 @@ In contrast with these methods, our approach handles data and models operating a
 %----------------------------
 
 \subsection*{Advantages of Model Integration}
-Species distribution models are important tools that are increasingly used by land managers to face challenges associated to decision-making \citep{Guisan2013}.
-However, the potential for diverse approaches to provide diverging answers as a result of different assumptions and methodologies can create confusion and mistrust towards models, and some managers may be discouraged from incorporating model results in their management plans. 
+Species distribution models are important tools that are increasingly used by land managers for science-based decision-making \citep{Guisan2013}.
+However, the possibility that diverse approaches will provide diverging answers as a result of different assumptions and methodologies can create confusion and mistrust towards models, and some managers may be discouraged from incorporating model results in their management plans. 
 Integrated approaches have gained momentum in recent years, with integrative science being featured as a central theme for several science-based governmental organizations around the world \citep[e.g.,][]{Bernier2013}. 
 Incorporating information from multiple sources, particularly with respect to uncertainty,  fosters a connection between scientifically-generated knowledge and policy, and is therefore an important tool for adaptive management \citep[][Fig. \ref{fig:management}]{Rehme2011}.
 Such approaches are needed in formulating management plans for vulnerable species and ecosystems to avoid basing decisions on too-narrow subsets of the available information \citep{Dawson2011}.
@@ -500,7 +493,7 @@ The ease of incorporating new knowledge to the modeling framework allows for a r
 Furthermore, the use of linked sub-models allows for clear specification of desired model outputs (via the specification of the metamodel) while easily retaining important ecological objectives (via careful specification of sub-models).
 Transparency in the model building process must be accompanied by a clearly documented modeling workflow.
 We suggest using the sub-models as a natural proxy for specifying specific objectives, and using this as the basis for developing well documented workflows describing the process of model integration to ensure reproducibility and applicability (Fig. \ref{fig:management}). 
-In an era of continuous and unprecedented change, adaptive approaches such as the one presented here are often highlighted as a pressing need in order to develop strategies to promote ecosystems that are both feasible and resilient \citep{Seastedt2008}.
+Adaptive approaches such as the one presented here are often highlighted as a pressing need in order to develop strategies to promote ecosystems that are both feasible and resilient \citep{Seastedt2008}.
 
 %==================
 % FIGURE
@@ -513,7 +506,7 @@ In an era of continuous and unprecedented change, adaptive approaches such as th
 \end{figure}
 %==================
 
-In many cases, both the data and theory needed to apply our method already exist, and all that is needed is the development of sub-models and the links between the sub-models and a metamodel.
+In many cases, both the data and theory needed to apply our approach already exist, and all that is needed is the development of sub-models and the links between the sub-models and a metamodel.
 For example, climatic gradients may mediate competitive interactions \citep{Kunstler2011}, which means that simple correlative models that fail to account for competition may be wrong if the climate-competition association changes in the future.
 In North America, the US Forest Service maintains a long term Forest Inventory Analysis database that could be utilized to parameterize a competition model.
 Such a model need not explicitly predict occurrence limits; rather it could be integrated with a larger-scale model to include information about competition in a distribution model.
@@ -536,55 +529,30 @@ A strong asset of our approach is that it can be used without the full suite of 
 Given that the metamodel is correlative, it can be effectively implemented with, e.g., only presence-absence data, or, in the case where true absences are difficult to obtain, with presences and pseudo absences (provided sufficient care is used in interpreting the results of such a model).
 Then any additional mechanistic data that are available will enhance predictions by constraining outputs of the metamodel. 
 
+\ib{you say in the intro that the bayesian framework allows a easy and simple scaling-up, but the scale-up is still a problem. This part about scale is still a bit unclear. Our approach do not solve the scaling-up problem.}
+\fd{I fully agree with Isabellle.  Adequacy between ecological processes, scales, and meaning for upscaling the information  remain a major challenge.  It would be important here to say how this new approach helps is disentangling the difficulties listed at lines 35-37 in the introduction.}
+\mt{Although scaling is always a problem, this doesn't invalidate the statement that our method makes it easier. Think of the first example. This scaling would have been very difficult to do without using Bayesian methods.}
 Determining the functions to use to express the likelihood of the sub-models given the metamodel (i.e., Eq. \ref{eq:ex1_integrated}) is a critical point.
 In the context of integrated models, the challenge is three fold: (i) which spatial and temporal scales (i.e. which processes), are to be considered, (ii) how to build a scale the sub-models to be consistent with the metamodels, and (iii) how error and uncertainty propagate from the sub-models to the metamodel. 
 Although we argue that our proposed framework is able to easily deal with very different scales and that the Bayesian framework allows for an efficient integration of uncertainty throughout all scales considered, the building of scaling functions deserves further investigation. 
 It is likely that the modeling process may include multiple scaling functions operating at different scales when taking all known processes and models into account. 
 Indeed, if species distributions are a function of, e.g. population growth rate \citep{Guisan2000}, they will involve processes at the individual (e.g. competition) or cellular (e.g. photosynthesis) scales. 
-Such very large differences in spatial scales imply that simple functions will be inadequate, requiring more traditional upscaling methods. 
-Therefore, intermediate models and processes will need to be introduced, and this will require additional parameters, assumptions, and data, and will add uncertainty to the final integrated model.
+Such very large differences in spatial scales imply that simple functions such as those we have used here will be inadequate, requiring more traditional upscaling methods. 
 
+\ib{This paragraph is weired. You say that the implementation is very difficult and end the paragraph with decision, practitioners advantage.
+I would end the paragraph with positive points about implementation, saying that we still can do a lot with JAGS for instance. And then start a paragraph to briefly talk about challenges in dialogue with practitionners}
 Finally, implementation of the model itself can present an obstacle.
 Developing the models requires careful model specification, understanding of applied Bayesian methods, and, in some cases, extensive programming.
 In many cases, off-the-shelf software can adequately express the model likelihoods with minimal programming, but more complicated models will require the development of custom software.
 Thus, this framework will require significant investment in developing customized code for the samplers in order to actually estimate parameters, which may be technically challenging for some practitioners and may limit the adoption of these methods by both practitioners and decision-makers.
+\fd{I am a bit feeling uncomfortable with this section.  Practionners and decision-makers don't have to use (or even fully understand (as they will never get to that level of complexity) what methods underly the predictions) the models.  They use the information known as being the best of the actual scientific knowledge.  As for climate-related variables for CC, the scientific community (as the GIEC for the CC predictions) provide the predictions on SD. The scientific community is responsible for indicating the limitations of the use of the generated information.}
 Furthermore, as with any modeling effort, good model specification with strong links to theory are essential \citep{Austin2007}.
 In the worst case, constraining a metamodel with a poor sub-model can result in outcomes that are worse in terms of bias and uncertainty than those produced by a naive model.
-We expect model selection will play an important role in applications of our framework, and such schemes can be incorporated relatively easily \citep{Wasserman2000, Tenan2014}.
 The flexibility of our approach, and its transparency with respect to the propagation of uncertainty, will often outweigh the implementation challenges.
 We therefore argue that our approach has a strong potential for direct use in our real world where climate is quickly changing and conservation practices must be adjusted accordingly.
 We further argue that forging stronger collaborations between modelers, decision-makers, and practitioners will overcome implementation challengers and promote the incorporation of this and other new methods into applied ecology and conservation.
+\ib{I would add somewhere that this approach is not just a new methodological tool but is a framework for forecasting species distributions which is fundamentally designed to make the link between modellers and pratitionners, with (1) correctly estimating uncertainties and (2) being adaptable/updatable to new data or theoretical advances.}
 
-
-
-%In an applied context, the results of models predicting species ranges are increasingly used by resource managers, conservation biologists, and forest ecologists for formulating and adjusting recommendations. 
-%The utility of such models depends on their ability to help evaluate events beyond the bounds of the available data, including in future situations constrained by climate change. 
-%Practitioners may judge model usefulness on two criteria: (1) Does the model provide reliable predictions at the needed time and space scales, and (2) can the model be implemented given the available data and technical expertise? 
-%Since most decision makers work at local space scales and follow specific time frames, modelers face the obvious challenge of providing detailed outputs while facilitating implementation.
-%Our framework is transparent in reporting uncertainty of model output by virtue of providing easily interpretable probability distributions for model parameters and predictions.
-%However, developing the models requires careful model specification, understanding of applied Bayesian methods, and, in some cases, extensive programming.
-%In many cases, off-the-shelf software can adequately express the model likelihoods with minimal programming, but more complicated models will require the development of custom software.
-%Thus, this framework will require significant investment in developing customized code for the samplers in order to actually estimate parameters, which may be technically challenging for some practitioners and may limit the adoption of these methods by both practitioners and decision-makers.
-%However, the same was true of all statistical techniques or modeling approaches when they were initially developed, and many of the conceptual challenges associated with Bayesian statistics are being reduced as they gain recognition in the scientific literature. 
-%
-
-
-%----------------------------
-%----------------------------
-%----------------------------
-
-%\subsection*{Future directions}
-%Hierarchical Bayesian modeling requires data at every scale to fit the parameters required to constrain one level with another.
-%Moreover, beyond the needs for additional data, more knowledge of the important processes driving species range limits is needed to allow for extrapolation beyond the scope of the original datasets to address future changes due to climate and land-use changes.
-%This knowledge can be obtained through a series of experimental manipulations and by substituting space for time data along environmental gradients.
-%When experiments are possible, gaps in knowledge can be inferred using surrogate variables, theoretical models and spatially explicit models to explore the range of outcomes possible \citep{Fortin2012}. 
-%Another way to gain knowledge is to simplify species complexity into a series of states and to use state-transition models (e.g., Markov chain, semi-Markov chain, matrix projection model, integral projection model) which require more theoretical or coarser knowledge of species responses to biotic and abiotic changes.
-%Although fewer states allow us to better capture the essence of species responses to environmental conditions, knowledge is still required to model feedback effects across processes and spatio-temporal scales.
-%Hence we need to determine which processes are the most important at a given scale and how to weight their effects while scaling-up.
-%Our metamodeling approach can act as a springboard for incorporating imperfect knowledge of how multi-scale processes influence species ranges.
-%By incorporating this knowledge into species distribution models, we can hopefully both reduce bias and more accurately assess model uncertainty when forecasting future changes to species ranges.
-%---------------------------------------------
-%---------------------------------------------
 
 \section*{Data Accessibility}
 All data, as well as all code required to repeat the analyses, have been uploaded as online supporting information in Appendix S2.
