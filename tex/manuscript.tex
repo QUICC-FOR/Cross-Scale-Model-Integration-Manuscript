@@ -536,21 +536,21 @@ Determining the functions to use to express the likelihood of the sub-models giv
 In the context of integrated models, the challenge is three fold: (i) which spatial and temporal scales (i.e. which processes), are to be considered, (ii) how to build a scale the sub-models to be consistent with the metamodels, and (iii) how error and uncertainty propagate from the sub-models to the metamodel. 
 Although we argue that our proposed framework is able to easily deal with very different scales and that the Bayesian framework allows for an efficient integration of uncertainty throughout all scales considered, the building of scaling functions deserves further investigation. 
 It is likely that the modeling process may include multiple scaling functions operating at different scales when taking all known processes and models into account. 
-Indeed, if species distributions are a function of, e.g. population growth rate \citep{Guisan2000}, they will involve processes at the individual (e.g. competition) or cellular (e.g. photosynthesis) scales. 
-Such very large differences in spatial scales imply that simple functions such as those we have used here will be inadequate, requiring more traditional upscaling methods. 
+Indeed, if species distributions are a function of, e.g. population growth rate \citep{Guisan2000}, they will involve processes at the individual (e.g. competition) or cellular (e.g. photosynthesis) scales. Such very large differences in spatial scales would require more sophisticated upscaling methods than simple functions such as those we have used here. Our framework is still applicable whatever the chosen upscaling approach and is able to propagate uncertainties from sub-models to the metamodel.
+
 
 \ib{This paragraph is weired. You say that the implementation is very difficult and end the paragraph with decision, practitioners advantage.
 I would end the paragraph with positive points about implementation, saying that we still can do a lot with JAGS for instance. And then start a paragraph to briefly talk about challenges in dialogue with practitionners}
-Finally, implementation of the model itself can present an obstacle.
-Developing the models requires careful model specification, understanding of applied Bayesian methods, and, in some cases, extensive programming.
-In many cases, off-the-shelf software can adequately express the model likelihoods with minimal programming, but more complicated models will require the development of custom software.
-Thus, this framework will require significant investment in developing customized code for the samplers in order to actually estimate parameters, which may be technically challenging for some practitioners and may limit the adoption of these methods by both practitioners and decision-makers.
+
+The implementation of the model itself can present an obstacle when model complexity increases. In many cases, off-the-shelf software can adequately express the model likelihoods with minimal programming, but more complicated models will require the development of custom programs. Developing such customized code would requires careful model specification, understanding of applied Bayesian methods, and, in some cases, extensive programming. However, the flexibility of our approach, and its transparency with respect to the propagation of uncertainty, will often outweigh the implementation challenges.
+
+Finally, this approach is not just a new methodological tool but is a framework for forecasting species distributions which is fundamentally designed to make the link between modellers and pratitionners, with (1) correctly estimating uncertainties and (2) being updatable to new data or theoretical advances. A scientific approach such as presented here is particularly adapted to make a synthesis of available knowledge and provide robust species distribution forecasts based on information known as being the best of the actual scientific knowledge. It is actually able both to use large databases, valuing the efforts of data collection, and to include models based on the latest theoretical advances, which is essential to decrease the errors due to model specification \citep{Austin2007}. In addition, it would provides practionners and decision-makers with the best possible estimation of uncertainties, with direct applications to risk assessment or to guide the choice where investigating new research and accumulating new data. 
+We further argue that the adaptability of our approach is particularly appropriate in our world where collected data and theoretical knowledge is changing as quickly as climate and conservation practices must be adjusted accordingly.
+
+
 \fd{I am a bit feeling uncomfortable with this section.  Practionners and decision-makers don't have to use (or even fully understand (as they will never get to that level of complexity) what methods underly the predictions) the models.  They use the information known as being the best of the actual scientific knowledge.  As for climate-related variables for CC, the scientific community (as the GIEC for the CC predictions) provide the predictions on SD. The scientific community is responsible for indicating the limitations of the use of the generated information.}
-Furthermore, as with any modeling effort, good model specification with strong links to theory are essential \citep{Austin2007}.
-In the worst case, constraining a metamodel with a poor sub-model can result in outcomes that are worse in terms of bias and uncertainty than those produced by a naive model.
-The flexibility of our approach, and its transparency with respect to the propagation of uncertainty, will often outweigh the implementation challenges.
-We therefore argue that our approach has a strong potential for direct use in our real world where climate is quickly changing and conservation practices must be adjusted accordingly.
-We further argue that forging stronger collaborations between modelers, decision-makers, and practitioners will overcome implementation challengers and promote the incorporation of this and other new methods into applied ecology and conservation.
+
+
 \ib{I would add somewhere that this approach is not just a new methodological tool but is a framework for forecasting species distributions which is fundamentally designed to make the link between modellers and pratitionners, with (1) correctly estimating uncertainties and (2) being adaptable/updatable to new data or theoretical advances.}
 
 
