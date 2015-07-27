@@ -13,4 +13,7 @@
 !tex/*.pdf
 *.tdo
 *.fff
+*.lof
+*.ttt
+*.lot
 manuscript.texbackup
