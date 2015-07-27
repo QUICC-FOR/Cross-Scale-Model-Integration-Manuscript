@@ -2,6 +2,10 @@
 
 \usepackage[margin=1in]{geometry}
 
+
+\usepackage[dvipsnames]{xcolor}
+\newcommand{\rev}[1]{{\color{RoyalBlue}#1}}
+
 % use proper unicode fonts
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
@@ -208,7 +212,7 @@ See Appendix S1 for procedural details and scripts for executing the model.
 \begin{figure}[t]
 	\includegraphics{figs/ex1_sampling.pdf}
 	\caption{Two simulated datasets used to illustrate the model integration framework.
-	(a) Presences (circles) or absences (x's) of the species in ecological space, where precipitation ranges from 0--1.
+	(a) Presences (circles) or absences (x's) of the species in ecological space, \rev{where the range of precipitation values sampled was 0.1--1}.
 	(b) Growth rate ($r$) as a function of manipulations to the precipitation regime (whiskers show $\pm$ 1 SE), with a larger range for precipitation (i.e., -1.0--1.0).
 	The dashed line shows the threshold above which the species net growth rate is positive (implying presence).
 	Axis scales for temperature and precipitation are arbitrary, but note the different scales on the horizontal axes.}
@@ -333,14 +337,14 @@ For the second example, we consider the problem of forecasting the potential dis
 There is considerable interest in comparing correlative and mechanistic projections with respect to climate change \citep{Morin2009}, and correctly characterizing uncertainty is a critical aspect of this problem \citep{Cheaib2012}.
 Despite being a relatively common application of SDMs \citep{Guisan2005}, projecting models parameterized with modern climate data to future climate scenarios remains problematic \citep{Araujo2006}.
 We used our framework to constrain a climate-based SDM with information obtained from Phenofit, a mechanistic model that predicts a species' probability of presence as a function of the suitability of the environment given the species' phenology \citep{Chuine2001, Morin2009}.
-Here we describe briefly the dataset, methods, and the results of the analysis (see Appendix S1 for data and scripts to reproduce the analysis).
+Here we describe briefly the dataset, methods, and the results of the analysis (see \rev{Appendix S2} for data and scripts to reproduce the analysis).
 
-We obtained climate variables, occurrence data, and Phenofit projections at 0.5-degree resolution for both the present and for 2080 for sugar maple, an economically and ecologically important species occurring in eastern North America \citep{Morin2009}.
+We obtained climate variables, occurrence data, and Phenofit projections at 0.5-degree resolution for both the present and for \rev{2100} for sugar maple, an economically and ecologically important species occurring in eastern North America \citep{Morin2009}.
 These data defined the metamodel scale.
 To these data, we added 4903 recorded presences and 21701 absences derived from permanent forest sample plots located in the United States and Canada (See Appendix S1 for a map of plot locations).
 We reserved 1/3 of this dataset for evaluation, and used the remaining records to calibrate the models.
 We constructed the naive model by using a binomial generalized linear model (GLM) to relate the presence-absence dataset to three climate variables: the number of degree days (ddeg), mean annual precipitation (an\_prcp), and the ratio of annual precipitation to potential evapotranspiration (pToPET).
-These variables were selected from an initial set of 6 variables \citep[see Appendix S1 and ][for details on the climate variables]{Morin2009}.
+These variables were selected from an initial set of \rev{seven} variables \citep[see Appendix S1 and ][for details on the climate variables]{Morin2009}.
 We selected a GLM for its simplicity and interpretability because our focus was on demonstrating the framework, but more complex methods (e.g., generalized additive models) are compatible with the framework.
 
 To perform the integration, we constrained the estimates of the naive model with the additional information from Phenofit while considering two different potential modeling goals.
@@ -359,7 +363,7 @@ This procedure provided a consensus view of the future range of the species; we 
 
 \begin{table}[t]
 	\footnotesize
-	\caption{Standardized logit-scale parameter estimates and 95\% credible intervals for the three models.}
+	\caption{\rev{Parameter estimates and 95\% credible intervals for the naive model (i.e., a species distribution model fit with occurrence data only), and two integrated models combining predictions from the naive model and either the present or future predictions from a mechanistic model. All models were fit on predictor variables standardized to mean=0 and unit variance, and all estimates are on the logit scale. Climate variables included the number of degree days (ddeg), mean annual precipitation (an\_prcp), and the ratio of annual precipitation to potential evapotranspiration (pToPET).}}
 	\begin{tabular}{lcccccccc}
 	\toprule
 	& Naive & Integrated-present & Integrated-future \\

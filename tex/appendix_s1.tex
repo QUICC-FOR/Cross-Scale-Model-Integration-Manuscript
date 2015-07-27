@@ -1,6 +1,10 @@
 \documentclass[11pt]{article}
 \usepackage[margin=1in, left=1.2in]{geometry}
 
+\usepackage[dvipsnames]{xcolor}
+\newcommand{\rev}[1]{{\color{RoyalBlue}#1}}
+
+
 % use proper unicode fonts
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
@@ -22,6 +26,7 @@
 \usetikzlibrary{calc, shapes}
 \usetikzlibrary{shapes.geometric,shapes.arrows,decorations.pathmorphing}
 \usetikzlibrary{matrix,chains,scopes,positioning,arrows,fit}
+
 
 \begin{document}
 
@@ -150,7 +155,7 @@ We divided the dataset into calibration and validation subsets, with 1/3 of the 
 As in the previous example, we modeled the probability of presence as a function of climate.
 We considered seven climate variables: the number of degree days (ddeg), minimum temperature (min\_temp), potential evapotranspiration (PET), annual precipitation (an\_prcp), summer precipitation (sum\_prcp), winter precipitation (win\_prcp), and the ratio of annual precipitation to potential evapotranspiration (pToPET).
 See \citet{Morin2009} for a complete description of these variables.
-For projection, we used predictions for 2080 from the HadCM3 GCM \citep{Pope2000} driven by the A2 emission scenario \citep{Nakicenovic2000}, and used the parameters of the models to forecast suitability into the future.
+For projection, we used predictions for \rev{2100} from the HadCM3 GCM \citep{Pope2000} driven by the A2 emission scenario \citep{Nakicenovic2000}, and used the parameters of the models to forecast suitability into the future.
 Exploratory analysis revealed that there were collinearities within the predictor variables.
 Thus, we only included three variables in the model: ddeg, an\_prcp, and pToPET.
 To select the form of the naive model (and thus the metamodel), we used stepwise regression with BIC as the evaluation criteria.
