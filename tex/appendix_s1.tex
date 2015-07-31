@@ -160,13 +160,44 @@ Exploratory analysis revealed that there were collinearities within the predicto
 Thus, we only included three variables in the model: ddeg, an\_prcp, and pToPET.
 To select the form of the naive model (and thus the metamodel), we used stepwise regression with BIC as the evaluation criteria.
 The search scope included all models with linear, quadratic, and cubic terms for all three variables.
-Because Phenofit provided predictions in the form of a probability of presence (rather than directly in terms of the metamodel parameters as in the previous example), it was necessary to develop a method for relating these predictions to the metamodel.
+\rev{Thus, the naive model (which also defined the scope of the metamodel), can be formulated as a simple Binomial GLM, as in Example 1:
+\begin{equation}
+\psi_N =\text{logit}^{-1}\left( \theta_M D_M \right)
+\end{equation}
+where \(\psi_N\) is the probability of presence in the naive model, \(\theta_M\) is the parameter vector of the metamodel (presently unconstrained by any additional information), and \(D_M\) is the macroclimate covariate matrix at the metamodel scale.
+The parameter vector is estimated following equation 2 in the main text:
+\begin{equation}
+p\left (\theta_M \mid X_M,D_M \right ) \propto 
+p \left(X_M \mid \theta_M, D_M \right)
+p \left(\theta_M \right)
+\end{equation}
+
+Because Phenofit provided predictions in the form of a probability of presence (rather than directly in terms of the metamodel parameters as in the previous example), it was necessary to relate these predictions to the metamodel.
 We opted to do this via simulation because it is a natural method to use in an MCMC scheme.
-For each MCMC iteration, we generated a simulated dataset by drawing \(N_x\) samples with probability \(p_x\) from a Binomial distribution, where \(N_x\) is the number of observations in the occurrence dataset for a given grid cell \(x\), and \(p_x\) is the predicted probability of presence from Phenofit for that cell.
-The metamodel was then fit to these simulated data (with prior conditioning on the naive model).
+We thus treated the Phenofit predictions (\(\psi_P\)) as an observed result of a true underlying set of occurrences (\(X_P\)).
+Because these occurrences were unobserved (and in the case of the future distribution, unobservable), it was necessary to infer them using MCMC.
+For each MCMC iteration, we generated a simulated occurrence dataset \(\hat{X}_P\) by drawing from a Binomial distribution with probabilities equal to \(\psi_P\).
+In order to give both the occurrence dataset and Phenofit predictions equal weight, we drew the same number of samples as were present in the occurrence dataset.
+The metamodel was then fit to these simulated data (with conditioning on the naive model as well):
+\begin{equation} 
+\overbrace{p(\theta_M \mid X_M, D_M, X_P, \psi_P)}^\text{integrated posterior}
+\propto
+\overbrace{p\left (X_P \mid \theta_M,D_M,\psi_P \right )}^{\substack{\text{new information} \\ \text{from Phenofit}}}
+\overbrace{p \left(X_M \mid \theta_M, D_M \right) p \left(\theta_M \right)}^{\substack{\text{naive metamodel} \\ \text{posterior}}}
+\overbrace{p \left(\psi_P \right)}^{\substack{\text{prior for} \\ \text{Phenofit}}}	
+\end{equation}
 This procedure, by generating a random dataset with each iteration, incorporated the variance in the Phenofit predictions.
+Finally, because we were interested in two separate questions with respect to Phenofit integration (one regarding how integration affects uncertainty in our present estimate of the species distribution and a one regarding the effect of integration on projections into the future), we performed two separate integrations with the Phenofit information.
+To address the first question, we used the Phenofit predictions for the present as \(\psi_P\) and present climate as \(D_M\), producing the Integrated-Present model.
+To address the second, we used the future predictions from Phenofit and future climate, resulting in the Integrated-Future model.
+In both cases, the naive model was a GLM relating present occurrences to present climate (and thus the prior response to the environment was static, similarly to how one might use the same conventional SDM to both model present distribution and project into the future).
 Convergence for all models was assessed by comparing the results of multiple chains with overdispersed starting points.
-Based on the results of these initial runs, we thinned all posterior samples by recording only every 50th sample, and we obtained 25000 posterior samples for each model following a burn-in period of 20000 samples.
+Based on the results of these initial runs, we thinned all posterior samples by recording only every 50th sample, and we obtained 25000 posterior samples for each model following a burn-in period of 20000 samples.}
+
+\section*{Implementation}
+\subsection*{Model weights}
+\rev{As a start, users may consider weighting models based on sample size or number of independent treatments, as we have done in example 1, where the weight for the sub-model of 0.05 was chosen based on the 5 precipitation levels relative to 100 independent data points in the correlative dataset.
+Because we are integrating model predictions, a highly precise model model with a small sample size (e.g., an experiment with a small number of treatment levels but strong effects) may provide too strong of a constraint on the metamodel.}
 
 \renewcommand\refname{Literature Cited}
 \bibliography{model_integration}{}
