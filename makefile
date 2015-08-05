@@ -1,8 +1,9 @@
 manuscript: manuscript.pdf Appendix_S1.pdf
 
 manuscript.pdf: tex/manuscript.tex tex/model_integration.bib tex/model_integration.bst \
-tex/figs/ex1_Sampling.pdf tex/figs/ex1_map.pdf tex/figs/ex1_precip.pdf \
-tex/figs/ex2_params.pdf tex/figs/ex2_response.pdf tex/figs/management.pdf 
+tex/figs/ex1_Sampling.pdf tex/figs/ex1_map.png tex/figs/ex1_precip.pdf \
+tex/figs/ex2_params.pdf tex/figs/ex2_response.pdf tex/figs/management.pdf \
+tex/figs/ex2_fut_map.png tex/figs/ex2_pres_map.png
 	# the first line performs a wordcount and inserts it directly into the manuscript
 	cd tex; ./wordcount.sh
 	cd tex; pdflatex manuscript; bibtex manuscript; pdflatex manuscript; \

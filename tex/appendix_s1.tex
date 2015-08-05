@@ -195,9 +195,69 @@ Convergence for all models was assessed by comparing the results of multiple cha
 Based on the results of these initial runs, we thinned all posterior samples by recording only every 50th sample, and we obtained 25000 posterior samples for each model following a burn-in period of 20000 samples.}
 
 \section*{Implementation}
+\rev{Here, we provide a brief guide on implementing our framework. We focus on our two examples, providing a brief outline of the steps to reproduce the analyses using the code and data provided in Appendix S2.
+In the section for each example, we provide some references to software packages that may be of assistance to beginning users.
+As a full discussion of the practicalities of Bayesian modelling is beyond the scope of this paper, we direct the reader to some of the many excellent resources for Bayesian and hierarchical modelling in ecology \citep[e.g., we suggest][]{Bolker2007, Royle2009, Link2010}.
+We also provide some additional information on applying model weights.
+Our intent is that, with this guide and the accompanying code, users familiar with R and with some experience with Bayesian modelling will be able to implement our method.}
+
+\subsection*{Example 1}
+\rev{
+Example 1 is implemented fully using off-the shelf statistical software.
+Data preparation, exploration, and visualization is all performed in R \citep{R}.
+Parameterization of all models is performed using JAGS, which is a standalone implementation of a Metropolis-Hastings and Gibbs sampler, as well as RJAGS, the R interface to the JAGS program \citep{RJAGS}.
+Within the {\tt example\_1} directory in Appendix S2, we provide 6 numbered scripts.
+These are designed to be run from the command line using the RScript program that ships with most standard R installations (e.g., {\tt Rscript 1-m1.r} to run the first script).
+However, we encourage users to review the code rather than simply running the examples from the command line.
+Users of the R console (or the RStudio environment) will be able to run the code one line at a time, provided the working directory is set to the {\tt example\_1} directory beforehand.
+
+There are three main steps to running the analysis, corresponding to the first three numbered scripts.
+The first (file {\tt 1-m1.r}) generates the simulated presence-absence dataset, loads a JAGS model representing the metamodel (from the file {\tt ex1\_metamodel.jags}), and runs JAGS on the model to produce posterior samples for the naive model.
+Note that, because the naive model and the metamodel are at the same scale and differ only in whether they include additional information from the sub-model, the JAGS model file is the same for both.
+All data and results from this step are saved to the {\tt dat/ex1\_m1.rdata} file.
+Step two ({\tt 2-m2.r}) creates the dataset for the sub-model, loads the JAGS model ({\tt ex1\_model2.jags}), and runs the model, saving all results to {\tt dat/ex1\_m2.rdata}.
+Finally, the third step ({\tt 3-mm.r}) simply reads the estimates from the sub-model, incorporates them into the information passed to JAGS for estimating the metamodel, and runs JAGS to obtain the integrated posterior samples and save them to {\tt dat/ex1\_mm.rdata}.
+The posterior samples are saved as MCMC objects from package coda; users should refer to the documentation for that package for information on using these objects.
+The remaining three scripts contain code for reproducing the figures contained in the main manuscript.
+Users may find them useful for guidance on working with posterior samples generated with JAGS.
+}
+
+
+\subsection*{Example 2}
+\rev{
+For performance reasons, we have implemented Example 2 as a standalone C++ program, designed to be run multi-threaded in high-performance computing applications.
+Due to the size of the dataset and the increased complexity of the model (relative to Example 1), the computational load is considerably higher.
+The procedure to compile and run the model is also somewhat more complex.
+Therefore, to facilitate exploration without requiring users to actually build and run the model, we have included the posterior samples we obtained with Appendix S2.
+This will allow users to build the figures and explore the results of the naive and integrated models.
+For the portions that can be run in R, as in Example 1, we have included numbered scripts that can be run with {\tt Rscript}.
+There are three scripts included in the {\tt example\_2/r/} directory, numbered 1, 3, and 5 (steps 2 and 4 are running the C++ program to obtain samples for the naive and integrated models, respectively).
+Step 1 ({\tt 1\_prepare\_naive\_data.r}) prepares the dataset for the naive model to be used with the sampler, resulting in the files {\tt dat/mcmc/naiveData.csv} (for use with the C++ program) and {\tt dat/mcmc/naiveData.rds} (for use with R, can be loaded using the {\tt readRDS} function).
+Step 2 (see following paragraph) creates the file {\tt results/mcmc/naivePosterior.csv}, which contains the posterior samples for the naive model and which we have included for users that do not wish to build and run the C++ program themselves.
+Step 3 reads the results of the naive model estimation and uses it to prepare the files needed to estimate the integrated model.
+As with step 2, step 4 depends on the C++ program and produces posterior samples for both the Integrated-Present and Integrated-Future models (files {\tt integratedPresent.csv} and {\tt integratedFuture.csv}, respectively, in the {\tt results/mcmc/} directory).
+Finally, step 5 reads all of the CSV files containing posterior samples and processes them into MCMC objects (saved in {\tt results/posteriors.rdata}) that can be easily manipulated in R with the coda package.
+We also include code for reproducing the figures contained in the manuscript (all scripts starting with {\tt fig}), and a brief interactive script for performing model evaluation ({\tt evaluation.r})
+
+For users wishing to build and run the C++ program to estimate the posterior distributions, some knowledge of C++ compilers will be required.
+A familiarity with GNU Make will also be of assistance, because the build procedure is fully automated and documented within the included makefile.
+All C++ code is contained within the {\tt src} subdirectory and should be fully compatible with any platform capable of compiling and running standard C++89 programs.
+The only external dependency is the GNU Scientific Library (freely available at http://www.gnu.org/software/gsl/), an open-source C library which we have used for random number generation and other mathematical operations.
+Additionally, for high-perfomance computing applications, we have included compiler commands for using OpenMP.
+When enabled, this will significantly improve the speed at which the likelihood is computed, and thus reducing the runtime of the model.
+All compiler commands, as well as the commands used to run the model and generate posterior samples, are included in the makefile.
+Additionally, once the program is compiled, help with program options can be obtained using the {\tt -h} switch (i.e., {\tt integrated\_model -h} at the command line).
+}
+ 
 \subsection*{Model weights}
-\rev{As a start, users may consider weighting models based on sample size or number of independent treatments, as we have done in example 1, where the weight for the sub-model of 0.05 was chosen based on the 5 precipitation levels relative to 100 independent data points in the correlative dataset.
-Because we are integrating model predictions, a highly precise model model with a small sample size (e.g., an experiment with a small number of treatment levels but strong effects) may provide too strong of a constraint on the metamodel.}
+\rev{Model weights, expressed mathematically as the prior probability of each individual sub-model, allow the user to express prior belief that a particular sub-model is effective at describing the range of a species.
+This is particularly useful, as in Example 1, when a sub-model is highly statistically precise but, due to limited scope, is not effective alone at describing the range of a species.
+The hypothetical experiment in Example 1 included only 5 treatments in a single variable, and thus misses many important processes that generate species ranges.
+Selecting the specific weighting to use will, of necessity, be somewhat subjective, as it is often difficult to express prior belief of this sort in precise mathematical terms.
+As a start, users may consider weighting models based on sample size or number of independent treatments, as we have done in example 1, where the weight for the sub-model of 0.05 was chosen based on the 5 precipitation levels relative to 100 independent data points in the correlative dataset.
+Implementation of the weights within the model code itself will depend on the implementation.
+In the case of Example 1, the weight was applied by decreasing the precision of all terms that were informed by the submodel (i.e., making the prior that resulted from the sub-model less informative).
+}
 
 \renewcommand\refname{Literature Cited}
 \bibliography{model_integration}{}
