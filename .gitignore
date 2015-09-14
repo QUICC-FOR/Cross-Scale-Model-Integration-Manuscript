@@ -1,6 +1,8 @@
 .DS_Store
 *.aux
 *.pdf
+*.png
+geb_revision*
 *.log
 *.loc
 *.gz
