@@ -13,6 +13,8 @@ geb_revision*
 *.cut
 *.docx
 !tex/*.pdf
+!tex/figs/*.pdf
+!tex/figs/*.png
 *.tdo
 *.fff
 *.lof
